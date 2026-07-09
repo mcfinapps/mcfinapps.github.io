@@ -41,12 +41,42 @@
     font-size: 16px;
   }
   .cta-note { margin-top: 12px; font-size: 13px; color: var(--sub); }
-  .shots { display: flex; gap: 20px; justify-content: center; padding: 48px 0 24px; flex-wrap: wrap; }
-  .shots img {
-    width: min(280px, 78vw); border-radius: 28px; border: 1px solid var(--line);
-    display: block;
+  .platforms {
+    margin-top: 26px; display: flex; gap: 22px; justify-content: center;
+    color: var(--sub); font-size: 13px;
   }
-  .shots img:nth-child(2) { transform: translateY(-16px); }
+  .platforms span { display: inline-flex; align-items: center; gap: 7px; }
+  .platforms svg { width: 18px; height: 18px; stroke: var(--sub); fill: none; stroke-width: 1.5; }
+  .canvas img { width: 100%; border-radius: 20px; border: 1px solid var(--line); display: block; }
+  .canvas .cap { text-align: center; font-size: 14px; color: var(--sub); margin-top: 14px; }
+  .canvas .row { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 18px; align-items: center; margin-top: 40px; }
+  .canvas .row p { font-size: 16px; color: var(--sub); padding: 0 8px; }
+  .canvas .row p strong { color: var(--ink); }
+  .np { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 32px; align-items: center; }
+  .np-text p { font-size: 16px; color: var(--sub); margin-top: 10px; }
+  .np-text p strong { color: var(--ink); }
+  .np-card {
+    max-width: 320px; margin: 0 auto; background: var(--card); border: 1px solid var(--line);
+    border-radius: 20px; padding: 18px;
+  }
+  .np-card img { width: 100%; border-radius: 12px; display: block; }
+  .np-card .t { margin-top: 14px; font-weight: 600; font-size: 15px; }
+  .np-card .a { font-size: 13px; color: var(--sub); }
+  .np-card .bar { margin-top: 12px; height: 4px; border-radius: 2px; background: var(--line); position: relative; }
+  .np-card .bar i { position: absolute; left: 0; top: 0; bottom: 0; width: 38%; border-radius: 2px; background: var(--accent); }
+  .shots { display: flex; gap: 24px; justify-content: center; padding: 48px 0 24px; flex-wrap: wrap; }
+  .phone {
+    background: #000; border: 1.5px solid #2A3648; border-radius: 46px; padding: 10px;
+    display: inline-block;
+  }
+  .phone img { width: min(250px, 72vw); border-radius: 36px; display: block; }
+  .shots .phone:nth-child(2) { transform: translateY(-16px); }
+  .phone.land img { width: 100%; border-radius: 24px; }
+  .phone.land { border-radius: 34px; width: 100%; }
+  .pad {
+    background: #000; border: 1.5px solid #2A3648; border-radius: 30px; padding: 16px;
+  }
+  .pad img { width: 100%; border-radius: 14px; border: none; display: block; }
   .intro { max-width: 680px; margin: 48px auto 0; text-align: center; font-size: 18px; color: var(--sub); }
   .intro strong { color: var(--ink); font-weight: 600; }
   section { padding: 72px 0 0; }
@@ -56,6 +86,7 @@
     background: var(--card); border: 1px solid var(--line); border-radius: 16px;
     padding: 26px 24px;
   }
+  .feature svg { width: 24px; height: 24px; stroke: var(--accent-ink); fill: none; stroke-width: 1.6; stroke-linecap: round; stroke-linejoin: round; margin-bottom: 12px; }
   .feature h3 { font-size: 16px; font-weight: 600; margin-bottom: 8px; }
   .feature p { font-size: 15px; color: var(--sub); }
   .themes { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 16px; }
@@ -95,12 +126,17 @@
     <p class="sub">An adaptive soundscape that rises with the road — playing through your car's speakers.</p>
     <a class="cta" href="mailto:mike.mcfin@gmail.com?subject=Drivescape%20beta">Request beta access</a>
     <p class="cta-note">In TestFlight beta, ahead of its App Store release.</p>
+    <div class="platforms">
+      <span><svg viewBox="0 0 24 24"><rect x="7" y="3" width="10" height="18" rx="2.5"/><line x1="10.5" y1="18.5" x2="13.5" y2="18.5"/></svg>iPhone</span>
+      <span><svg viewBox="0 0 24 24"><rect x="4" y="3.5" width="16" height="17" rx="2.5"/><line x1="10" y1="18" x2="14" y2="18"/></svg>iPad</span>
+      <span><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="2.6"/><line x1="3.6" y1="10.5" x2="9.6" y2="11.2"/><line x1="20.4" y1="10.5" x2="14.4" y2="11.2"/><line x1="12" y1="14.6" x2="12" y2="21"/></svg>CarPlay</span>
+    </div>
   </div>
 
   <div class="shots">
-    <img src="img/theme-glide.jpg" alt="Drivescape GLIDE theme — serene visualizer" loading="lazy">
-    <img src="img/theme-ion.jpg" alt="Drivescape ION theme at speed" >
-    <img src="img/theme-void.jpg" alt="Drivescape MONOLITH theme — colossal dark visualizer" loading="lazy">
+    <div class="phone"><img src="img/theme-glide.jpg" alt="Drivescape GLIDE theme — serene visualizer" loading="lazy"></div>
+    <div class="phone"><img src="img/theme-ion.jpg" alt="Drivescape ION theme at speed"></div>
+    <div class="phone"><img src="img/theme-apex.jpg" alt="Drivescape APEX theme — golden starburst at speed" loading="lazy"></div>
   </div>
 
   <p class="intro">Drivescape turns every drive into a private score. <strong>Press the accelerator and the sound blooms</strong> — wide, cinematic, alive; ease into a cruise and it settles to a calm presence, like a held breath. The swell always agrees with your real speed, so you feel it before you read it — no dashboard, no numbers, just motion made audible.</p>
@@ -108,12 +144,22 @@
   <section>
     <h2>Built around the drive</h2>
     <div class="grid">
-      <div class="feature"><h3>Sound that follows you</h3><p>Built from real motion and GPS speed, the soundscape swells on acceleration and settles at cruise — never a fixed loop.</p></div>
-      <div class="feature"><h3>A living visualizer</h3><p>A custom Metal-rendered light world breathes with your drive. It's the poster for the sound, not the road — never watch it while moving.</p></div>
-      <div class="feature"><h3>No mount, no setup</h3><p>Drop your phone in a pocket, bag or cup holder. Drivescape learns its orientation as you drive and calibrates itself.</p></div>
-      <div class="feature"><h3>Plays through your car</h3><p>Connects over Bluetooth or CarPlay, with artwork on your car display and steering-wheel controls to switch themes hands-free.</p></div>
-      <div class="feature"><h3>Five worlds to choose</h3><p>From meditative calm to trailer-scale awe, each theme is a complete soundscape with its own mood and palette.</p></div>
-      <div class="feature"><h3>Choose your voice</h3><p>Layer in vehicle sound packs — a futuristic starship hum, muscle V8, screaming V10, or a vintage V-twin with a kick.</p></div>
+      <div class="feature"><svg viewBox="0 0 24 24"><polyline points="2 12 5 12 8 5 12 19 15 9 17 12 22 12"/></svg><h3>Sound that follows you</h3><p>Built from real motion and GPS speed, the soundscape swells on acceleration and settles at cruise — never a fixed loop.</p></div>
+      <div class="feature"><svg viewBox="0 0 24 24"><path d="M12 3 L14 10 L21 12 L14 14 L12 21 L10 14 L3 12 L10 10 Z"/></svg><h3>A living visualizer</h3><p>A custom Metal-rendered light world breathes with your drive. It's the poster for the sound, not the road — never watch it while moving.</p></div>
+      <div class="feature"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="8.5"/><circle cx="12" cy="12" r="1.6"/><line x1="12" y1="3.5" x2="12" y2="7"/><line x1="12" y1="17" x2="12" y2="20.5"/><line x1="3.5" y1="12" x2="7" y2="12"/><line x1="17" y1="12" x2="20.5" y2="12"/></svg><h3>No mount, no setup</h3><p>Drop your phone in a pocket, bag or cup holder. Drivescape learns its orientation as you drive and calibrates itself.</p></div>
+      <div class="feature"><svg viewBox="0 0 24 24"><path d="M4 15 L5.5 9.5 Q6 8 7.5 8 L16.5 8 Q18 8 18.5 9.5 L20 15"/><rect x="3" y="15" width="18" height="4" rx="1.5"/><circle cx="7" cy="17" r="0.8"/><circle cx="17" cy="17" r="0.8"/></svg><h3>Plays through your car</h3><p>Connects over Bluetooth or CarPlay, with artwork on your car display and steering-wheel controls to switch themes hands-free.</p></div>
+      <div class="feature"><svg viewBox="0 0 24 24"><circle cx="9" cy="10" r="5.5"/><circle cx="15" cy="14" r="5.5"/></svg><h3>Five worlds to choose</h3><p>From meditative calm to trailer-scale awe, each theme is a complete soundscape with its own mood and palette.</p></div>
+      <div class="feature"><svg viewBox="0 0 24 24"><line x1="5" y1="4" x2="5" y2="20"/><circle cx="5" cy="9" r="1.8"/><line x1="12" y1="4" x2="12" y2="20"/><circle cx="12" cy="15" r="1.8"/><line x1="19" y1="4" x2="19" y2="20"/><circle cx="19" cy="7" r="1.8"/></svg><h3>Choose your voice</h3><p>Layer in vehicle sound packs — a futuristic starship hum, muscle V8, screaming V10, or a vintage V-twin with a kick.</p></div>
+    </div>
+  </section>
+
+  <section class="canvas">
+    <h2>Made for the big canvas</h2>
+    <div class="pad"><img src="img/ipad-void-landscape.jpg" alt="Drivescape MONOLITH theme in landscape on iPad Pro — colossal widescreen presence" loading="lazy"></div>
+    <p class="cap">iPad Pro, landscape, MONOLITH — the whole world on one strip.</p>
+    <div class="row">
+      <div class="phone land"><img src="img/iphone-electric-landscape.jpg" alt="Drivescape ELECTRIC theme in landscape on iPhone" loading="lazy"></div>
+      <p><strong>Turn it sideways.</strong> Landscape unfolds the full widescreen world — gauges slide to the edges and the horizon takes over. On iPad it fills the room; on iPhone it fills your grip. Every orientation, both devices, one living scene.</p>
     </div>
   </section>
 
@@ -125,6 +171,22 @@
       <div class="theme"><img src="img/cover-electric.jpg" alt="ELECTRIC theme cover art" loading="lazy"><div><h3>ELECTRIC</h3><p>An iridescent shimmer, wide and wondrous.</p></div></div>
       <div class="theme"><img src="img/cover-apex.jpg" alt="APEX theme cover art" loading="lazy"><div><h3>APEX</h3><p>Full-throttle drama; adrenaline at the edge.</p></div></div>
       <div class="theme"><img src="img/cover-monolith.jpg" alt="MONOLITH theme cover art" loading="lazy"><div><h3>MONOLITH</h3><p>A colossal presence; awe and gravity.</p></div></div>
+    </div>
+  </section>
+
+  <section>
+    <h2>Now playing, everywhere</h2>
+    <div class="np">
+      <div class="np-text">
+        <p><strong>Drivescape plays like music does</strong> — so it shows up like music does. Each world ships with its own artwork: on your lock screen, in the Now Playing controls, and on your CarPlay display.</p>
+        <p>Steering-wheel next and previous buttons switch worlds while you drive — no eyes, no hands, no menus.</p>
+      </div>
+      <div class="np-card">
+        <img src="img/cover-electric.jpg" alt="ELECTRIC theme cover art in a Now Playing card">
+        <p class="t">ELECTRIC</p>
+        <p class="a">Drivescape — sound experience</p>
+        <div class="bar"><i></i></div>
+      </div>
     </div>
   </section>
 
