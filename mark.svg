@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 280 210" role="img" aria-label="McFin mark">
+  <style>
+    .m { stroke: #101826; }
+    .dot { fill: #2F5FE8; }
+    @media (prefers-color-scheme: dark) {
+      .m { stroke: #F5F6F8; }
+      .dot { fill: #4F7BFF; }
+    }
+  </style>
+  <path class="m" d="M53 183 L53 53 L118 143 L183 53 L183 183" fill="none" stroke-width="26" stroke-linecap="round" stroke-linejoin="round"/>
+  <circle class="dot" cx="241" cy="170" r="19"/>
+</svg>

@@ -1,0 +1,74 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>McFin — small apps, big experience</title>
+<meta name="description" content="McFin is an independent software maker from Finland. Small, polished apps for iPhone and iPad. Pay once, own forever — never subscriptions, never ads.">
+<link rel="icon" href="mark.svg" type="image/svg+xml">
+<style>
+  :root {
+    --ink: #101826; --bg: #FAFBFC; --sub: #5B6B7E; --accent: #2F5FE8;
+    --card: #FFFFFF; --line: #E4E9EE;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --ink: #F5F6F8; --bg: #0C1220; --sub: #8FA1B8; --accent: #4F7BFF;
+      --card: #131B2C; --line: #223049;
+    }
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, "SF Pro Text", "Helvetica Neue", Arial, sans-serif;
+    background: var(--bg); color: var(--ink);
+    display: flex; flex-direction: column; min-height: 100vh;
+    -webkit-font-smoothing: antialiased;
+  }
+  main {
+    flex: 1; display: flex; flex-direction: column; align-items: center;
+    justify-content: center; text-align: center; padding: 12vh 24px 8vh;
+  }
+  .mark { width: 96px; height: auto; margin-bottom: 40px; }
+  .mark .m { stroke: var(--ink); }
+  .mark .dot { fill: var(--accent); }
+  h1 {
+    font-size: clamp(40px, 8vw, 64px); font-weight: 600; letter-spacing: 0.5px;
+  }
+  h1 .idot { color: var(--accent); }
+  .tagline {
+    margin-top: 14px; font-size: clamp(17px, 2.6vw, 21px); color: var(--sub);
+    font-weight: 400;
+  }
+  .promise {
+    margin-top: 44px; display: inline-block; padding: 12px 22px;
+    border: 1px solid var(--line); border-radius: 999px;
+    font-size: 15px; color: var(--sub); background: var(--card);
+  }
+  .promise strong { color: var(--ink); font-weight: 600; }
+  .apps {
+    margin-top: 64px; font-size: 14px; letter-spacing: 2.5px;
+    text-transform: uppercase; color: var(--sub);
+  }
+  footer {
+    padding: 28px 24px; text-align: center; font-size: 13px; color: var(--sub);
+    border-top: 1px solid var(--line);
+  }
+  footer a { color: var(--sub); }
+</style>
+</head>
+<body>
+<main>
+  <svg class="mark" viewBox="0 0 280 210" role="img" aria-label="McFin mark">
+    <path class="m" d="M53 183 L53 53 L118 143 L183 53 L183 183" fill="none" stroke-width="26" stroke-linecap="round" stroke-linejoin="round"/>
+    <circle class="dot" cx="241" cy="170" r="19"/>
+  </svg>
+  <h1>McF<span class="idot">i</span>n</h1>
+  <p class="tagline">Small apps. Big experience.</p>
+  <p class="promise"><strong>Pay once, own forever.</strong>&ensp;Never subscriptions. Never ads.</p>
+  <p class="apps">First apps in the works — Made in Finland</p>
+</main>
+<footer>
+  © 2026 McFin · independent software from Finland · <a href="mailto:mike.mcfin@gmail.com">contact</a>
+</footer>
+</body>
+</html>
