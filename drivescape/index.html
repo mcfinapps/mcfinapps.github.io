@@ -1,0 +1,148 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Drivescape — your drive, scored · McFin</title>
+<meta name="description" content="Drivescape turns every drive into a private film score. An adaptive soundscape that rises with the road — through your car's speakers, with nothing collected, ever.">
+<link rel="icon" href="../mark.svg" type="image/svg+xml">
+<style>
+  :root {
+    --ink: #F2F5F9; --sub: #93A3B8; --bg: #05070C; --card: #0C111C;
+    --line: #1B2537; --accent: #8B7BFF; --accent-ink: #C9C2FF;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, "SF Pro Text", "Helvetica Neue", Arial, sans-serif;
+    background: var(--bg); color: var(--ink); -webkit-font-smoothing: antialiased;
+    line-height: 1.6;
+  }
+  a { color: inherit; }
+  .wrap { max-width: 1060px; margin: 0 auto; padding: 0 24px; }
+  header.site {
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 20px 0;
+  }
+  .brand { display: flex; align-items: center; gap: 10px; text-decoration: none; font-weight: 600; letter-spacing: 0.3px; }
+  .brand svg { width: 30px; height: auto; }
+  .brand .m { stroke: var(--ink); } .brand .dot { fill: var(--accent); }
+  .beta-pill {
+    font-size: 13px; color: var(--accent-ink); border: 1px solid var(--line);
+    padding: 6px 14px; border-radius: 999px; text-decoration: none;
+  }
+  .hero { text-align: center; padding: 72px 0 40px; }
+  .hero img.icon { width: 96px; height: 96px; border-radius: 22px; margin-bottom: 28px; }
+  h1 { font-size: clamp(38px, 7vw, 62px); font-weight: 650; letter-spacing: -0.5px; }
+  .sub { margin: 16px auto 0; max-width: 560px; font-size: clamp(17px, 2.4vw, 20px); color: var(--sub); }
+  .cta {
+    display: inline-block; margin-top: 32px; padding: 14px 28px; border-radius: 999px;
+    background: var(--accent); color: #0A0618; font-weight: 600; text-decoration: none;
+    font-size: 16px;
+  }
+  .cta-note { margin-top: 12px; font-size: 13px; color: var(--sub); }
+  .shots { display: flex; gap: 20px; justify-content: center; padding: 48px 0 24px; flex-wrap: wrap; }
+  .shots img {
+    width: min(280px, 78vw); border-radius: 28px; border: 1px solid var(--line);
+    display: block;
+  }
+  .shots img:nth-child(2) { transform: translateY(-16px); }
+  .intro { max-width: 680px; margin: 48px auto 0; text-align: center; font-size: 18px; color: var(--sub); }
+  .intro strong { color: var(--ink); font-weight: 600; }
+  section { padding: 72px 0 0; }
+  h2 { font-size: 26px; font-weight: 650; text-align: center; margin-bottom: 40px; }
+  .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 18px; }
+  .feature {
+    background: var(--card); border: 1px solid var(--line); border-radius: 16px;
+    padding: 26px 24px;
+  }
+  .feature h3 { font-size: 16px; font-weight: 600; margin-bottom: 8px; }
+  .feature p { font-size: 15px; color: var(--sub); }
+  .themes { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 16px; }
+  .theme { border-radius: 16px; overflow: hidden; border: 1px solid var(--line); background: var(--card); }
+  .theme img { width: 100%; aspect-ratio: 1; object-fit: cover; display: block; }
+  .theme div { padding: 14px 16px; }
+  .theme h3 { font-size: 14px; letter-spacing: 2px; font-weight: 600; }
+  .theme p { font-size: 13.5px; color: var(--sub); margin-top: 4px; }
+  .duo { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 18px; }
+  .note {
+    background: var(--card); border: 1px solid var(--line); border-radius: 16px; padding: 28px;
+  }
+  .note h3 { font-size: 16px; font-weight: 600; margin-bottom: 10px; }
+  .note p { font-size: 15px; color: var(--sub); }
+  .end { text-align: center; padding: 88px 0 72px; }
+  .end p { color: var(--sub); max-width: 520px; margin: 14px auto 0; }
+  footer {
+    border-top: 1px solid var(--line); padding: 26px 24px; text-align: center;
+    font-size: 13px; color: var(--sub);
+  }
+  footer a { color: var(--sub); }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header class="site">
+    <a class="brand" href="../">
+      <svg viewBox="0 0 280 210" aria-hidden="true"><path class="m" d="M53 183 L53 53 L118 143 L183 53 L183 183" fill="none" stroke-width="26" stroke-linecap="round" stroke-linejoin="round"/><circle class="dot" cx="241" cy="170" r="19"/></svg>
+      McFin
+    </a>
+    <span class="beta-pill">TestFlight beta</span>
+  </header>
+
+  <div class="hero">
+    <img class="icon" src="img/appicon.png" alt="Drivescape app icon" width="96" height="96">
+    <h1>Your drive, scored.</h1>
+    <p class="sub">An adaptive soundscape that rises with the road — playing through your car's speakers.</p>
+    <a class="cta" href="mailto:mike.mcfin@gmail.com?subject=Drivescape%20beta">Request beta access</a>
+    <p class="cta-note">In TestFlight beta, ahead of its App Store release.</p>
+  </div>
+
+  <div class="shots">
+    <img src="img/theme-glide.jpg" alt="Drivescape GLIDE theme — serene visualizer" loading="lazy">
+    <img src="img/theme-ion.jpg" alt="Drivescape ION theme at speed" >
+    <img src="img/theme-void.jpg" alt="Drivescape MONOLITH theme — colossal dark visualizer" loading="lazy">
+  </div>
+
+  <p class="intro">Drivescape turns every drive into a private score. <strong>Press the accelerator and the sound blooms</strong> — wide, cinematic, alive; ease into a cruise and it settles to a calm presence, like a held breath. The swell always agrees with your real speed, so you feel it before you read it — no dashboard, no numbers, just motion made audible.</p>
+
+  <section>
+    <h2>Built around the drive</h2>
+    <div class="grid">
+      <div class="feature"><h3>Sound that follows you</h3><p>Built from real motion and GPS speed, the soundscape swells on acceleration and settles at cruise — never a fixed loop.</p></div>
+      <div class="feature"><h3>A living visualizer</h3><p>A custom Metal-rendered light world breathes with your drive. It's the poster for the sound, not the road — never watch it while moving.</p></div>
+      <div class="feature"><h3>No mount, no setup</h3><p>Drop your phone in a pocket, bag or cup holder. Drivescape learns its orientation as you drive and calibrates itself.</p></div>
+      <div class="feature"><h3>Plays through your car</h3><p>Connects over Bluetooth or CarPlay, with artwork on your car display and steering-wheel controls to switch themes hands-free.</p></div>
+      <div class="feature"><h3>Five worlds to choose</h3><p>From meditative calm to trailer-scale awe, each theme is a complete soundscape with its own mood and palette.</p></div>
+      <div class="feature"><h3>Choose your voice</h3><p>Layer in vehicle sound packs — a futuristic starship hum, muscle V8, screaming V10, or a vintage V-twin with a kick.</p></div>
+    </div>
+  </section>
+
+  <section>
+    <h2>Five worlds</h2>
+    <div class="themes">
+      <div class="theme"><img src="img/cover-ion.jpg" alt="ION theme cover art" loading="lazy"><div><h3>ION</h3><p>Confident, cinematic — the modern-EV glide.</p></div></div>
+      <div class="theme"><img src="img/cover-glide.jpg" alt="GLIDE theme cover art" loading="lazy"><div><h3>GLIDE</h3><p>Driving as meditation; serene and weightless.</p></div></div>
+      <div class="theme"><img src="img/cover-electric.jpg" alt="ELECTRIC theme cover art" loading="lazy"><div><h3>ELECTRIC</h3><p>An iridescent shimmer, wide and wondrous.</p></div></div>
+      <div class="theme"><img src="img/cover-apex.jpg" alt="APEX theme cover art" loading="lazy"><div><h3>APEX</h3><p>Full-throttle drama; adrenaline at the edge.</p></div></div>
+      <div class="theme"><img src="img/cover-monolith.jpg" alt="MONOLITH theme cover art" loading="lazy"><div><h3>MONOLITH</h3><p>A colossal presence; awe and gravity.</p></div></div>
+    </div>
+  </section>
+
+  <section>
+    <div class="duo">
+      <div class="note"><h3>Eyes on the road</h3><p>The visualizer is a companion, not a dashboard — meant to be heard, not watched. Set your theme, voice and volume before you start driving; once you're moving, Drivescape asks nothing of your eyes or hands.</p></div>
+      <div class="note"><h3>Nothing leaves your phone</h3><p>Location and motion are used only on your device, in the moment, to shape the sound. Nothing is recorded, stored or sent anywhere. No account, no tracking, nothing to collect — like every McFin app.</p></div>
+    </div>
+  </section>
+
+  <div class="end">
+    <h2>Hear your next drive</h2>
+    <p>Drivescape is in TestFlight beta ahead of its App Store release. Ask for early access, or just follow along.</p>
+    <a class="cta" href="mailto:mike.mcfin@gmail.com?subject=Drivescape%20beta">Request beta access</a>
+  </div>
+</div>
+<footer>
+  © 2026 <a href="../">McFin</a> · pay once, own forever · <a href="mailto:mike.mcfin@gmail.com">contact</a>
+</footer>
+</body>
+</html>

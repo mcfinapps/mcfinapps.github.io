@@ -49,6 +49,14 @@
     margin-top: 64px; font-size: 14px; letter-spacing: 2.5px;
     text-transform: uppercase; color: var(--sub);
   }
+  .appcard {
+    margin-top: 18px; display: inline-flex; align-items: center; gap: 14px;
+    padding: 14px 22px; border: 1px solid var(--line); border-radius: 16px;
+    background: var(--card); text-decoration: none; color: var(--ink);
+  }
+  .appcard img { width: 44px; height: 44px; border-radius: 10px; }
+  .appcard .t { font-weight: 600; font-size: 16px; text-align: left; }
+  .appcard .s { font-size: 13px; color: var(--sub); text-align: left; }
   footer {
     padding: 28px 24px; text-align: center; font-size: 13px; color: var(--sub);
     border-top: 1px solid var(--line);
@@ -65,7 +73,11 @@
   <h1>McF<span class="idot">i</span>n</h1>
   <p class="tagline">Small apps. Big experience.</p>
   <p class="promise"><strong>Pay once, own forever.</strong>&ensp;Never subscriptions. Never ads.</p>
-  <p class="apps">First apps in the works — Made in Finland</p>
+  <p class="apps">In the works — Made in Finland</p>
+  <a class="appcard" href="drivescape/">
+    <img src="drivescape/img/appicon.png" alt="">
+    <span><span class="t">Drivescape</span><br><span class="s">Your drive, scored · TestFlight beta</span></span>
+  </a>
 </main>
 <footer>
   © 2026 McFin · independent software from Finland · <a href="mailto:mike.mcfin@gmail.com">contact</a>
