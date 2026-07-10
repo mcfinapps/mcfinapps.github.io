@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Overbark — your dog, subtitled · McFin</title>
-<meta name="description" content="Overbark reads a dog's bark, posture, and surroundings with on-device machine learning and floats an AR speech bubble over its head. The apparatus is real. The transcript is between you and your dog. On-device, nothing collected.">
+<meta name="description" content="Overbark reads a dog's bark, posture, and surroundings with on-device machine learning and turns the moment into comic speech bubbles that stack into a running transcript. The apparatus is real. The transcript is between you and your dog. On-device, nothing collected.">
 <link rel="icon" href="../mark.svg" type="image/svg+xml">
 <style>
   :root {
@@ -72,7 +72,7 @@
   <div class="hero">
     <img class="icon" src="img/appicon.png" alt="Overbark app icon" width="96" height="96">
     <h1>Your dog, subtitled.</h1>
-    <p class="sub">Real bark acoustics and body-pose tracking, rendered as an AR thought bubble. On-device, private, and — we cannot stress this enough — not a joke about the engineering.</p>
+    <p class="sub">Real bark acoustics and body-pose tracking, rendered as comic speech bubbles that stack into a running transcript. On-device, private, and — we cannot stress this enough — not a joke about the engineering.</p>
     <a class="cta" href="mailto:mike.mcfin@gmail.com?subject=Overbark%20beta">Request beta access</a>
     <p class="cta-note">In TestFlight beta, ahead of its App Store release.</p>
     <div class="platforms">
@@ -82,12 +82,12 @@
   </div>
 
   <div class="shots">
-    <div class="phone"><img src="img/shot-skeleton.png" alt="Overbark tracking a dog's pose with the on-device sensor overlay" loading="lazy"></div>
-    <div class="phone"><img src="img/shot-hud.png" alt="Overbark's speech bubble and instrument HUD over a dog" loading="lazy"></div>
-    <div class="phone"><img src="img/shot-settings.png" alt="Overbark settings — bubble styles and sensors" loading="lazy"></div>
+    <div class="phone"><img src="img/shot-skeleton.png" alt="Overbark's comic speech bubbles stacking into a chat — a column per dog" loading="lazy"></div>
+    <div class="phone"><img src="img/shot-hud.png" alt="An Overbark speech bubble over a dog, with the live soundwave and telemetry deck" loading="lazy"></div>
+    <div class="phone"><img src="img/shot-settings.png" alt="Overbark settings — bubble styles and accent themes" loading="lazy"></div>
   </div>
 
-  <p class="intro">Overbark listens to a dog's bark the way bioacoustics researchers do — measuring pitch, tonality, and tempo against a body of peer-reviewed animal-communication research — and watches its posture the way an ethologist would, using on-device machine vision. Then it puts a cartoon speech bubble over the dog's head and tells you what the moment sounds like. <strong>The apparatus is real. The transcript is between you and your dog.</strong></p>
+  <p class="intro">Overbark listens to a dog's bark the way bioacoustics researchers do — measuring pitch, tonality, and tempo against a body of peer-reviewed animal-communication research — and watches its posture the way an ethologist would, using on-device machine vision. Then it floats comic speech bubbles into a live, scrollable chat history and tells you what the moment sounds like. <strong>The apparatus is real. The transcript is between you and your dog.</strong></p>
 
   <section>
     <h2>Serious instruments. Unserious conclusions.</h2>
@@ -95,7 +95,7 @@
       <div class="feature">
         <svg viewBox="0 0 24 24"><line x1="3" y1="12" x2="4.5" y2="12"/><line x1="7" y1="7" x2="7" y2="17"/><line x1="10.5" y1="4" x2="10.5" y2="20"/><line x1="14" y1="8" x2="14" y2="16"/><line x1="17.5" y1="5.5" x2="17.5" y2="18.5"/><line x1="21" y1="10" x2="21" y2="14"/></svg>
         <h3>Bark acoustics, properly measured</h3>
-        <p>Each bark is isolated by Apple's Sound Analysis classifier, then scored with Accelerate/vDSP on pitch, tonality, and inter-bark tempo — the dimensions the peer-reviewed literature ties to emotional content. Fast-Fourier analysis, in real time, on the Neural Engine, per bark.</p>
+        <p>Each bark is isolated by Apple's Sound Analysis classifier, then scored with Accelerate/vDSP on pitch, tonality, and inter-bark tempo — the dimensions the peer-reviewed literature ties to emotional content. A live on-device FFT soundwave runs along the bottom deck, with a gain control, and lights up with each bark's pitch, tonality, and tempo — even when the dog is out of frame.</p>
       </div>
       <div class="feature">
         <svg viewBox="0 0 24 24"><circle cx="6" cy="8" r="1.4"/><circle cx="18" cy="8" r="1.4"/><circle cx="12" cy="13" r="1.4"/><circle cx="8" cy="18" r="1.4"/><circle cx="16" cy="18" r="1.4"/><path d="M6 8 L12 13 L18 8 M12 13 L8 18 M12 13 L16 18"/></svg>
@@ -110,17 +110,17 @@
       <div class="feature">
         <svg viewBox="0 0 24 24"><path d="M4 6 h9 a2 2 0 0 1 2 2 v4 a2 2 0 0 1 -2 2 h-4 l-3 3 v-3 h-2 a2 2 0 0 1 -2 -2 v-4 a2 2 0 0 1 2 -2 z"/></svg>
         <h3>Two dogs, one conversation</h3>
-        <p>Point the camera at two dogs and Overbark tracks and reads both, letting one dog's bark and posture inform the other's translation. Less a caption, more a transcript of a dispute.</p>
+        <p>Point the camera at two dogs and Overbark tracks and reads both — each gets its own side-by-side column of bubbles, and one dog's bark and posture can inform the other's translation. Less a caption, more a transcript of a dispute.</p>
       </div>
       <div class="feature">
-        <svg viewBox="0 0 24 24"><path d="M4 8 V5 a1 1 0 0 1 1 -1 h3 M16 4 h3 a1 1 0 0 1 1 1 v3 M20 16 v3 a1 1 0 0 1 -1 1 h-3 M8 20 H5 a1 1 0 0 1 -1 -1 v-3"/><circle cx="12" cy="12" r="3"/></svg>
-        <h3>Augmented, not animated</h3>
-        <p>The translation is pinned above the dog's head in the live camera view and tracks it frame by frame from the on-device Vision read — not a sticker stuck to the screen. Just the annotation, floating where a nature documentary's lower-third would.</p>
+        <svg viewBox="0 0 24 24"><path d="M4 5 h11 a2 2 0 0 1 2 2 v4 a2 2 0 0 1 -2 2 h-6 l-3 3 v-3 h-2 a2 2 0 0 1 -2 -2 v-4 a2 2 0 0 1 2 -2 z"/><path d="M8 5 V4 a2 2 0 0 1 2 -2 h9 a2 2 0 0 1 2 2 v4 a2 2 0 0 1 -2 2 h-1"/></svg>
+        <h3>A transcript, not a caption</h3>
+        <p>Barks and quiet thoughts arrive as distinct comic speech bubbles — varied shapes, thoughts set apart from barks — that pop into the live camera view and stack into a scrollable chat history. Not a caption that blinks and vanishes: a running record you can scroll back through, in a bubble style and accent theme you pick.</p>
       </div>
       <div class="feature">
         <svg viewBox="0 0 24 24"><rect x="5" y="10.5" width="14" height="10" rx="2"/><path d="M8 10.5 V7 a4 4 0 0 1 8 0 v3.5"/></svg>
         <h3>Entirely on the phone</h3>
-        <p>Audio analysis, pose tracking, scene detection, and the AR rendering all run on-device. No account, no server, no cloud model, no data leaving the phone at any point.</p>
+        <p>Audio analysis, pose tracking, scene detection, and the bubble rendering all run on-device — a compact telemetry strip (scene, dogs in view, pose, Neural-Engine load) shows the pipeline working in real time. No account, no server, no cloud model, no data leaving the phone at any point. iPhone and iPad, portrait or landscape.</p>
       </div>
     </div>
   </section>
