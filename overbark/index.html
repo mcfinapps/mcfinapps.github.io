@@ -10,6 +10,7 @@
   :root {
     --ink: #EAF7F8; --sub: #86A6AC; --bg: #04090B; --card: #0A1417;
     --line: #16282D; --accent: #00C2CE; --accent-ink: #6FE3E8;
+    --ok: #35D18B; --ok-ink: #A9F0CE;
   }
   * { margin: 0; padding: 0; box-sizing: border-box; }
   html { scroll-behavior: smooth; }
@@ -44,6 +45,12 @@
   .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 18px; }
   .feature { background: var(--card); border: 1px solid var(--line); border-radius: 16px; padding: 26px 24px; }
   .feature svg { width: 24px; height: 24px; stroke: var(--accent-ink); fill: none; stroke-width: 1.6; stroke-linecap: round; stroke-linejoin: round; margin-bottom: 12px; }
+  /* 3D house-style icons (grayscale PNGs), teal-tinted to the accent while keeping their shading */
+  .icon3d { filter: sepia(1) saturate(4.5) hue-rotate(140deg) brightness(1.05); }
+  .feature img.ficon { width: 46px; height: 46px; object-fit: contain; display: block; margin-bottom: 12px; filter: sepia(1) saturate(4.5) hue-rotate(140deg) brightness(1.05); }
+  .tile-glyph img.ticon { width: 34px; height: 34px; object-fit: contain; filter: sepia(1) saturate(4.5) hue-rotate(140deg) brightness(1.05); }
+  .state-chip img.cicon { width: 18px; height: 18px; object-fit: contain; filter: sepia(1) saturate(4.5) hue-rotate(140deg) brightness(1.05); }
+  .state-chip img.cicon.off { filter: grayscale(1) brightness(0.8); opacity: 0.5; }
   .feature h3 { font-size: 16px; font-weight: 600; margin-bottom: 8px; }
   .feature p { font-size: 15px; color: var(--sub); }
   .note { background: var(--card); border: 1px solid var(--line); border-radius: 16px; padding: 28px; }
@@ -87,42 +94,68 @@
     <div class="phone"><img src="img/shot-settings.png" alt="Overbark settings — bubble styles and accent themes" loading="lazy"></div>
   </div>
 
-  <p class="intro">Overbark listens to a dog's bark the way bioacoustics researchers do — measuring pitch, tonality, and tempo against a body of peer-reviewed animal-communication research — and watches its posture the way an ethologist would, using on-device machine vision. Then it floats comic speech bubbles into a live, scrollable chat history and tells you what the moment sounds like. <strong>The apparatus is real. The transcript is between you and your dog.</strong></p>
+  <p class="intro">Overbark listens to a dog's bark the way bioacoustics researchers do — measuring pitch, tonality, and tempo against a body of peer-reviewed animal-communication research — and watches its posture the way an ethologist would, using on-device machine vision. Then it floats comic speech bubbles into a self-clearing stack beside the dog — newest at the bottom, older ones drifting up and off — and tells you what the moment sounds like. <strong>The apparatus is real. The transcript is between you and your dog.</strong></p>
+
+  <style>
+    .promise { display: flex; gap: 18px; align-items: flex-start; max-width: 760px; margin: 8px auto 0;
+               background: rgba(53,209,139,0.09); border: 1px solid rgba(53,209,139,0.42);
+               border-radius: 18px; padding: 24px 26px; }
+    .promise .icon svg { width: 42px; height: 42px; fill: none; stroke: var(--ok); stroke-width: 1.7; stroke-linecap: round; stroke-linejoin: round; }
+    .promise .ptitle { color: var(--ok-ink); font-size: 21px; font-weight: 700; letter-spacing: -0.3px; margin: 2px 0 9px; }
+    .promise p { color: var(--ink); opacity: 0.92; margin: 0 0 6px; font-size: 15.5px; line-height: 1.6; }
+    .promise a { color: var(--ok-ink); font-weight: 600; text-decoration: none; }
+    .promise a:hover { text-decoration: underline; }
+  </style>
+  <div class="promise">
+    <span class="icon" aria-hidden="true">
+      <svg viewBox="0 0 24 24"><path d="M12 2.5 L20 5.3 V11.2 C20 16.2 16.6 20 12 21.8 C7.4 20 4 16.2 4 11.2 V5.3 Z"/><path d="M8.4 12.2 l2.6 2.6 L15.8 9.3"/></svg>
+    </span>
+    <div>
+      <p class="ptitle">Overbark collects nothing — and never will.</p>
+      <p>No account, no analytics, no ads, no tracking, no third-party SDKs. Nothing about you, your voice, your dog, or your home ever leaves the phone.</p>
+      <p><a href="privacy.html">Read the full privacy policy →</a></p>
+    </div>
+  </div>
 
   <section>
     <h2>Serious instruments. Unserious conclusions.</h2>
     <div class="grid">
       <div class="feature">
-        <svg viewBox="0 0 24 24"><line x1="3" y1="12" x2="4.5" y2="12"/><line x1="7" y1="7" x2="7" y2="17"/><line x1="10.5" y1="4" x2="10.5" y2="20"/><line x1="14" y1="8" x2="14" y2="16"/><line x1="17.5" y1="5.5" x2="17.5" y2="18.5"/><line x1="21" y1="10" x2="21" y2="14"/></svg>
+        <img class="ficon" src="img/icons/feat_acoustics.png" alt="">
         <h3>Bark acoustics, properly measured</h3>
         <p>Each bark is isolated by Apple's Sound Analysis classifier, then scored with Accelerate/vDSP on pitch, tonality, and inter-bark tempo — the dimensions the peer-reviewed literature ties to emotional content. A live on-device FFT soundwave runs along the bottom deck, with a gain control, and lights up with each bark's pitch, tonality, and tempo — even when the dog is out of frame.</p>
       </div>
       <div class="feature">
-        <svg viewBox="0 0 24 24"><circle cx="6" cy="8" r="1.4"/><circle cx="18" cy="8" r="1.4"/><circle cx="12" cy="13" r="1.4"/><circle cx="8" cy="18" r="1.4"/><circle cx="16" cy="18" r="1.4"/><path d="M6 8 L12 13 L18 8 M12 13 L8 18 M12 13 L16 18"/></svg>
+        <img class="ficon" src="img/icons/feat_posture.png" alt="">
         <h3>Posture, not just noise</h3>
         <p>Apple's on-device Vision-framework body-pose model tracks the dog across frames, not a single still — so the reading is never audio alone. What the engine does with that is proprietary; that it reacts to the whole dog is the point.</p>
       </div>
       <div class="feature">
-        <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M3.5 12 L20.5 12 M12 3 Q17 8 12 21 Q7 8 12 3"/></svg>
-        <h3>Scene-aware, not random</h3>
-        <p>The same on-device classifier that isolates the bark reads the wider scene, while object detection takes in the surroundings — so the bubble is shaped by the moment, not a dice roll. Exactly how is a trade secret. A well-instrumented one.</p>
+        <img class="ficon" src="img/icons/feat_scene.png" alt="">
+        <h3>Scene-aware, sound-aware</h3>
+        <p>The same on-device classifier that isolates the bark reads the wider scene, object detection takes in the surroundings, and an ambient-sound classifier stands watch over roughly seventeen everyday sounds — doorbell, siren, thunder, another dog, and more. So the bubble is shaped by the moment, not a dice roll. Exactly how is a trade secret. A well-instrumented one.</p>
       </div>
       <div class="feature">
-        <svg viewBox="0 0 24 24"><path d="M4 6 h9 a2 2 0 0 1 2 2 v4 a2 2 0 0 1 -2 2 h-4 l-3 3 v-3 h-2 a2 2 0 0 1 -2 -2 v-4 a2 2 0 0 1 2 -2 z"/></svg>
+        <img class="ficon" src="img/icons/feat_twodogs.png" alt="">
         <h3>Two dogs, one conversation</h3>
-        <p>Point the camera at two dogs and Overbark tracks and reads both — each gets its own side-by-side column of bubbles, and one dog's bark and posture can inform the other's translation. Less a caption, more a transcript of a dispute.</p>
+        <p>Point the camera at two dogs and Overbark tracks and reads both — each gets its own side-by-side column of bubbles, and they talk to <em>each other</em>: one hears a car, the other insists it was the wind; one declares the passing bird a crow, the other, a harmless sparrow. Less a caption, more a transcript of a dispute. And when only one of your dogs is in frame, it wonders aloud where the other one got to — by name.</p>
       </div>
       <div class="feature">
-        <svg viewBox="0 0 24 24"><path d="M4 5 h11 a2 2 0 0 1 2 2 v4 a2 2 0 0 1 -2 2 h-6 l-3 3 v-3 h-2 a2 2 0 0 1 -2 -2 v-4 a2 2 0 0 1 2 -2 z"/><path d="M8 5 V4 a2 2 0 0 1 2 -2 h9 a2 2 0 0 1 2 2 v4 a2 2 0 0 1 -2 2 h-1"/></svg>
+        <img class="ficon" src="img/icons/feat_transcript.png" alt="">
         <h3>A transcript, not a caption</h3>
-        <p>Barks and quiet thoughts arrive as distinct comic speech bubbles — varied shapes, thoughts set apart from barks — that pop into the live camera view and stack into a scrollable chat history. Not a caption that blinks and vanishes: a running record you can scroll back through, in a bubble style and accent theme you pick.</p>
+        <p>Barks and quiet thoughts arrive as distinct comic speech bubbles — shapes vary, thoughts set apart from barks — riding a self-clearing conveyor: newest lands at the bottom, older ones rise and fade as the moment moves on. Drag the stack to set where it sits, and it stays there. Choose a bubble style and one of seven harmonized color themes, in light or dark.</p>
       </div>
       <div class="feature">
-        <svg viewBox="0 0 24 24"><rect x="5" y="10.5" width="14" height="10" rx="2"/><path d="M8 10.5 V7 a4 4 0 0 1 8 0 v3.5"/></svg>
-        <h3>Entirely on the phone</h3>
-        <p>Audio analysis, pose tracking, scene detection, and the bubble rendering all run on-device — a compact telemetry strip (scene, dogs in view, pose, Neural-Engine load) shows the pipeline working in real time. No account, no server, no cloud model, no data leaving the phone at any point. iPhone and iPad, portrait or landscape.</p>
+        <img class="ficon" src="img/icons/feat_deck.png" alt="">
+        <h3>A dog's-eye view, entirely on the phone</h3>
+        <p>A compact telemetry deck reports four reads in real time — mindset, focus, pack, and broadcast — showing the pipeline working as it works. Audio analysis, pose tracking, scene detection, and the bubbles themselves all run on-device. No account, no server, no cloud model, no data leaving the phone. iPhone and iPad, portrait or landscape.</p>
       </div>
     </div>
+  </section>
+
+  <section>
+    <h2>A monologue that fits the moment</h2>
+    <p class="science">The bubbles aren't a bag of random one-liners. What the dog "says" is shaped by where it is and what's happening — and the writing leans into it. On a <strong>walk</strong> it reads the pavement like a newspaper: checking the pee-mail, filing complaints about a rival's scent, waiting at the kerb while "a great river of metal" roars past. Stop moving and it investigates whatever's there — a sniff, a passing dog, a person. At the <strong>beach</strong> the deadpan cracks into pure joy — the sea as enormous friend-and-foe, the zoomies, drinking a bit of the ocean "for science." A <strong>bird</strong> overhead reignites the eternal war (small ones are friends; big ones are sky-mafia to be repelled from the yard). And when the dog is <strong>resting</strong> — curled on a lap, dozing — it turns quiet and tender: keeping watch while you sleep, remembering the shelter, the best trade it ever made. Hundreds of lines, situational, in character.</p>
   </section>
 
   <section>
@@ -134,6 +167,161 @@
     <div class="duo">
       <div class="note"><h3>Nothing leaves your phone</h3><p>Camera, microphone, and (if you switch it on) speech recognition are used only on your device, in the moment. Nothing is recorded, stored, or sent anywhere. No account, no tracking, nothing to collect — like every McFin app. <a href="privacy.html">Read the privacy policy →</a></p></div>
       <div class="note"><h3>A note on methodology</h3><p>Overbark is built on real acoustic research and real on-device machine vision. It is also, functionally, a very well-instrumented guessing machine pointed at an animal that cannot confirm or deny anything it is reported to have said. We stand behind the engineering. We make no claims about the dog.</p></div>
+    </div>
+  </section>
+
+  <style>
+    /* --- How-to-use section: scoped additions, reuse existing :root vars --- */
+    .howto-intro { max-width: 720px; margin: 0 auto 8px; text-align: center; color: var(--sub); font-size: 16px; }
+    .howto-intro strong { color: var(--ink); }
+    .tile-card { display: flex; gap: 16px; align-items: flex-start; }
+    .tile-glyph { flex: 0 0 auto; width: 40px; height: 40px; display: flex; align-items: center; justify-content: center;
+                  background: rgba(0,194,206,0.08); border: 1px solid var(--line); border-radius: 12px; }
+    .tile-glyph svg { width: 24px; height: 24px; stroke: var(--accent-ink); fill: none; stroke-width: 1.6; stroke-linecap: round; stroke-linejoin: round; }
+    .state-row { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 10px; }
+    .state-chip { display: inline-flex; align-items: center; gap: 6px; font-size: 12px; color: var(--sub);
+                  border: 1px solid var(--line); border-radius: 999px; padding: 5px 10px 5px 6px; }
+    .state-chip .dot { width: 8px; height: 8px; border-radius: 50%; }
+    .state-chip .dot.on { background: var(--accent); box-shadow: 0 0 6px var(--accent); }
+    .state-chip .dot.off { background: #445; }
+    .wave-demo { display: flex; align-items: center; justify-content: center; gap: 3px; height: 40px; margin: 14px 0; }
+    .wave-demo span { display: inline-block; width: 3px; border-radius: 2px; background: var(--accent-ink); opacity: 0.85; }
+    .drag-hint { display: flex; align-items: center; gap: 10px; justify-content: center; margin-top: 10px; color: var(--accent-ink); font-size: 13px; }
+  </style>
+
+  <section id="how-to-use">
+    <h2>How to read the instruments</h2>
+    <p class="howto-intro">
+      Overbark keeps the camera view clear on purpose — the readouts live in one bottom deck.
+      <strong>Four tiles</strong> report what the dog is up to right now — its mindset, its focus, its
+      pack, and its broadcast — and the <strong>soundwave</strong> underneath is what it's hearing.
+      Nothing here is decorative; every glyph reflects the dog in the moment.
+    </p>
+
+    <div class="grid">
+      <div class="feature tile-card">
+        <div class="tile-glyph">
+          <img class="ticon" src="img/icons/tile_mindset.png" alt="">
+        </div>
+        <div>
+          <h3>MINDSET</h3>
+          <p>The little world the dog thinks it's in right now — yard patrol, dinner countdown, nap,
+          guard duty. The tile only lights up once the dog has actually settled on a read; mid-transition,
+          it dims rather than fake one.</p>
+          <div class="state-row">
+            <span class="state-chip"><img class="cicon" src="img/icons/tel_scn_yard_time.png" alt="">Yard patrol</span>
+            <span class="state-chip"><img class="cicon" src="img/icons/tel_scn_meal_time.png" alt="">Dinner's coming</span>
+            <span class="state-chip"><img class="cicon" src="img/icons/tel_scn_guarding_alert.png" alt="">On guard</span>
+            <span class="state-chip"><img class="cicon off" src="img/icons/tel_scn_sleeping.png" alt="">Off duty</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="feature tile-card">
+        <div class="tile-glyph">
+          <img class="ticon" src="img/icons/tile_focus.png" alt="">
+        </div>
+        <div>
+          <h3>FOCUS</h3>
+          <p>Whatever just grabbed the dog's attention — something it saw, or something it heard.
+          A rival dog, a ball, a doorbell. Grays out the second nothing's pulling focus; it never
+          invents a thing to stare at.</p>
+          <div class="state-row">
+            <span class="state-chip"><img class="cicon" src="img/icons/tel_obj_ball.png" alt="">Ball</span>
+            <span class="state-chip"><img class="cicon" src="img/icons/tel_obj_otherdog.png" alt="">RIVAL</span>
+            <span class="state-chip"><img class="cicon" src="img/icons/tel_obj_doorbell.png" alt="">Someone's at the door</span>
+            <span class="state-chip"><span class="dot off"></span>— nothing holding it</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="feature tile-card">
+        <div class="tile-glyph">
+          <img class="ticon" src="img/icons/tile_pack.png" alt="">
+        </div>
+        <div>
+          <h3>PACK</h3>
+          <p>A headcount of who's actually here right now. Just the dog, the dog plus one, or the whole
+          pack assembled — the dog's entire audience, in one glance.</p>
+          <div class="state-row">
+            <span class="state-chip"><img class="cicon off" src="img/icons/tel_pack_0.png" alt="">Alone</span>
+            <span class="state-chip"><img class="cicon" src="img/icons/tel_pack_1.png" alt="">Just me</span>
+            <span class="state-chip"><img class="cicon" src="img/icons/tel_pack_2.png" alt="">The pack</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="feature tile-card">
+        <div class="tile-glyph">
+          <img class="ticon" src="img/icons/tile_broadcast.png" alt="">
+        </div>
+        <div>
+          <h3>BROADCAST</h3>
+          <p>What the dog is putting out into the world, and the mood riding on top of it. Quiet by
+          default — a level, grey glyph and a "—". The instant a bark lands, the tile names its tone,
+          holds for a beat, then settles back down.</p>
+          <div class="state-row">
+            <span class="state-chip"><img class="cicon off" src="img/icons/tel_bark_quiet.png" alt="">Quiet</span>
+            <span class="state-chip"><img class="cicon" src="img/icons/tel_bark_playful.png" alt="">Playful</span>
+            <span class="state-chip"><img class="cicon" src="img/icons/tel_bark_alert.png" alt="">Alert</span>
+            <span class="state-chip"><img class="cicon" src="img/icons/tel_bark_demand.png" alt="">Demand</span>
+            <span class="state-chip"><img class="cicon" src="img/icons/tel_bark_grumble.png" alt="">Grumble</span>
+            <span class="state-chip"><img class="cicon" src="img/icons/tel_bark_excited.png" alt="">Excited</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="duo" style="margin-top: 18px;">
+      <div class="note">
+        <h3>The soundwave: SOUND INTENSITY</h3>
+        <p>
+          Underneath the tiles, a live waveform runs continuously off the microphone — several thin
+          colored strands, each riding its own real FFT frequency band, plus one thick "sum" wave
+          riding on top. It's always moving; it does not wait for a bark.
+        </p>
+        <div class="wave-demo" aria-hidden="true">
+          <span style="height:14px"></span><span style="height:22px"></span><span style="height:30px"></span>
+          <span style="height:18px"></span><span style="height:26px"></span><span style="height:12px"></span>
+          <span style="height:24px"></span><span style="height:34px"></span><span style="height:16px"></span>
+          <span style="height:20px"></span>
+        </div>
+        <p>
+          The header reads <strong>"SOUND INTENSITY [n]%"</strong> — that percentage is the
+          microphone's <em>gain</em> (sensitivity), set by dragging anywhere along the wave; a small
+          glowing dot marks the current gain thumb. It is a sensitivity dial, not a volume meter.
+        </p>
+        <div class="drag-hint">↔ drag the wave left/right to set mic gain</div>
+      </div>
+
+      <div class="note">
+        <h3>On a detected bark: Pitch · Tonality · Tempo</h3>
+        <p>
+          The moment a bark is isolated, the header swaps to a pulsing dot and <strong>"BARK"</strong>,
+          and three live readouts appear:
+        </p>
+        <div class="state-row">
+          <span class="state-chip"><span class="dot on"></span>PITCH — fundamental frequency, Hz</span>
+          <span class="state-chip"><span class="dot on"></span>TONE — the tonality read (e.g. playful, alert)</span>
+          <span class="state-chip"><span class="dot on"></span>TEMPO — barks per second</span>
+        </div>
+        <p style="margin-top:10px;">
+          At the same moment, the wave itself brightens, thickens, and quickens — a visible "hot" state
+          that fades back to the calm gain read a beat later. This is the same BROADCAST tile reading above,
+          shown at full resolution.
+        </p>
+      </div>
+    </div>
+
+    <div class="note" style="margin-top: 18px; max-width: 720px; margin-left: auto; margin-right: auto;">
+      <h3>Repositioning the bubble stack</h3>
+      <p>
+        The speech bubbles aren't fixed in place. <strong>Drag the newest bubble</strong> — the one
+        currently at the bottom of the stack — up or down, and the whole conversation follows: older
+        bubbles rise above it and clear off on their own once the dog goes quiet. You're setting the
+        anchor point for where new lines appear, not scrolling back through old ones — Overbark doesn't
+        keep a transcript on screen, it keeps a conversation.
+      </p>
     </div>
   </section>
 

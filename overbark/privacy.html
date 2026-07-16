@@ -10,6 +10,7 @@
   :root {
     --ink: #EAF7F8; --sub: #86A6AC; --bg: #04090B; --card: #0A1417;
     --line: #16282D; --accent: #00C2CE; --accent-ink: #6FE3E8;
+    --ok: #35D18B; --ok-ink: #A9F0CE;
   }
   * { margin: 0; padding: 0; box-sizing: border-box; }
   body { font-family: -apple-system, BlinkMacSystemFont, "SF Pro Text", "Helvetica Neue", Arial, sans-serif; background: var(--bg); color: var(--ink); -webkit-font-smoothing: antialiased; line-height: 1.65; }
@@ -30,6 +31,13 @@
   li { margin-bottom: 8px; }
   li strong { color: var(--ink); }
   .card { background: var(--card); border: 1px solid var(--line); border-radius: 16px; padding: 22px 24px; margin: 24px 0; }
+  .promise { display: flex; gap: 18px; align-items: flex-start; background: rgba(53,209,139,0.09);
+             border: 1px solid rgba(53,209,139,0.42); border-radius: 18px; padding: 24px 26px; margin: 26px 0; }
+  .promise .icon { flex: 0 0 auto; width: 42px; height: 42px; }
+  .promise .icon svg { width: 42px; height: 42px; fill: none; stroke: var(--ok); stroke-width: 1.7; stroke-linecap: round; stroke-linejoin: round; }
+  .promise .ptitle { color: var(--ok-ink); font-size: 21px; font-weight: 700; letter-spacing: -0.3px; margin: 2px 0 9px; }
+  .promise p { color: var(--ink); opacity: 0.92; margin: 0; font-size: 15.5px; }
+  .promise a { color: var(--ok-ink); font-weight: 600; }
   footer { border-top: 1px solid var(--line); padding: 26px 24px; text-align: center; font-size: 13px; color: var(--sub); margin-top: 56px; }
   footer a { color: var(--sub); }
 </style>
@@ -47,10 +55,14 @@
   <h1>Privacy Policy</h1>
   <p class="eff">Overbark · Last updated 10 July 2026</p>
 
-  <p class="lead"><strong>Overbark collects nothing.</strong> No account, no sign-in, no servers, no analytics, no advertising, no tracking, and no third-party SDKs. Nothing about you, your voice, your dog, or your surroundings ever leaves your device.</p>
-
-  <div class="card">
-    <p style="margin:0;"><strong>On the App Store privacy label, Overbark reports “Data Not Collected.”</strong> This page explains why that's literally true.</p>
+  <div class="promise">
+    <span class="icon" aria-hidden="true">
+      <svg viewBox="0 0 24 24"><path d="M12 2.5 L20 5.3 V11.2 C20 16.2 16.6 20 12 21.8 C7.4 20 4 16.2 4 11.2 V5.3 Z"/><path d="M8.4 12.2 l2.6 2.6 L15.8 9.3"/></svg>
+    </span>
+    <div>
+      <p class="ptitle">Overbark collects nothing — and never will.</p>
+      <p>No account, no servers, no analytics, no ads, no tracking, no third-party SDKs. Nothing about you, your voice, your dog, or your home ever leaves the phone — because we care about privacy. Yours, ours, everyone's. It's at our core: a brand promise, and a policy we're not going to change.</p>
+    </div>
   </div>
 
   <h2>What the app uses, and where it stays</h2>
