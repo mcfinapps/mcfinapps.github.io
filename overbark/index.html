@@ -148,7 +148,7 @@
       <div class="feature">
         <img class="ficon" src="img/icons/feat_deck.png" alt="">
         <h3>A dog's-eye view, entirely on the phone</h3>
-        <p>A compact telemetry deck reports four reads in real time — mindset, focus, pack, and broadcast — showing the pipeline working as it works. Audio analysis, pose tracking, scene detection, and the bubbles themselves all run on-device. No account, no server, no cloud model, no data leaving the phone. iPhone and iPad, portrait or landscape.</p>
+        <p>A compact telemetry deck reports four reads in real time — mindset, insights, presence, and vocal — showing the pipeline working as it works. Audio analysis, pose tracking, scene detection, and the bubbles themselves all run on-device. No account, no server, no cloud model, no data leaving the phone. iPhone and iPad, portrait or landscape.</p>
       </div>
     </div>
   </section>
@@ -187,16 +187,36 @@
     .wave-demo { display: flex; align-items: center; justify-content: center; gap: 3px; height: 40px; margin: 14px 0; }
     .wave-demo span { display: inline-block; width: 3px; border-radius: 2px; background: var(--accent-ink); opacity: 0.85; }
     .drag-hint { display: flex; align-items: center; gap: 10px; justify-content: center; margin-top: 10px; color: var(--accent-ink); font-size: 13px; }
+    /* Bigger, real app-icon showcase for the MINDSET reads */
+    .mindset-showcase { max-width: 760px; margin: 6px auto 30px; display: grid;
+                        grid-template-columns: repeat(auto-fit, minmax(96px, 1fr)); gap: 14px; }
+    .mindset-showcase figure { margin: 0; display: flex; flex-direction: column; align-items: center; gap: 8px;
+                               padding: 16px 8px; background: rgba(0,194,206,0.06); border: 1px solid var(--line); border-radius: 16px; }
+    .mindset-showcase img { width: 56px; height: 56px; object-fit: contain;
+                            filter: sepia(1) saturate(4.5) hue-rotate(140deg) brightness(1.05); }
+    .mindset-showcase figcaption { font-size: 12px; color: var(--sub); text-align: center; }
   </style>
 
   <section id="how-to-use">
     <h2>How to read the instruments</h2>
     <p class="howto-intro">
       Overbark keeps the camera view clear on purpose — the readouts live in one bottom deck.
-      <strong>Four tiles</strong> report what the dog is up to right now — its mindset, its focus, its
-      pack, and its broadcast — and the <strong>soundwave</strong> underneath is what it's hearing.
+      <strong>Four tiles</strong> report what the dog is up to right now — its <strong>mindset</strong>,
+      its <strong>insights</strong>, who's <strong>present</strong>, and its <strong>vocal</strong> read —
+      and the <strong>soundwave</strong> underneath is what it's hearing.
       Nothing here is decorative; every glyph reflects the dog in the moment.
     </p>
+
+    <div class="mindset-showcase">
+      <figure><img src="img/icons/tel_scn_yard_time.png" alt="Yard patrol mindset icon"><figcaption>Yard patrol</figcaption></figure>
+      <figure><img src="img/icons/tel_scn_walk_outdoors.png" alt="Walk mindset icon"><figcaption>On a walk</figcaption></figure>
+      <figure><img src="img/icons/tel_scn_beach.png" alt="Beach mindset icon"><figcaption>Beach day</figcaption></figure>
+      <figure><img src="img/icons/tel_scn_play.png" alt="Play mindset icon"><figcaption>Playtime</figcaption></figure>
+      <figure><img src="img/icons/tel_scn_meal_time.png" alt="Mealtime mindset icon"><figcaption>Dinner's coming</figcaption></figure>
+      <figure><img src="img/icons/tel_scn_greeting_person.png" alt="Greeting mindset icon"><figcaption>Someone's home</figcaption></figure>
+      <figure><img src="img/icons/tel_scn_car_ride.png" alt="Car ride mindset icon"><figcaption>Car ride</figcaption></figure>
+      <figure><img src="img/icons/tel_scn_resting_indoors.png" alt="Resting mindset icon"><figcaption>Winding down</figcaption></figure>
+    </div>
 
     <div class="grid">
       <div class="feature tile-card">
@@ -222,7 +242,7 @@
           <img class="ticon" src="img/icons/tile_focus.png" alt="">
         </div>
         <div>
-          <h3>FOCUS</h3>
+          <h3>INSIGHTS</h3>
           <p>Whatever just grabbed the dog's attention — something it saw, or something it heard.
           A rival dog, a ball, a doorbell. Grays out the second nothing's pulling focus; it never
           invents a thing to stare at.</p>
@@ -240,7 +260,7 @@
           <img class="ticon" src="img/icons/tile_pack.png" alt="">
         </div>
         <div>
-          <h3>PACK</h3>
+          <h3>PRESENCE</h3>
           <p>A headcount of who's actually here right now. Just the dog, the dog plus one, or the whole
           pack assembled — the dog's entire audience, in one glance.</p>
           <div class="state-row">
@@ -256,7 +276,7 @@
           <img class="ticon" src="img/icons/tile_broadcast.png" alt="">
         </div>
         <div>
-          <h3>BROADCAST</h3>
+          <h3>VOCAL</h3>
           <p>What the dog is putting out into the world, and the mood riding on top of it. Quiet by
           default — a level, grey glyph and a "—". The instant a bark lands, the tile names its tone,
           holds for a beat, then settles back down.</p>
@@ -274,7 +294,7 @@
 
     <div class="duo" style="margin-top: 18px;">
       <div class="note">
-        <h3>The soundwave: SOUND INTENSITY</h3>
+        <h3>The soundwave underneath</h3>
         <p>
           Underneath the tiles, a live waveform runs continuously off the microphone — several thin
           colored strands, each riding its own real FFT frequency band, plus one thick "sum" wave
@@ -287,9 +307,9 @@
           <span style="height:20px"></span>
         </div>
         <p>
-          The header reads <strong>"SOUND INTENSITY [n]%"</strong> — that percentage is the
-          microphone's <em>gain</em> (sensitivity), set by dragging anywhere along the wave; a small
-          glowing dot marks the current gain thumb. It is a sensitivity dial, not a volume meter.
+          Its label carries a percentage — the microphone's <em>gain</em> (sensitivity), set by
+          dragging anywhere along the wave; a small glowing dot marks the current gain thumb.
+          It is a sensitivity dial, not a volume meter.
         </p>
         <div class="drag-hint">↔ drag the wave left/right to set mic gain</div>
       </div>
