@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Overbark — Help &amp; How-to · McFin</title>
-<meta name="description" content="How to use Overbark: reading the bubbles and the observation deck, the settings, permissions, tips, and troubleshooting. Everything runs on your device.">
+<meta name="description" content="How to use Overbark: reading the bubbles and the observation deck, the settings, permissions (and how to turn them back on), tips, and troubleshooting. Everything runs on your device.">
 <link rel="icon" href="../mark.svg" type="image/svg+xml">
 <style>
   :root {
@@ -21,19 +21,22 @@
   .brand svg { width: 30px; height: auto; }
   .brand .m { stroke: var(--ink); } .brand .dot { fill: var(--accent); }
   h1 { font-size: clamp(30px, 6vw, 44px); font-weight: 650; letter-spacing: -0.5px; margin: 40px 0 6px; }
-  .eff { color: var(--sub); font-size: 14px; margin-bottom: 8px; }
   .lead { font-size: 19px; color: var(--ink); margin: 22px 0 8px; }
   .lead strong { color: var(--accent-ink); }
-  h2 { font-size: 19px; font-weight: 650; margin: 34px 0 8px; }
+  h2 { font-size: 19px; font-weight: 650; margin: 34px 0 8px; display: flex; align-items: center; gap: 10px; }
+  .h2ic { flex: 0 0 auto; width: 22px; height: 22px; fill: none; stroke: var(--accent); stroke-width: 1.7; stroke-linecap: round; stroke-linejoin: round; }
   p { color: var(--sub); margin-bottom: 12px; }
   p strong { color: var(--ink); }
-  ul { color: var(--sub); margin: 0 0 12px 20px; }
+  ul, ol { color: var(--sub); margin: 0 0 12px 22px; }
   li { margin-bottom: 8px; }
   li strong { color: var(--ink); }
+  ol li { margin-bottom: 10px; padding-left: 4px; }
   .deck { list-style: none; margin: 4px 0 12px; padding: 0; display: flex; flex-direction: column; gap: 8px; }
   .deck li { display: flex; gap: 10px; }
   .deck .k { flex: 0 0 92px; color: var(--accent-ink); font-weight: 600; font-size: 13px; letter-spacing: 0.06em; text-transform: uppercase; padding-top: 1px; }
-  .card { background: var(--card); border: 1px solid var(--line); border-radius: 16px; padding: 22px 24px; margin: 24px 0; }
+  .steps { background: var(--card); border: 1px solid var(--line); border-radius: 16px; padding: 20px 24px 20px 40px; margin: 16px 0; }
+  .steps li { color: var(--ink); }
+  .steps li strong { color: var(--accent-ink); }
   footer { border-top: 1px solid var(--line); padding: 26px 24px; text-align: center; font-size: 13px; color: var(--sub); margin-top: 56px; }
   footer a { color: var(--sub); }
 </style>
@@ -51,10 +54,10 @@
   <h1>Help &amp; How-to</h1>
   <p class="lead">Point your phone at a dog. Overbark reads the bark, the posture, and the surroundings, and floats what the moment <strong>sounds like it's saying</strong> into comic bubbles. Here's how to get the most out of it.</p>
 
-  <h2>Getting started</h2>
+  <h2><svg class="h2ic" viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="7" width="18" height="12" rx="2.5"/><path d="M8.5 7 l1.4-2.3 h4.2 l1.4 2.3"/><circle cx="12" cy="13" r="3.3"/></svg>Getting started</h2>
   <p>Open the app and aim the camera at your dog. On first launch it asks for the <strong>camera</strong> and <strong>microphone</strong> — both are needed to see the dog and hear the barks. Give it a moment to find the dog; a reticle locks on, and bubbles start to appear. Good light and a clear view of the whole dog work best.</p>
 
-  <h2>Reading the bubbles</h2>
+  <h2><svg class="h2ic" viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="4.5" width="18" height="12" rx="3"/><path d="M8 16.5 v3.5 l4.5 -3.5"/></svg>Reading the bubbles</h2>
   <p>Two kinds of bubble share one running transcript:</p>
   <ul>
     <li><strong>Barks</strong> are the hero bubbles — they appear when your dog actually barks, styled bold.</li>
@@ -62,7 +65,7 @@
   </ul>
   <p>New bubbles land at the bottom and rise as the moment moves on, oldest fading out — a self-clearing conveyor. <strong>Drag the stack</strong> to put it wherever you like on screen; it stays there.</p>
 
-  <h2>The observation deck</h2>
+  <h2><svg class="h2ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 16 a8 8 0 0 1 16 0"/><path d="M12 16 l4.5 -3.2"/><circle cx="12" cy="16" r="1"/></svg>The observation deck</h2>
   <p>The bottom strip reports four live reads, plus a soundwave that lights up with every bark:</p>
   <ul class="deck">
     <li><span class="k">Mindset</span><span>the scene it thinks you're in — walk, yard, beach, resting, and so on.</span></li>
@@ -72,7 +75,7 @@
   </ul>
   <p>Point two dogs at it and each gets its own column of bubbles — and they'll talk to each other.</p>
 
-  <h2>Settings, briefly</h2>
+  <h2><svg class="h2ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 20 v-6 M6 10 v-6 M12 20 v-9 M12 7 v-3 M18 20 v-3 M18 13 v-9"/><circle cx="6" cy="12" r="2"/><circle cx="12" cy="9" r="2"/><circle cx="18" cy="15" r="2"/></svg>Settings, briefly</h2>
   <ul>
     <li><strong>Theme &amp; Bubble Style.</strong> Seven palettes and three bubble looks, plus a Light / Dark switch that re-tones the whole app.</li>
     <li><strong>Your Dogs.</strong> Name each dog and set a temperament — calm dogs think and bark less, active ones more. It's also what lets one dog wonder aloud where the other went, by name.</li>
@@ -82,21 +85,31 @@
     <li><strong>Display.</strong> Hide the deck or the soundwave for just the camera and the bubbles.</li>
   </ul>
 
-  <h2>Permissions</h2>
-  <p><strong>Camera</strong> and <strong>microphone</strong> are required. <strong>Speech</strong> and <strong>motion</strong> are optional and off until you switch them on. You can change any of these any time in iOS Settings › Overbark.</p>
+  <h2><svg class="h2ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3 L19 5.5 V11 C19 15.5 16 19 12 20.5 C8 19 5 15.5 5 11 V5.5 Z"/></svg>Permissions</h2>
+  <p><strong>Camera</strong> and <strong>microphone</strong> are required — without them Overbark can't see the dog or hear the barks. <strong>Speech</strong> and <strong>motion</strong> are optional and stay off until you switch them on. All of it is used live, on your device, and never recorded or sent anywhere.</p>
 
-  <h2>Tips &amp; troubleshooting</h2>
+  <h2><svg class="h2ic" viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="8" width="18" height="8" rx="4"/><circle cx="15" cy="12" r="2.6"/></svg>Turning a permission back on</h2>
+  <p>Tapped “Don't Allow” by accident? No problem. For your privacy, iOS only lets you re-enable a permission from its own Settings — Overbark can't pop the request again — but it takes a few seconds:</p>
+  <ol class="steps">
+    <li>Open the iOS <strong>Settings</strong> app (the grey gear icon).</li>
+    <li>Scroll down the list and tap <strong>Overbark</strong>.</li>
+    <li>Switch on <strong>Camera</strong> and <strong>Microphone</strong>.</li>
+    <li>Return to Overbark — it picks them up right away, no restart needed.</li>
+  </ol>
+  <p>Prefer the other route? In Settings go to <strong>Privacy &amp; Security → Camera</strong> and switch Overbark on, then do the same under <strong>Privacy &amp; Security → Microphone</strong>. Speech and Motion live there too, if you ever decide to enable them.</p>
+
+  <h2><svg class="h2ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M9.5 18.5 h5 M10.5 21 h3"/><path d="M12 3.5 A5.5 5.5 0 0 1 15.5 13 c-.8.7-1 1.3-1 2 h-5 c0-.7-.2-1.3-1-2 A5.5 5.5 0 0 1 12 3.5 Z"/></svg>Tips &amp; troubleshooting</h2>
   <ul>
-    <li><strong>No bubbles?</strong> Make sure the camera permission is granted, there's enough light, and the dog is reasonably framed. Give it a few seconds to acquire.</li>
+    <li><strong>No bubbles?</strong> Make sure the camera and microphone are allowed (see above), there's enough light, and the dog is reasonably framed. Give it a few seconds to acquire.</li>
     <li><strong>The reads seem off?</strong> Include the dog and a little of its surroundings in frame — Overbark uses the scene, not just the dog, to pick the moment.</li>
     <li><strong>It's for entertainment.</strong> The sensors are real; the sentence in the bubble is a very confident guess. Your dog has not confirmed any of it.</li>
     <li><strong>Works offline.</strong> Overbark never goes online — try it in Airplane Mode, it works exactly the same.</li>
   </ul>
 
-  <h2>Privacy</h2>
+  <h2><svg class="h2ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3 L19 5.5 V11 C19 15.5 16 19 12 20.5 C8 19 5 15.5 5 11 V5.5 Z"/><path d="M9 11.2 l2.2 2.2 3.8 -4"/></svg>Privacy</h2>
   <p>Everything runs on your device. No account, no cloud, no tracking, nothing uploaded. Read the full <a href="privacy.html">privacy policy</a>.</p>
 
-  <h2>Contact</h2>
+  <h2><svg class="h2ic" viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="6" width="18" height="12" rx="2"/><path d="M4 7.5 l8 5.5 8 -5.5"/></svg>Contact</h2>
   <p>Questions, ideas, or a bark it got gloriously wrong? Email <a href="mailto:mike.mcfin@gmail.com">mike.mcfin@gmail.com</a>.</p>
 </div>
 <footer>
