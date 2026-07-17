@@ -20,6 +20,21 @@
   }
   a { color: inherit; }
   .wrap { max-width: 1060px; margin: 0 auto; padding: 0 24px; }
+
+  /* Subtle per-section theme accents — teal stays primary; only two mid-page sections get tinted.
+     How-to = cobaltFrost (a cool "instrument" blue), Settings = signalAmber (echoes the on-screen theme). */
+  #how-to-use { --sec-a: #1D4ED8; --sec-b: #4C86F0; }
+  #settings   { --sec-a: #B45309; --sec-b: #F59E0B; }
+  #how-to-use, #settings { position: relative; }
+  #how-to-use::before, #settings::before {
+    content: ""; position: absolute; top: 0; left: 50%; transform: translateX(-50%);
+    width: min(640px, 88%); height: 1px;
+    background: linear-gradient(90deg, transparent, color-mix(in srgb, var(--sec-a) 60%, transparent), transparent); }
+  #how-to-use h2, #settings h2 { position: relative; z-index: 1; }
+  #how-to-use h2::after, #settings h2::after {
+    content: ""; position: absolute; left: 50%; top: 50%; z-index: -1; transform: translate(-50%, -50%);
+    width: 320px; height: 130px; border-radius: 50%; background: var(--sec-a); opacity: 0.12; filter: blur(55px); }
+  #how-to-use .feature { border-color: color-mix(in srgb, var(--sec-a) 20%, var(--line)); }
   header.site { display: flex; align-items: center; justify-content: space-between; padding: 20px 0; }
   .brand { display: flex; align-items: center; gap: 10px; text-decoration: none; font-weight: 600; letter-spacing: 0.3px; }
   .brand svg { width: 30px; height: auto; }
@@ -34,10 +49,34 @@
   .platforms { margin-top: 26px; display: flex; gap: 22px; justify-content: center; color: var(--sub); font-size: 13px; }
   .platforms span { display: inline-flex; align-items: center; gap: 7px; }
   .platforms svg { width: 18px; height: 18px; stroke: var(--sub); fill: none; stroke-width: 1.5; }
-  .shots { display: flex; gap: 24px; justify-content: center; padding: 40px 0 8px; flex-wrap: wrap; }
-  .phone { background: #000; border: 1.5px solid #22343A; border-radius: 46px; padding: 10px; display: inline-block; }
-  .phone img { width: min(240px, 70vw); border-radius: 36px; display: block; }
-  .shots .phone:nth-child(2) { transform: translateY(-16px); }
+  /* Horizontal screenshot carousel */
+  .carousel-wrap { position: relative; margin: 34px 0 6px; }
+  .carousel { display: flex; gap: 20px; overflow-x: auto; scroll-snap-type: x mandatory;
+              padding: 6px 4px 18px; scroll-padding-left: 4px; cursor: grab;
+              -webkit-overflow-scrolling: touch; scrollbar-width: none; }
+  .carousel::-webkit-scrollbar { display: none; }
+  .carousel.dragging { cursor: grabbing; scroll-snap-type: none; scroll-behavior: auto; }
+  .carousel .phone { flex: 0 0 auto; scroll-snap-align: center; background: #000;
+              border: 1.5px solid #22343A; border-radius: 38px; padding: 7px;
+              box-shadow: 0 12px 44px rgba(0,0,0,0.38); }
+  .carousel .phone img { width: 212px; border-radius: 31px; display: block; -webkit-user-drag: none; user-select: none; }
+  .carousel-hint { text-align: center; color: var(--sub); font-size: 13px; letter-spacing: 0.3px; margin: 2px 0 0; }
+  /* Edge fades — signal there's more to either side */
+  .carousel-fade { position: absolute; top: 0; bottom: 26px; width: 72px; pointer-events: none; z-index: 2; transition: opacity 0.22s; }
+  .carousel-fade.left  { left: 0;  background: linear-gradient(90deg, var(--bg) 12%, transparent); }
+  .carousel-fade.right { right: 0; background: linear-gradient(270deg, var(--bg) 12%, transparent); }
+  .carousel-fade.hidden { opacity: 0; }
+  /* Prev/next arrows */
+  .carousel-nav { position: absolute; top: 47%; transform: translateY(-50%); z-index: 3;
+              width: 46px; height: 46px; border-radius: 50%; border: 1px solid var(--line);
+              background: rgba(10,20,23,0.82); color: var(--ink); cursor: pointer;
+              display: flex; align-items: center; justify-content: center; font-size: 22px; line-height: 1;
+              -webkit-backdrop-filter: blur(6px); backdrop-filter: blur(6px);
+              transition: opacity 0.2s, background 0.15s, color 0.15s; }
+  .carousel-nav:hover { background: var(--accent); color: #04252a; border-color: var(--accent); }
+  .carousel-nav.prev { left: 8px; } .carousel-nav.next { right: 8px; }
+  .carousel-nav.hidden { opacity: 0; pointer-events: none; }
+  @media (max-width: 560px) { .carousel .phone img { width: 176px; } .carousel-nav { display: none; } }
   .intro { max-width: 700px; margin: 48px auto 0; text-align: center; font-size: 18px; color: var(--sub); }
   .intro strong { color: var(--ink); font-weight: 600; }
   section { padding: 72px 0 0; }
@@ -79,22 +118,77 @@
   <div class="hero">
     <img class="icon" src="img/appicon.png" alt="Overbark app icon" width="96" height="96">
     <h1>Your dog, subtitled.</h1>
-    <p class="sub">Real bark acoustics and body-pose tracking, rendered as comic speech bubbles that stack into a running transcript. On-device, private, and — we cannot stress this enough — not a joke about the engineering.</p>
+    <p class="sub">Real bark acoustics and body-pose tracking, turned into comic speech bubbles that stack beside your dog. Entirely on-device. Serious engineering, pointed at a genuinely silly question.</p>
     <a class="cta" href="mailto:mike.mcfin@gmail.com?subject=Overbark%20beta">Request beta access</a>
-    <p class="cta-note">In TestFlight beta, ahead of its App Store release.</p>
+    <p class="cta-note">$4.99, one time — no subscription, ever. Currently in TestFlight beta.</p>
     <div class="platforms">
       <span><svg viewBox="0 0 24 24"><rect x="7" y="3" width="10" height="18" rx="2.5"/><line x1="10.5" y1="18.5" x2="13.5" y2="18.5"/></svg>iPhone</span>
       <span><svg viewBox="0 0 24 24"><rect x="4" y="3.5" width="16" height="17" rx="2.5"/><line x1="10" y1="18" x2="14" y2="18"/></svg>iPad</span>
     </div>
   </div>
 
-  <div class="shots">
-    <div class="phone"><img src="img/shot-skeleton.png" alt="Overbark's comic speech bubbles stacking into a chat — a column per dog" loading="lazy"></div>
-    <div class="phone"><img src="img/shot-hud.png" alt="An Overbark speech bubble over a dog, with the live soundwave and telemetry deck" loading="lazy"></div>
-    <div class="phone"><img src="img/shot-settings.png" alt="Overbark settings — bubble styles and accent themes" loading="lazy"></div>
+  <div class="carousel-wrap">
+    <div class="carousel" role="list" aria-label="Overbark screenshots">
+      <div class="phone" role="listitem"><img src="img/shots/bark_howl.jpg" alt="A howl at the moon: 'Awoo. It simply had to be said.'" loading="lazy"></div>
+      <div class="phone" role="listitem"><img src="img/shots/bird2.jpg" alt="Two dogs debating a bird: crow vs sparrow" loading="lazy"></div>
+      <div class="phone" role="listitem"><img src="img/shots/walk_bush.jpg" alt="On a walk: 'This bush has news. A dog passed here. Recently.'" loading="lazy"></div>
+      <div class="phone" role="listitem"><img src="img/shots/bark_demand_bowl.jpg" alt="Demand bark at the bowl: 'Feed me or face consequences.'" loading="lazy"></div>
+      <div class="phone" role="listitem"><img src="img/shots/bark_alert_door.jpg" alt="Alert bark at the door: 'WHO GOES THERE. I RULE HERE.'" loading="lazy"></div>
+      <div class="phone" role="listitem"><img src="img/shots/bark_guard2.jpg" alt="Two dogs on false-alarm guard duty, both barking" loading="lazy"></div>
+      <div class="phone" role="listitem"><img src="img/shots/car.jpg" alt="Car ride: 'The car is moving. I did not authorize this.'" loading="lazy"></div>
+      <div class="phone" role="listitem"><img src="img/shots/beach2.jpg" alt="Two dogs at the beach: 'THE SEA CAME BACK FOR ME.'" loading="lazy"></div>
+      <div class="phone" role="listitem"><img src="img/shots/meal_bowl.jpg" alt="Mealtime: 'The bowl has been sighted. This is not a drill.'" loading="lazy"></div>
+      <div class="phone" role="listitem"><img src="img/shots/nap.jpg" alt="A nap: 'A fine spot, this. I am the council.'" loading="lazy"></div>
+      <div class="phone" role="listitem"><img src="img/shots/squirrel2.jpg" alt="Two dogs on squirrel patrol: 'Teamwork.'" loading="lazy"></div>
+      <div class="phone" role="listitem"><img src="img/shots/bark_excited_ball.jpg" alt="Excited bark at a ball: 'BALL? BALL. BALL!'" loading="lazy"></div>
+      <div class="phone" role="listitem"><img src="img/shots/sunbeam2.jpg" alt="Two dogs and a sunbeam: 'This is my sunbeam.'" loading="lazy"></div>
+      <div class="phone" role="listitem"><img src="img/shots/yard.jpg" alt="Yard patrol: 'The yard is secure. I checked every corner. Twice.'" loading="lazy"></div>
+      <div class="phone" role="listitem"><img src="img/shots/bark_mailman2.jpg" alt="Two dogs grumbling at the mailman: 'He's back.'" loading="lazy"></div>
+      <div class="phone" role="listitem"><img src="img/shots/play_ball.jpg" alt="Playtime: 'The ball exists. Therefore it must be chased.'" loading="lazy"></div>
+      <div class="phone" role="listitem"><img src="img/shots/nap_sibling.jpg" alt="Resting, missing the other dog: 'Where did Nori go?'" loading="lazy"></div>
+      <div class="phone" role="listitem"><img src="img/shots/bark_playful_sock.jpg" alt="Playful bark: 'I have declared war on this sock.'" loading="lazy"></div>
+      <div class="phone" role="listitem"><img src="img/shots/bark_lonely_door.jpg" alt="Lonely bark by the door: 'Watching the door. For you. Always.'" loading="lazy"></div>
+      <div class="phone" role="listitem"><img src="img/shots/bark_grumble_window.jpg" alt="Grumble at the window: 'That squirrel again. Unbelievable.'" loading="lazy"></div>
+      <div class="phone" role="listitem"><img src="img/shots/bark_whine_door.jpg" alt="Whine at a closed door: 'This door, closed, is an outrage.'" loading="lazy"></div>
+      <div class="phone" role="listitem"><img src="img/shots/yard_b.jpg" alt="Yard: 'The fence is a suggestion. I have not measured. I rule.'" loading="lazy"></div>
+      <div class="phone" role="listitem"><img src="img/shots/walk_bush_b.jpg" alt="On patrol: 'Boots on the ground. Kingdom: expanding.'" loading="lazy"></div>
+    </div>
+    <div class="carousel-fade left hidden" aria-hidden="true"></div>
+    <div class="carousel-fade right" aria-hidden="true"></div>
+    <button type="button" class="carousel-nav prev hidden" aria-label="Previous screenshots">‹</button>
+    <button type="button" class="carousel-nav next" aria-label="Next screenshots">›</button>
+    <p class="carousel-hint">← drag, swipe, or use the arrows →</p>
   </div>
+  <script>
+    (function () {
+      var wrap = document.querySelector('.carousel-wrap'); if (!wrap) return;
+      var c = wrap.querySelector('.carousel');
+      var fL = wrap.querySelector('.carousel-fade.left'), fR = wrap.querySelector('.carousel-fade.right');
+      var prev = wrap.querySelector('.carousel-nav.prev'), next = wrap.querySelector('.carousel-nav.next');
+      var step = function () { return Math.max(240, Math.round(c.clientWidth * 0.8)); };
+      prev.addEventListener('click', function () { c.scrollBy({ left: -step(), behavior: 'smooth' }); });
+      next.addEventListener('click', function () { c.scrollBy({ left: step(), behavior: 'smooth' }); });
+      function update() {
+        var max = c.scrollWidth - c.clientWidth - 2, atStart = c.scrollLeft <= 2, atEnd = c.scrollLeft >= max;
+        fL.classList.toggle('hidden', atStart); prev.classList.toggle('hidden', atStart);
+        fR.classList.toggle('hidden', atEnd);   next.classList.toggle('hidden', atEnd);
+      }
+      c.addEventListener('scroll', update, { passive: true });
+      window.addEventListener('resize', update); update();
+      // vertical wheel → horizontal scroll
+      c.addEventListener('wheel', function (e) {
+        if (Math.abs(e.deltaY) > Math.abs(e.deltaX)) { c.scrollLeft += e.deltaY; e.preventDefault(); }
+      }, { passive: false });
+      // click-drag to scroll (desktop)
+      var down = false, sx = 0, sl = 0, moved = false;
+      c.addEventListener('pointerdown', function (e) { down = true; moved = false; sx = e.clientX; sl = c.scrollLeft; c.classList.add('dragging'); });
+      window.addEventListener('pointermove', function (e) { if (!down) return; if (Math.abs(e.clientX - sx) > 3) moved = true; c.scrollLeft = sl - (e.clientX - sx); });
+      window.addEventListener('pointerup', function () { down = false; c.classList.remove('dragging'); });
+      c.addEventListener('click', function (e) { if (moved) { e.preventDefault(); } }, true);
+    })();
+  </script>
 
-  <p class="intro">Overbark listens to a dog's bark the way bioacoustics researchers do — measuring pitch, tonality, and tempo against a body of peer-reviewed animal-communication research — and watches its posture the way an ethologist would, using on-device machine vision. Then it floats comic speech bubbles into a self-clearing stack beside the dog — newest at the bottom, older ones drifting up and off — and tells you what the moment sounds like. <strong>The apparatus is real. The transcript is between you and your dog.</strong></p>
+  <p class="intro">Overbark listens to a bark the way a bioacoustics lab would — measuring pitch, tone, and tempo against peer-reviewed animal-communication research — and reads the dog's posture the way an ethologist would, with on-device machine vision. Then it floats comic speech bubbles into a self-clearing stack beside the dog and tells you what the moment sounds like. <strong>The apparatus is real. The transcript is between you and your dog.</strong></p>
 
   <style>
     .promise { display: flex; gap: 18px; align-items: flex-start; max-width: 760px; margin: 8px auto 0;
@@ -111,8 +205,8 @@
       <svg viewBox="0 0 24 24"><path d="M12 2.5 L20 5.3 V11.2 C20 16.2 16.6 20 12 21.8 C7.4 20 4 16.2 4 11.2 V5.3 Z"/><path d="M8.4 12.2 l2.6 2.6 L15.8 9.3"/></svg>
     </span>
     <div>
-      <p class="ptitle">Overbark collects nothing — and never will.</p>
-      <p>No account, no analytics, no ads, no tracking, no third-party SDKs. Nothing about you, your voice, your dog, or your home ever leaves the phone.</p>
+      <p class="ptitle">Yours forever. Ours never.</p>
+      <p>Pay once — $4.99, and it's yours for good: no subscription, no ads, nothing tracked, ever. No account, no analytics, no third-party SDKs. Nothing about you, your voice, your dog, or your home leaves the phone. It has nowhere to send it, and no reason to.</p>
       <p><a href="privacy.html">Read the full privacy policy →</a></p>
     </div>
   </div>
@@ -122,8 +216,8 @@
     <div class="grid">
       <div class="feature">
         <img class="ficon" src="img/icons/feat_acoustics.png" alt="">
-        <h3>Bark acoustics, properly measured</h3>
-        <p>Each bark is isolated by Apple's Sound Analysis classifier, then scored with Accelerate/vDSP on pitch, tonality, and inter-bark tempo — the dimensions the peer-reviewed literature ties to emotional content. A live on-device FFT soundwave runs along the bottom deck, with a gain control, and lights up with each bark's pitch, tonality, and tempo — even when the dog is out of frame.</p>
+        <h3>Every bark, measured — not guessed</h3>
+        <p>Apple's Sound Analysis isolates each individual bark; Accelerate/vDSP then scores its pitch, tone, and inter-bark tempo — the exact cues peer-reviewed research ties to how a bark feels. A live soundwave rides the deck and lights up with each one, even when the dog trots out of frame.</p>
       </div>
       <div class="feature">
         <img class="ficon" src="img/icons/feat_posture.png" alt="">
@@ -133,7 +227,7 @@
       <div class="feature">
         <img class="ficon" src="img/icons/feat_scene.png" alt="">
         <h3>Scene-aware, sound-aware</h3>
-        <p>The same on-device classifier that isolates the bark reads the wider scene, object detection takes in the surroundings, and an ambient-sound classifier stands watch over roughly seventeen everyday sounds — doorbell, siren, thunder, another dog, and more. So the bubble is shaped by the moment, not a dice roll. Exactly how is a trade secret. A well-instrumented one.</p>
+        <p>The same on-device classifier that isolates the bark also recognizes what's in the scene — a ball, a doorbell, a rival dog — while an ambient-sound classifier keeps watch over nineteen everyday sounds, from sirens to thunder. So the bubble is shaped by the moment, not a dice roll. Exactly how is a trade secret. A well-instrumented one.</p>
       </div>
       <div class="feature">
         <img class="ficon" src="img/icons/feat_twodogs.png" alt="">
@@ -148,24 +242,24 @@
       <div class="feature">
         <img class="ficon" src="img/icons/feat_deck.png" alt="">
         <h3>A dog's-eye view, entirely on the phone</h3>
-        <p>A compact telemetry deck reports four reads in real time — mindset, insights, presence, and vocal — showing the pipeline working as it works. Audio analysis, pose tracking, scene detection, and the bubbles themselves all run on-device. No account, no server, no cloud model, no data leaving the phone. iPhone and iPad, portrait or landscape.</p>
+        <p>A compact observation deck reports four reads in real time — mindset, insights, presence, and vocal — showing the pipeline working as it works. Audio analysis, pose tracking, scene recognition, and the bubbles themselves all run on-device. No account, no server, no cloud model, no data leaving the phone. iPhone and iPad, portrait or landscape.</p>
       </div>
     </div>
   </section>
 
   <section>
-    <h2>A monologue that fits the moment</h2>
-    <p class="science">The bubbles aren't a bag of random one-liners. What the dog "says" is shaped by where it is and what's happening — and the writing leans into it. On a <strong>walk</strong> it reads the pavement like a newspaper: checking the pee-mail, filing complaints about a rival's scent, waiting at the kerb while "a great river of metal" roars past. Stop moving and it investigates whatever's there — a sniff, a passing dog, a person. At the <strong>beach</strong> the deadpan cracks into pure joy — the sea as enormous friend-and-foe, the zoomies, drinking a bit of the ocean "for science." A <strong>bird</strong> overhead reignites the eternal war (small ones are friends; big ones are sky-mafia to be repelled from the yard). And when the dog is <strong>resting</strong> — curled on a lap, dozing — it turns quiet and tender: keeping watch while you sleep, remembering the shelter, the best trade it ever made. Hundreds of lines, situational, in character.</p>
+    <h2>It reads the room. Then it editorializes.</h2>
+    <p class="science">The bubbles aren't a bag of random one-liners. What the dog "says" is shaped by where it is and what's happening. On a <strong>walk</strong> it reads the pavement like a morning paper — checking the pee-mail, filing complaints about a rival's scent, sizing up every dog that dares pass. At the <strong>beach</strong> the deadpan cracks into pure joy: the sea as enormous friend-and-foe, the zoomies, a little seawater "for science." A <strong>bird</strong> overhead reignites the eternal war — small ones are friends, big ones are sky-mafia to be repelled. And when the dog is <strong>resting</strong>, curled on a lap, it turns quiet and tender: keeping watch while you sleep, remembering the shelter, the best trade it ever made. Hundreds of lines, situational, in character.</p>
   </section>
 
   <section>
     <h2>The science is real</h2>
-    <p class="science">Overbark's tone model is grounded in peer-reviewed bioacoustics research, built from analysis of thousands of dog barks across many real-world contexts. The finding, stated plainly: <strong>pitch is the dominant cue humans use to read a bark's emotional tenor</strong>, with tonality and inter-bark tempo as supporting signals — and it holds across cultures, ages, and dog ownership. Overbark computes the same features from the live microphone feed and scores them the same way. That tells us how a bark is <em>likely to be heard</em>. It does not tell us what the dog intended. Sounds like something. We report, you decide.</p>
+    <p class="science">Overbark's tone model is grounded in peer-reviewed bioacoustics — research that analyzed thousands of barks across real-world contexts. The finding, stated plainly: <strong>pitch is the dominant cue humans use to read a bark's emotional tenor</strong>, with tone and inter-bark tempo as supporting signals — and it holds across cultures, ages, and whether or not you own a dog. Overbark computes the same features live from the microphone and scores them the same way. That tells us how a bark is <em>likely to be heard</em>. It does not tell us what the dog meant. We supply the instruments. You supply the interpretation.</p>
   </section>
 
   <section>
     <div class="duo">
-      <div class="note"><h3>Nothing leaves your phone</h3><p>Camera, microphone, and (if you switch it on) speech recognition are used only on your device, in the moment. Nothing is recorded, stored, or sent anywhere. No account, no tracking, nothing to collect — like every McFin app. <a href="privacy.html">Read the privacy policy →</a></p></div>
+      <div class="note"><h3>Nothing leaves your phone</h3><p>Camera, microphone, and (if you switch it on) speech recognition are used only on your device, in the moment. Nothing is recorded, stored, or sent anywhere. No account, no tracking, nothing to collect. Pay once, own forever, like every McFin app. <a href="privacy.html">Read the privacy policy →</a></p></div>
       <div class="note"><h3>A note on methodology</h3><p>Overbark is built on real acoustic research and real on-device machine vision. It is also, functionally, a very well-instrumented guessing machine pointed at an animal that cannot confirm or deny anything it is reported to have said. We stand behind the engineering. We make no claims about the dog.</p></div>
     </div>
   </section>
@@ -187,14 +281,20 @@
     .wave-demo { display: flex; align-items: center; justify-content: center; gap: 3px; height: 40px; margin: 14px 0; }
     .wave-demo span { display: inline-block; width: 3px; border-radius: 2px; background: var(--accent-ink); opacity: 0.85; }
     .drag-hint { display: flex; align-items: center; gap: 10px; justify-content: center; margin-top: 10px; color: var(--accent-ink); font-size: 13px; }
-    /* Bigger, real app-icon showcase for the MINDSET reads */
+    /* Bigger, real app-icon showcase for the MINDSET reads — even 4×2 grid, no orphan row */
     .mindset-showcase { max-width: 760px; margin: 6px auto 30px; display: grid;
-                        grid-template-columns: repeat(auto-fit, minmax(96px, 1fr)); gap: 14px; }
+                        grid-template-columns: repeat(4, 1fr); gap: 14px; }
     .mindset-showcase figure { margin: 0; display: flex; flex-direction: column; align-items: center; gap: 8px;
                                padding: 16px 8px; background: rgba(0,194,206,0.06); border: 1px solid var(--line); border-radius: 16px; }
     .mindset-showcase img { width: 56px; height: 56px; object-fit: contain;
                             filter: sepia(1) saturate(4.5) hue-rotate(140deg) brightness(1.05); }
     .mindset-showcase figcaption { font-size: 12px; color: var(--sub); text-align: center; }
+    @media (max-width: 560px) { .mindset-showcase { grid-template-columns: repeat(2, 1fr); } }
+    /* The four observation tiles: one row across (2×2 on tablet, 1 on phone) */
+    #how-to-use .grid { grid-template-columns: repeat(4, 1fr); }
+    #how-to-use .tile-card { flex-direction: column; gap: 12px; }
+    @media (max-width: 1000px) { #how-to-use .grid { grid-template-columns: repeat(2, 1fr); } }
+    @media (max-width: 540px) { #how-to-use .grid { grid-template-columns: 1fr; } }
   </style>
 
   <section id="how-to-use">
@@ -203,7 +303,7 @@
       Overbark keeps the camera view clear on purpose — the readouts live in one bottom deck.
       <strong>Four tiles</strong> report what the dog is up to right now — its <strong>mindset</strong>,
       its <strong>insights</strong>, who's <strong>present</strong>, and its <strong>vocal</strong> read —
-      and the <strong>soundwave</strong> underneath is what it's hearing.
+      and, riding <strong>above</strong> them, a live <strong>soundwave</strong> shows what it's hearing.
       Nothing here is decorative; every glyph reflects the dog in the moment.
     </p>
 
@@ -294,9 +394,9 @@
 
     <div class="duo" style="margin-top: 18px;">
       <div class="note">
-        <h3>The soundwave underneath</h3>
+        <h3>The soundwave above the tiles</h3>
         <p>
-          Underneath the tiles, a live waveform runs continuously off the microphone — several thin
+          Above the tiles, a live waveform runs continuously off the microphone — several thin
           colored strands, each riding its own real FFT frequency band, plus one thick "sum" wave
           riding on top. It's always moving; it does not wait for a bark.
         </p>
@@ -307,27 +407,25 @@
           <span style="height:20px"></span>
         </div>
         <p>
-          Its label carries a percentage — the microphone's <em>gain</em> (sensitivity), set by
-          dragging anywhere along the wave; a small glowing dot marks the current gain thumb.
-          It is a sensitivity dial, not a volume meter.
+          Each strand is a real frequency band, so the shape of the wave is the actual texture of the
+          sound in the room — not a decorative animation. When a bark lands, it reacts.
         </p>
-        <div class="drag-hint">↔ drag the wave left/right to set mic gain</div>
       </div>
 
       <div class="note">
-        <h3>On a detected bark: Pitch · Tonality · Tempo</h3>
+        <h3>On a detected bark: Pitch · Tone · Tempo</h3>
         <p>
           The moment a bark is isolated, the header swaps to a pulsing dot and <strong>"BARK"</strong>,
           and three live readouts appear:
         </p>
         <div class="state-row">
           <span class="state-chip"><span class="dot on"></span>PITCH — fundamental frequency, Hz</span>
-          <span class="state-chip"><span class="dot on"></span>TONE — the tonality read (e.g. playful, alert)</span>
+          <span class="state-chip"><span class="dot on"></span>TONE — the classified bark tone (e.g. playful, alert)</span>
           <span class="state-chip"><span class="dot on"></span>TEMPO — barks per second</span>
         </div>
         <p style="margin-top:10px;">
           At the same moment, the wave itself brightens, thickens, and quickens — a visible "hot" state
-          that fades back to the calm gain read a beat later. This is the same BROADCAST tile reading above,
+          that fades back to the calm gain read a beat later. It's the same VOCAL tile above,
           shown at full resolution.
         </p>
       </div>
@@ -336,18 +434,72 @@
     <div class="note" style="margin-top: 18px; max-width: 720px; margin-left: auto; margin-right: auto;">
       <h3>Repositioning the bubble stack</h3>
       <p>
-        The speech bubbles aren't fixed in place. <strong>Drag the newest bubble</strong> — the one
-        currently at the bottom of the stack — up or down, and the whole conversation follows: older
-        bubbles rise above it and clear off on their own once the dog goes quiet. You're setting the
-        anchor point for where new lines appear, not scrolling back through old ones — Overbark doesn't
-        keep a transcript on screen, it keeps a conversation.
+        The speech bubbles aren't fixed in place. <strong>Drag the stack</strong> — anywhere in the
+        bubble area — up or down, and the whole conversation follows: older bubbles rise above and clear
+        off on their own once the dog goes quiet, and Overbark remembers where you left it. You're setting
+        the anchor for where new lines appear, not scrolling back through old ones — it doesn't keep a
+        transcript on screen, it keeps a conversation.
       </p>
     </div>
   </section>
 
+  <section id="settings">
+    <style>
+      #settings .set-toggle { display: flex; gap: 8px; justify-content: center; margin: 6px 0 4px; }
+      #settings .set-toggle button { font: inherit; font-size: 13px; letter-spacing: 0.2px; padding: 6px 18px;
+                             border-radius: 999px; cursor: pointer; background: transparent; color: var(--sub);
+                             border: 1px solid var(--line); transition: all 0.15s; }
+      #settings .set-toggle button.on { background: var(--sec-b); color: #201400; border-color: var(--sec-b); font-weight: 700; }
+      /* Each real settings panel row-paired with its explanation — guaranteed alignment. */
+      #settings .set-rows { max-width: 940px; margin: 22px auto 0; display: flex; flex-direction: column; gap: 22px; }
+      #settings .set-row { display: flex; gap: 34px; align-items: center; }
+      #settings .set-panel { flex: 0 0 296px; }
+      #settings .set-panel img { width: 296px; display: block; border-radius: 16px; box-shadow: 0 8px 30px rgba(0,0,0,0.42); }
+      #settings .set-row .snote { flex: 1; background: var(--card); border: 1px solid var(--line);
+                             border-color: color-mix(in srgb, var(--sec-a) 22%, var(--line));
+                             border-radius: 16px; padding: 22px 26px; }
+      #settings .snote h3 { margin: 0 0 6px; font-size: 18px; color: var(--ink); }
+      #settings .snote p { margin: 0; color: var(--sub); font-size: 15px; line-height: 1.55; }
+      @media (max-width: 680px) {
+        #settings .set-row { flex-direction: column; gap: 14px; align-items: stretch; }
+        #settings .set-panel { flex: 0 0 auto; width: 100%; max-width: 320px; margin: 0 auto; }
+        #settings .set-panel img { width: 100%; }
+      }
+    </style>
+    <h2>Every dial — and what it does</h2>
+    <p class="howto-intro">Overbark is yours to tune: seven themes, three bubble styles, per-dog temperaments, and a handful of on-device switches — all in one calm screen.</p>
+    <div class="set-toggle" role="group" aria-label="Settings preview tone">
+      <button type="button" class="on" data-tone="dark">Dark</button>
+      <button type="button" data-tone="light">Light</button>
+    </div>
+    <div class="set-rows">
+      <div class="set-row"><div class="set-panel"><img class="setimg" data-n="0" src="img/settile/dark_0.jpg" alt="Bubble Style settings panel" loading="lazy"></div><div class="snote"><h3>Bubble Style</h3><p>Classic, Chunky, or Cartoon speech bubbles — and a Light / Dark switch that re-tones the whole app, console and all.</p></div></div>
+      <div class="set-row"><div class="set-panel"><img class="setimg" data-n="1" src="img/settile/dark_1.jpg" alt="Theme settings panel" loading="lazy"></div><div class="snote"><h3>Theme</h3><p>Seven harmonized palettes. Your pick recolors the observation deck, the glyphs, the bubbles, and the live soundwave.</p></div></div>
+      <div class="set-row"><div class="set-panel"><img class="setimg" data-n="2" src="img/settile/dark_2.jpg" alt="Your Dogs settings panel" loading="lazy"></div><div class="snote"><h3>Your Dogs</h3><p>Name each dog and set a temperament — calm dogs think and bark less often, active ones more. It's also what lets one dog wonder aloud where the other got to, by name.</p></div></div>
+      <div class="set-row"><div class="set-panel"><img class="setimg" data-n="3" src="img/settile/dark_3.jpg" alt="Thoughts settings panel" loading="lazy"></div><div class="snote"><h3>Thoughts</h3><p>Toggle the ambient inner monologue that drifts by between barks.</p></div></div>
+      <div class="set-row"><div class="set-panel"><img class="setimg" data-n="4" src="img/settile/dark_4.jpg" alt="Hooman Input Channel settings panel" loading="lazy"></div><div class="snote"><h3>Hooman Input Channel</h3><p>Opt-in, on-device speech recognition — talk to your dog in your own language (it follows your device's language, not just English) and it reacts to the words. It will not be impressed.</p></div></div>
+      <div class="set-row"><div class="set-panel"><img class="setimg" data-n="5" src="img/settile/dark_5.jpg" alt="Motion &amp; Activity settings panel" loading="lazy"></div><div class="snote"><h3>Motion &amp; Activity</h3><p>Optional, on-device motion so a car ride reads as a car ride, not a walk. Off by default — a built-in estimate is used instead.</p></div></div>
+      <div class="set-row"><div class="set-panel"><img class="setimg" data-n="6" src="img/settile/dark_6.jpg" alt="Display settings panel" loading="lazy"></div><div class="snote"><h3>Display</h3><p>Hide the observation deck or the soundwave to leave just the camera and the bubbles.</p></div></div>
+      <div class="set-row"><div class="set-panel"><img class="setimg" data-n="7" src="img/settile/dark_7.jpg" alt="About settings panel" loading="lazy"></div><div class="snote"><h3>About</h3><p>The real science behind it, a way to replay the intro, and the build you're on.</p></div></div>
+    </div>
+    <script>
+      (function () {
+        var btns = document.querySelectorAll('#settings .set-toggle button');
+        var imgs = document.querySelectorAll('#settings .setimg');
+        btns.forEach(function (b) {
+          b.addEventListener('click', function () {
+            btns.forEach(function (x) { x.classList.remove('on'); });
+            b.classList.add('on');
+            imgs.forEach(function (im) { im.src = 'img/settile/' + b.dataset.tone + '_' + im.dataset.n + '.jpg'; });
+          });
+        });
+      })();
+    </script>
+  </section>
+
   <div class="end">
     <h2>Find out what the dog is on about.</h2>
-    <p>Overbark is in TestFlight beta ahead of its App Store release. Ask for early access, or just follow along.</p>
+    <p>Overbark is in TestFlight beta ahead of its App Store release. Ask for early access, or just follow along. The dog will neither confirm nor deny its involvement.</p>
     <a class="cta" href="mailto:mike.mcfin@gmail.com?subject=Overbark%20beta">Request beta access</a>
   </div>
 </div>
