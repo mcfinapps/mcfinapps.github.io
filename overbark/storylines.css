@@ -1,0 +1,18 @@
+/* Animated in-cloud storylines. Real authored dialogue dropped into the baked thought-clouds of the
+   hero, sunbeam and bird scenes; played on scroll-into-view (once, random per load, final lines left
+   on). Progressive enhancement; reduced-motion safe; no network, no persistence.
+   Each bubble is a fixed box sized to its cloud's inner area (data-w/data-h fractions of the image);
+   text is centered in it and the font auto-shrinks per line so every line fits — all set in JS. */
+[data-storyline]{position:relative}
+.sl-bubble{
+  position:absolute;z-index:6;pointer-events:none;
+  transform:translate(-50%,-50%);
+  display:flex;align-items:center;justify-content:center;overflow:hidden;
+  font-style:italic;font-weight:400;line-height:1.14;
+  font-family:"Iowan Old Style",Baskerville,Georgia,serif;color:#281a14;
+  opacity:0;transition:opacity .5s ease}
+.sl-bubble>span{display:block;width:100%;text-align:center;text-wrap:balance}
+.sl-bubble.show{opacity:1}
+.sl-bubble.dim{opacity:.4}
+@media (prefers-reduced-motion:reduce){.sl-bubble{transition:none}}
+@media (max-width:850px){.sl-bubble{display:none}}
