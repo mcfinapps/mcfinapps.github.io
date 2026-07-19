@@ -1,0 +1,72 @@
+/* Light-perspective-only hardware finish: smoked clay. */
+.phone-stage .phone {
+  padding: 7px;
+  background: linear-gradient(135deg, #d9a083 0%, #a85f49 34%, #754536 72%, #c98264 100%);
+  border: 1px solid #edc5ad;
+  border-radius: 50px;
+  box-shadow:
+    inset 0 0 0 1px rgba(74, 38, 28, .48),
+    0 50px 75px rgba(73, 46, 26, .33);
+}
+
+.phone-stage .phone img {
+  border-radius: 42px;
+  box-shadow: 0 0 0 1px #171513;
+}
+
+.phone-stage .deck-card {
+  border-color: #9e5b46;
+  outline: 1px solid rgba(237, 197, 173, .82);
+  box-shadow:
+    inset 0 0 0 2px #171513,
+    0 34px 54px rgba(73, 46, 26, .28);
+}
+
+.phone-stage .sensor {
+  top: 16px;
+}
+
+.fieldguide .specimens img {
+  filter: sepia(1) saturate(1.8) hue-rotate(326deg) brightness(.96) contrast(.92);
+}
+
+.fieldguide .specimens article:nth-child(3) img {
+  transform: scale(1.42);
+}
+
+.fieldguide .specimens article:nth-child(4) img {
+  transform: scale(1.26);
+}
+
+.fieldguide .specimens b {
+  margin-top: 0;
+  color: #e58a68;
+}
+
+.fieldguide .specimens h3 {
+  margin: 5px 0 0;
+}
+
+.final {
+  padding-left: 0 !important;
+}
+
+.final::before {
+  content: "";
+  position: absolute;
+  z-index: 1;
+  inset: 0 0 auto;
+  height: clamp(90px, 12vw, 150px);
+  pointer-events: none;
+  background: linear-gradient(180deg, var(--paper) 0%, rgba(243, 232, 210, .82) 30%, transparent 100%);
+}
+
+.final > div {
+  margin-left: clamp(28px, 4.5vw, 76px);
+}
+
+@media (max-width: 520px) {
+  .final > div {
+    margin-left: 0;
+  }
+}

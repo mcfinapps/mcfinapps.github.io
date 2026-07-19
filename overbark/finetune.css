@@ -27,3 +27,10 @@ main a[href^="mailto:"]{display:none!important}
 .hero .offline-card{display:flex!important;width:fit-content!important;max-width:min(390px,100%)!important;align-items:center;flex-wrap:nowrap}.hero .offline-card .plane{flex:0 0 42px}.hero .offline-card>div{min-width:0}.hero .offline-card small{white-space:normal;overflow-wrap:anywhere}
 @media(max-width:620px){.hero .offline-card{display:flex!important;width:fit-content!important;max-width:100%!important;padding:10px 13px;gap:11px}.hero .offline-card .plane{width:38px;height:38px;flex-basis:38px}.hero .offline-card strong{font-size:13px}.hero .offline-card small{font-size:10px;line-height:1.35}}
 .nav nav{margin-left:clamp(20px,3vw,48px);margin-right:auto}
+
+/* Native iPhone 16 Pro captures include the complete screen chrome. Preserve
+   their 1206 × 2622 geometry instead of cropping to the legacy 9:19.5 box. */
+.phone > img[data-carousel-image],
+.deck-card[data-deck-card]{aspect-ratio:auto;height:auto;object-fit:contain}
+.phone > img[data-carousel-image]{width:100%}
+.phone > .sensor{display:none}

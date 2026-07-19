@@ -4,3 +4,81 @@
 @media(max-width:620px){.tech-grid,.dark-settings-grid,.ai-proof{grid-template-columns:1fr}.tech-grid article{min-height:370px}.room-read{padding:28px;margin-top:55px}.context-cases{grid-template-columns:1fr 1fr}.dark-settings-grid figcaption{min-height:0}}
 .dark-settings-grid img{aspect-ratio:auto;height:clamp(230px,24vw,340px);padding:14px 14px 0;object-fit:contain;object-position:center top;background:linear-gradient(180deg,#101c20,#091215)}
 @media(max-width:620px){.dark-settings-grid img{height:auto;max-height:none}}
+
+/* Dark hero hierarchy and containment. */
+.hero {
+  height: auto;
+  min-height: max(820px, 100svh);
+}
+
+.hero-copy {
+  padding-bottom: 64px;
+}
+
+.hero .spectrum {
+  display: none;
+}
+
+.instruments .deck article img {
+  filter: grayscale(1) sepia(1) saturate(5) hue-rotate(34deg) brightness(1.18) drop-shadow(0 0 7px rgba(198, 243, 74, .28));
+}
+
+.instruments .deck article:nth-child(3) img {
+  transform: scale(1.42);
+}
+
+.instruments .deck article:nth-child(4) img {
+  transform: scale(1.26);
+}
+
+.instruments .deck article b {
+  margin-top: 5px;
+}
+
+/* Pipeline cards echo the restrained lift used by section 06. */
+.tech-grid article {
+  z-index: 0;
+  transition: transform .25s ease, background .25s ease, box-shadow .25s ease;
+}
+
+.tech-grid article:hover {
+  z-index: 2;
+  transform: translateY(-5px);
+  background: linear-gradient(145deg, #102226, #081316);
+  box-shadow: 0 16px 42px rgba(0, 0, 0, .42), inset 0 0 0 1px #3d727a;
+}
+
+.tech-grid .sig-ic,
+.tech-grid .tech-glyph {
+  transition: transform .25s ease, filter .25s ease;
+}
+
+.tech-grid article:hover .sig-ic,
+.tech-grid article:hover .tech-glyph {
+  transform: scale(1.08);
+  filter: drop-shadow(0 0 10px rgba(39, 216, 228, .72));
+}
+
+@media (max-width: 850px) {
+  .hero {
+    min-height: max(840px, 100svh);
+  }
+
+  .hero-copy {
+    padding-bottom: 52px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .tech-grid article,
+  .tech-grid .sig-ic,
+  .tech-grid .tech-glyph {
+    transition: none;
+  }
+
+  .tech-grid article:hover,
+  .tech-grid article:hover .sig-ic,
+  .tech-grid article:hover .tech-glyph {
+    transform: none;
+  }
+}
