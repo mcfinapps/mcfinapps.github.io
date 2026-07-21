@@ -1,0 +1,10 @@
+{
+  "name": "Overtiles",
+  "short_name": "Overtiles",
+  "description": "A memory game you can feel.",
+  "start_url": "./",
+  "display": "standalone",
+  "background_color": "#f1eee8",
+  "theme_color": "#f1eee8",
+  "icons": [{"src":"img/app-icon.png","sizes":"1024x1024","type":"image/png"}]
+}
