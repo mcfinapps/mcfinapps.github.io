@@ -5,6 +5,19 @@
 @media(max-width:600px){.site-header{height:70px}.brand img{width:32px;height:32px}.hero{min-height:820px}.hero-art{background-position:66% 64%;background-size:auto 72%;background-repeat:no-repeat}.hero:after{background:linear-gradient(180deg,var(--pearl) 0%,rgb(241 238 232/.97) 43%,transparent 68%)}.hero-copy{padding-top:115px}.hero h1{font-size:3.75rem}.lead{line-height:1.55;margin:1.5rem 0}.hero-actions{align-items:flex-start;flex-direction:column;gap:12px}.section,.detail-section{padding:85px 22px}.section-heading.centered{margin-bottom:45px}.section h2,.detail-section h2{font-size:2.85rem}.signal-stage{min-height:420px}.material-card{min-height:520px;grid-template-rows:56% 44%}.material-card>div:last-child{padding:24px}.material-card h3{font-size:2rem}.shuffle-board{border-radius:22px}.device-stage{height:400px;min-height:0;transform:scale(.55);width:170%;margin-left:-35%;margin-top:-40px}.presets{margin-top:15px;flex-wrap:wrap}.privacy-band{padding:85px 25px}.privacy-band h2{font-size:3.35rem}.final-cta{min-height:650px}.final-cta h2{font-size:4.1rem}footer nav{flex-wrap:wrap}.legal{padding-top:115px}}
 @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}.reveal{opacity:1;transform:none;transition:none}.demo-tile,.shuffle-board span{animation:none!important}.material-image img{transition:none}}
 
+/* 2026 product update — two modes, seven complete material instruments. */
+.modes{background:#171a1b;color:#f5f2eb}.modes .eyebrow,.modes .section-heading>p:last-child{color:#aeb5b3}.mode-grid{max-width:1240px;margin:0 auto;display:grid;grid-template-columns:1fr 1fr;gap:28px}.mode-card{min-height:690px;border-radius:36px;overflow:hidden;display:grid;grid-template-columns:52% 48%;align-items:stretch;box-shadow:0 28px 70px #0005}.mode-card.memory{background:#2a1f18}.mode-card.focus{background:#071720}.mode-shot{overflow:hidden;min-height:690px}.mode-shot img{width:100%;height:100%;object-fit:cover;object-position:50% 25%}.mode-copy{padding:clamp(28px,4vw,52px);display:flex;flex-direction:column;justify-content:center}.mode-copy h3{font:400 clamp(2.7rem,4vw,4.4rem)/.95 var(--serif);margin:.45rem 0 1.3rem}.mode-copy>p:not(.mode-number){line-height:1.7;color:#d2d0ca}.mode-number{font-size:.65rem;letter-spacing:.2em;opacity:.58}.mode-copy span{margin-top:1.5rem;text-transform:uppercase;letter-spacing:.14em;font-size:.58rem;color:#d8bf88}.mode-note{text-align:center;margin:42px 0 0;color:#aeb5b3;font-size:.76rem;letter-spacing:.08em}
+
+.material-legend{display:flex;justify-content:center;gap:clamp(18px,4vw,58px);margin:-32px auto 48px;text-transform:uppercase;letter-spacing:.22em;font-size:.58rem;color:#77736c}.material-legend span+span:before{content:"·";margin-right:clamp(18px,4vw,58px)}.material-grid{grid-template-columns:repeat(4,minmax(0,1fr));gap:18px;max-width:1500px}.material-card{min-height:540px;grid-template-rows:62% 38%;border-radius:26px}.material-card>div:last-child{padding:24px 25px}.material-card h3{font-size:clamp(1.75rem,2.1vw,2.55rem)}.material-card p{font-size:.9rem}.material-image img{width:100%;height:100%;object-fit:cover;filter:none}.material-card.walnut{background:#241b16}.material-card.glass{background:#dce9ea;color:#172327}.material-card.aluminium{background:#d8c59e;color:#2d261a}.material-card.porcelain{background:#e9e4d5;color:#25334a}.material-card.leather{background:#2b160e;color:#f6dfc4}.material-card.basalt{background:#111315;color:#dce5e8}.material-card.lacquer{background:#080707;color:#f3d795}.materials-close{text-align:center;max-width:680px;margin:52px auto 0;color:#595853;font-family:var(--serif);font-size:1.35rem}.material-card:nth-child(1),.material-card:nth-child(5){grid-column:span 2}.material-card:nth-child(1) .material-image img,.material-card:nth-child(5) .material-image img{object-position:center 38%}
+
+.portrait-stage{max-width:1040px;margin:0 auto;display:grid;grid-template-columns:1fr 1.08fr .8fr;gap:28px;align-items:center}.portrait-stage figure{margin:0;background:#151718;padding:12px 12px 18px;border-radius:38px;box-shadow:var(--shadow);transform:rotate(-2deg)}.portrait-stage figure.featured{transform:translateY(-18px) rotate(1.5deg)}.portrait-stage img{border-radius:28px;aspect-ratio:9/18.8;object-fit:cover}.portrait-stage figcaption{color:#d7d9d8;text-align:center;text-transform:uppercase;letter-spacing:.14em;font-size:.57rem;margin-top:12px}.ipad-card{aspect-ratio:.82;border-radius:42px;background:linear-gradient(145deg,#e5e0d6,#bdb6aa);box-shadow:var(--shadow);display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:30px}.ipad-card strong{font:400 3rem var(--serif)}.ipad-card span{font-size:.72rem;line-height:1.6;color:#5d5b57}.gesture-note{text-align:center;color:#77736d;font-size:.76rem;margin-top:24px}
+
+.progress-band{background:#d8d1c5;padding:clamp(90px,11vw,170px) clamp(24px,10vw,160px);display:grid;grid-template-columns:.7fr 1.3fr;gap:8vw;align-items:center}.progress-band>div:last-child{max-width:760px}.progress-band h2{font:400 clamp(3rem,5vw,5.5rem)/.96 var(--serif);margin:0}.progress-band p:not(.eyebrow){line-height:1.75;color:#575753;max-width:650px}.progress-orbit{aspect-ratio:1;border-radius:50%;border:1px solid #aaa297;display:grid;grid-template-columns:1fr 1fr;place-content:center;text-align:center;gap:8px;padding:20%;box-shadow:inset 0 0 0 22px #ffffff26}.progress-orbit span{text-transform:uppercase;letter-spacing:.18em;font-size:.6rem;color:#716c65}.progress-orbit strong{font:400 2rem var(--serif)}.progress-orbit i{grid-column:1/-1;height:1px;background:#b7aea1;margin:12px}
+
+@media(hover:hover) and (pointer:fine){.material-card:hover img{transform:scale(1.025)}}
+@media(max-width:1100px){.mode-card{grid-template-columns:1fr;grid-template-rows:390px auto;min-height:700px}.mode-shot{min-height:0}.material-grid{grid-template-columns:repeat(2,minmax(0,1fr))}.material-card:nth-child(1),.material-card:nth-child(5){grid-column:auto}.portrait-stage{grid-template-columns:1fr 1fr}.ipad-card{display:none}}
+@media(max-width:700px){.mode-grid{grid-template-columns:1fr}.mode-card{grid-template-rows:440px auto}.material-legend{gap:12px;flex-wrap:wrap;margin-top:-12px}.material-legend span+span:before{margin-right:12px}.material-grid{display:flex;overflow-x:auto;scroll-snap-type:x mandatory;gap:14px;margin-left:-22px;margin-right:-22px;padding:0 22px 24px;scrollbar-width:none}.material-grid::-webkit-scrollbar{display:none}.material-card{flex:0 0:min(84vw,390px);scroll-snap-align:center;min-height:560px}.portrait-stage{grid-template-columns:1fr 1fr;gap:12px}.portrait-stage figure{padding:7px 7px 13px;border-radius:24px}.portrait-stage img{border-radius:18px}.progress-band{grid-template-columns:1fr}.progress-orbit{max-width:300px;margin:auto}}
+
 /* Final responsive composition safeguards. */
 html,body{overflow-x:hidden}
 @media(max-width:600px){
@@ -13,4 +26,146 @@ html,body{overflow-x:hidden}
   .hero:after{background:linear-gradient(180deg,var(--pearl) 0%,var(--pearl) 48%,rgb(241 238 232/.92) 56%,transparent 76%)}
   .hero-copy{padding-top:112px}
   .hero-copy .lead{max-width:340px}
+}
+
+/* 2026-07-22 editorial unification — one portrait proportion everywhere. */
+.mode-grid{max-width:1080px;gap:22px}
+.mode-card{min-height:520px;grid-template-columns:42% 58%;border-radius:28px}
+.mode-shot{min-height:520px;max-height:520px}
+.mode-shot img{object-position:50% 48%}
+.mode-copy{padding:clamp(26px,3vw,42px)}
+.mode-copy h3{font-size:clamp(2.5rem,3.4vw,3.7rem)}
+
+.material-grid{display:flex;gap:20px;max-width:100%;overflow-x:auto;scroll-snap-type:x mandatory;padding:8px max(24px,calc((100vw - 1240px)/2)) 34px;scrollbar-width:none}
+.material-grid::-webkit-scrollbar{display:none}
+.material-card,.material-card:nth-child(1),.material-card:nth-child(5){grid-column:auto;min-height:0;display:flex;flex:0 0 300px;flex-direction:column;border-radius:26px;scroll-snap-align:center}
+.material-image{aspect-ratio:3/5;flex:none}
+.material-image img,.material-card:nth-child(1) .material-image img,.material-card:nth-child(5) .material-image img{width:100%;height:100%;object-fit:cover;object-position:center}
+.material-card>div:last-child{min-height:230px;padding:25px 26px 28px}
+.material-card h3{font-size:clamp(1.75rem,2vw,2.25rem)}
+
+.flip-detail .detail-visual{max-width:510px;justify-self:center}
+.flip-detail .detail-visual img{width:100%;max-height:660px;object-fit:cover;object-position:center 38%}
+
+.portrait-carousel{position:relative;max-width:1180px;margin:0 auto}
+.portrait-track{display:flex;gap:22px;overflow-x:auto;scroll-snap-type:x mandatory;padding:28px max(44px,calc((100% - 310px)/2)) 42px;scrollbar-width:none;overscroll-behavior-x:contain}
+.portrait-track::-webkit-scrollbar{display:none}
+.portrait-track figure{flex:0 0 310px;margin:0;scroll-snap-align:center;background:#111415;padding:9px 9px 15px;border-radius:34px;box-shadow:0 18px 45px rgb(31 26 20/.18);transition:transform .35s ease}
+.portrait-track figure:hover{transform:translateY(-5px)}
+.portrait-track img{width:100%;aspect-ratio:9/19.5;object-fit:cover;border-radius:26px}
+.portrait-track figcaption{text-align:center;color:#d8dcdb;text-transform:uppercase;letter-spacing:.13em;font-size:.57rem;margin-top:12px}
+.carousel-arrow{position:absolute;z-index:2;top:46%;width:44px;height:44px;border:1px solid rgb(23 25 26/.18);border-radius:50%;background:rgb(250 248 243/.90);backdrop-filter:blur(12px);font:300 2rem/1 var(--serif);color:#292b2a;cursor:pointer;box-shadow:0 8px 25px rgb(30 24 18/.13)}
+.carousel-arrow.previous{left:0}.carousel-arrow.next{right:0}
+
+@media(max-width:1100px){
+  .mode-card{grid-template-columns:40% 60%;grid-template-rows:none;min-height:500px}
+  .mode-shot{min-height:500px;max-height:500px}
+  .material-grid{max-width:none}
+}
+@media(max-width:700px){
+  .mode-card{grid-template-columns:38% 62%;grid-template-rows:none;min-height:460px}
+  .mode-shot{min-height:460px;max-height:460px}
+  .mode-copy{padding:24px 20px}.mode-copy h3{font-size:2.35rem}.mode-copy>p:not(.mode-number){font-size:.86rem;line-height:1.55}
+  .material-grid{display:flex;max-width:none;padding-left:22px;padding-right:22px}
+  .material-card{flex-basis:min(78vw,330px);min-height:0}
+  .material-card>div:last-child{min-height:225px}
+  .portrait-track{gap:14px;padding-left:calc((100% - 270px)/2);padding-right:calc((100% - 270px)/2)}
+  .portrait-track figure{flex-basis:270px;border-radius:28px}
+  .portrait-track img{border-radius:21px}
+  .carousel-arrow{display:none}
+}
+@media(max-width:440px){
+  .mode-grid{gap:16px}.mode-card{grid-template-columns:1fr;grid-template-rows:360px auto}.mode-shot{min-height:360px;max-height:360px}
+}
+
+/* Two tactile challenges, presented as one authored product story. */
+.modes{padding-bottom:clamp(100px,12vw,180px)}
+.modes-art{max-width:1320px;margin:0 auto;border-radius:38px;overflow:hidden;box-shadow:0 34px 90px rgb(0 0 0/.34);background:#d8d0c5}
+.modes-art img{width:100%;aspect-ratio:16/9;object-fit:cover}
+.modes .mode-grid{max-width:1120px;margin:clamp(38px,5vw,68px) auto 0;gap:clamp(28px,6vw,90px)}
+.mode-story{position:relative;padding:0 0 0 30px}
+.mode-story:before{content:"";position:absolute;inset:3px auto 2px 0;width:1px;background:linear-gradient(#d8bf88,transparent)}
+.mode-story.focus:before{background:linear-gradient(#87cdda,transparent)}
+.mode-story .mode-number{color:#d8bf88;opacity:1;text-transform:uppercase;letter-spacing:.2em}
+.mode-story.focus .mode-number{color:#9bd7df}
+.mode-story h3{font:400 clamp(2.5rem,4vw,4.2rem)/.98 var(--serif);letter-spacing:-.035em;margin:.75rem 0 1.15rem}
+.mode-story>p:not(.mode-number){max-width:470px;color:#d2d0ca;line-height:1.72;margin:0}
+.mode-story span{display:block;margin-top:1.35rem;color:#aeb5b3;text-transform:uppercase;letter-spacing:.16em;font-size:.6rem}
+@media(max-width:700px){
+  .modes-art{border-radius:24px;margin-left:-8px;margin-right:-8px}
+  .modes-art img{aspect-ratio:4/3;object-position:center}
+  .modes .mode-grid{grid-template-columns:1fr;margin-top:42px;gap:42px}
+  .mode-story{padding-left:22px}
+}
+
+/* 2026-07-23 chapter rhythm: light hero → dark atelier → warm game modes. */
+.materials{background:#090b0c;color:#f3f0e9;padding-top:clamp(105px,12vw,185px);padding-bottom:clamp(105px,12vw,185px)}
+.materials .eyebrow{color:#8f9695}
+.materials .section-heading>p:last-child{color:#a9aeac}
+.materials .material-legend{color:#7d8583}
+.materials .materials-close{color:#c6c8c4}
+
+.modes{position:relative;background:#d8d0c5;color:#242321;padding-top:clamp(105px,12vw,180px);overflow:hidden}
+.modes:before{content:"";position:absolute;inset:0;background:radial-gradient(circle at 50% 40%,rgb(255 255 255/.24),transparent 56%),linear-gradient(180deg,#cec5b8 0,#d8d0c5 22%,#ded7cd 100%);pointer-events:none}
+.modes>*{position:relative}
+.modes .eyebrow{color:#67635d}
+.modes .section-heading>p:last-child{color:#5f5c56}
+.modes-art{border-radius:0;box-shadow:0 0 90px 72px #d8d0c5;background:#d8d0c5}
+.modes-art img{mix-blend-mode:multiply}
+.mode-story h3{color:#232220}
+.mode-story>p:not(.mode-number){color:#53514c}
+.mode-story span,.mode-note{color:#6c6963}
+.mode-story:before{background:linear-gradient(#8c673e,transparent)}
+.mode-story.focus:before{background:linear-gradient(#5f7e82,transparent)}
+.mode-story .mode-number{color:#76512f}
+.mode-story.focus .mode-number{color:#456d72}
+@media(max-width:700px){
+  .modes-art{border-radius:0;box-shadow:0 0 46px 34px #d8d0c5}
+}
+
+/* The mode artwork becomes the page: two responsive campaign scenes. The image is a normal-flow
+   band (not a full-bleed backdrop behind the copy) with its own bottom fade — only the title is
+   allowed to dip into that fade as a deliberate overlap; the description always sits below it on
+   solid ground. A percentage-based fade behind absolutely-positioned copy doesn't scale with the
+   copy's actual (roughly fixed) text height, so it used to run the description onto raw photo at
+   both phone AND desktop sizes — this fixes it at every breakpoint, not just mobile. */
+.mode-scenes{max-width:1380px;margin:clamp(30px,4vw,58px) auto 0;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:clamp(8px,2vw,28px)}
+.mode-scene{position:relative;isolation:isolate}
+.mode-scene-art{position:relative;height:clamp(320px,34vw,460px);background-position:center;background-size:cover;background-repeat:no-repeat;-webkit-mask-image:linear-gradient(180deg,#000 55%,transparent 92%);mask-image:linear-gradient(180deg,#000 55%,transparent 92%)}
+.mode-scene.memory .mode-scene-art{background-image:url("img/generated/mode-memory-portrait.jpg")}
+.mode-scene.focus .mode-scene-art{background-image:url("img/generated/mode-focus-portrait.jpg")}
+.mode-scene-copy{position:relative;z-index:1;max-width:480px;margin:clamp(-96px,-9vw,-56px) auto 0;padding:0 clamp(22px,4vw,58px) clamp(28px,4vw,46px);text-align:center}
+.mode-scene-copy h3{font:400 clamp(2.65rem,3.7vw,4.5rem)/.95 var(--serif);letter-spacing:-.04em;margin:.7rem 0 1rem;color:#232220}
+.mode-scene-copy>p:not(.mode-number){margin:0;color:#53514c;line-height:1.68}
+.mode-scene-copy span{display:block;margin-top:1.25rem;color:#6c6963;text-transform:uppercase;letter-spacing:.16em;font-size:.6rem}
+.mode-scene .mode-number{opacity:1;text-transform:uppercase;letter-spacing:.2em;color:#76512f}
+.mode-scene.focus .mode-number{color:#456d72}
+@media(max-width:800px){
+  .mode-scenes{grid-template-columns:1fr;gap:0;margin-left:-22px;margin-right:-22px}
+  .mode-scene-art{height:min(88vw,440px)}
+  .mode-scene-copy{margin-top:-72px;padding:0 30px 40px}
+  .mode-scene-copy h3{font-size:clamp(2.7rem,12vw,4rem)}
+}
+
+/* 2026-07-23 material atelier: transform-driven desktop reveal, replacing scrollLeft (broke in
+   Safari, and fought the page's global smooth-scroll behavior into a jumpy, discrete motion).
+   .material-grid is now purely a clipping/scroll viewport; .material-track owns the flex layout
+   and is either scrolled natively (touch) or moved with a JS transform (desktop mouse). */
+.material-grid{display:block;overflow-x:auto;scroll-snap-type:x mandatory;max-width:100%;padding:8px max(24px,calc((100vw - 1240px)/2)) 34px;scrollbar-width:none}
+.material-grid::-webkit-scrollbar{display:none}
+.material-track{display:flex;gap:20px;width:max-content}
+.material-track .material-card,.material-track .material-card:nth-child(1),.material-track .material-card:nth-child(5){grid-column:auto;min-height:0;display:flex;flex:0 0 300px;flex-direction:column;border-radius:26px;scroll-snap-align:center}
+
+@media(hover:hover) and (pointer:fine){
+  .material-grid{overflow:hidden;scroll-snap-type:none}
+  .material-track{will-change:transform}
+}
+@media(prefers-reduced-motion:reduce){
+  .material-grid{overflow-x:auto!important;scroll-snap-type:x mandatory!important}
+  .material-track{transform:none!important}
+}
+@media(max-width:700px){
+  .material-grid{padding-left:22px;padding-right:22px}
+  .material-track{gap:14px}
+  .material-track .material-card{flex-basis:min(78vw,330px)}
 }
