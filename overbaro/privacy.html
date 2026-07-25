@@ -1,0 +1,80 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Overbaro — Privacy Policy · McFin</title>
+<meta name="description" content="Overbaro collects nothing. Barometric pressure is read and stored entirely on your device. No account, no server, no analytics, no ads, no tracking.">
+<link rel="canonical" href="https://mcfinapps.github.io/overbaro/privacy.html">
+<link rel="icon" href="img/app-icon.png" type="image/png">
+<link rel="apple-touch-icon" href="img/app-icon.png">
+<style>
+:root{--ink:#1f3f38;--sub:#5b7770;--bg:#f4f1ea;--card:#fffdf8;--line:#00000014;--accent:#2f6f62;--ok:#2f8f6f;--ok-bg:#2f8f6f14;--ok-line:#2f8f6f3d}
+@media (prefers-color-scheme: dark){
+  :root{--ink:#eaf3f1;--sub:#8aa8a1;--bg:#050b0d;--card:#0c1618;--line:#ffffff14;--accent:#6fb3a2;--ok:#5fd1a8;--ok-bg:#5fd1a814;--ok-line:#5fd1a83d}
+}
+*{box-sizing:border-box;margin:0;padding:0}
+body{font:17px -apple-system,BlinkMacSystemFont,"SF Pro Text",sans-serif;background:var(--bg);color:var(--ink);line-height:1.6;-webkit-font-smoothing:antialiased}
+.wrap{max-width:720px;margin:0 auto;padding:0 24px}
+header.site{display:flex;align-items:center;justify-content:space-between;padding:20px 0}
+.brand{display:flex;align-items:center;gap:10px;text-decoration:none;color:var(--ink);font-weight:600;letter-spacing:.01em}
+.brand img{width:26px;height:26px;border-radius:7px}
+h1{font-family:Georgia,serif;font-size:clamp(28px,7vw,38px);letter-spacing:-.3px;margin:24px 0 6px}
+.eff{color:var(--sub);font-size:13px;margin:0 0 20px}
+h2{font-family:Georgia,serif;font-size:19px;letter-spacing:-.2px;margin:0 0 8px;display:flex;align-items:center;gap:9px}
+h2 svg{flex-shrink:0}
+p{margin:0 0 10px;color:var(--sub)}
+p:last-child{margin-bottom:0}
+strong{color:var(--ink)}
+section{background:var(--card);border:1px solid var(--line);padding:18px 20px;border-radius:18px;margin:14px 0}
+.promise{display:flex;gap:14px;align-items:flex-start;background:var(--ok-bg);border:1px solid var(--ok-line);border-radius:18px;padding:20px 22px;margin:18px 0}
+.promise svg{flex:0 0 auto;width:30px;height:30px;stroke:var(--ok);fill:none;stroke-width:1.7;stroke-linecap:round;stroke-linejoin:round}
+.promise p{color:var(--ink);opacity:.92;font-size:15.5px}
+a{color:var(--accent)}
+footer{border-top:1px solid var(--line);margin-top:36px;padding:26px 24px;text-align:center;font-size:13px;color:var(--sub)}
+footer a{color:var(--sub)}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header class="site">
+    <a class="brand" href="../"><img src="../mark.svg" alt="" width="26" height="26">McFin</a>
+    <a href="index.html" style="color:var(--sub);text-decoration:none;font-size:14px;">← Overbaro</a>
+  </header>
+
+  <h1>Privacy</h1>
+  <p class="eff">Overbaro · local barometric pressure companion</p>
+
+  <div class="promise">
+    <svg viewBox="0 0 24 24"><path d="M12 2.5 L20 5.3 V11.2 C20 16.2 16.6 20 12 21.8 C7.4 20 4 16.2 4 11.2 V5.3 Z"/><path d="M8.4 12.2 l2.6 2.6 L15.8 9.3"/></svg>
+    <p><strong>Overbaro collects nothing.</strong> No account, no server, no analytics, no ads, no tracking, no third-party SDKs. Every reading, every stored trend point and every prediction is calculated on your device and stays there.</p>
+  </div>
+
+  <section><h2><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 3"/></svg>What it reads, and where it stays</h2>
+  <p><strong>Barometric pressure.</strong> Read from your iPhone's built-in pressure sensor (via Core Motion), continuously while the app is open and briefly during periodic background refreshes. Filtered readings are stored locally to build your pressure history and short-range forecast — never uploaded anywhere.</p>
+  <p><strong>Location (optional).</strong> If you enable it in Settings, Overbaro uses only coarse, infrequent "significant location change" updates — enough to notice you've travelled somewhere far so old pressure history isn't mixed with a new place. It is not continuous GPS tracking, and it never leaves your device. Leaving it off does not disable any core feature.</p>
+  </section>
+
+  <section><h2><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="9" width="20" height="6" rx="3"/><circle cx="8" cy="12" r="2.3"/></svg>Your control</h2>
+  <p>You can erase all stored pressure history at any time from Settings. Overbaro does not collect or transmit personal data, so there is nothing on our side to store, sell, share, or breach.</p>
+  </section>
+
+  <section><h2><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M12 9v4M12 17h.01"/><path d="M10.3 3.9 1.8 18.5A2 2 0 0 0 3.5 21.5h17a2 2 0 0 0 1.7-3L13.7 3.9a2 2 0 0 0-3.4 0Z"/></svg>Not an official warning service</h2>
+  <p>Overbaro's forecast is a local estimate from your own pressure trend, not a substitute for official weather warnings. For severe weather, always follow your local meteorological authority.</p>
+  </section>
+
+  <section><h2>Children's privacy</h2>
+  <p>Because Overbaro collects no personal information, it does not knowingly collect information from children.</p>
+  </section>
+
+  <section><h2>Changes</h2>
+  <p>If the app's privacy practices materially change, this page will be updated before the change is released.</p>
+  </section>
+
+  <p style="margin-top:18px">Questions about this policy can be sent to <a href="mailto:mike.mcfin@gmail.com">mike.mcfin@gmail.com</a>.</p>
+</div>
+<footer>
+  © 2026 <a href="../">McFin</a> · independent software from Finland · <a href="index.html">Overbaro</a>
+</footer>
+</body>
+</html>

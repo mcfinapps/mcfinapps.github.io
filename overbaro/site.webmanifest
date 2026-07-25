@@ -1,0 +1,10 @@
+{
+  "name": "Overbaro",
+  "short_name": "Overbaro",
+  "description": "A digital barometer for iPhone.",
+  "start_url": "./",
+  "display": "standalone",
+  "background_color": "#071b26",
+  "theme_color": "#071b26",
+  "icons": [{"src":"img/app-icon.png","sizes":"1024x1024","type":"image/png"}]
+}

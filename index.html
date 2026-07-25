@@ -1,94 +1,366 @@
 <!doctype html>
 <html lang="en">
 <head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<title>McFin — small apps, big experience</title>
-<meta name="description" content="McFin is an independent software maker from Finland. Small, polished apps for iPhone and iPad. Pay once, own forever — no subscriptions, no ads.">
-<link rel="icon" href="mark.svg" type="image/svg+xml">
-<style>
-  :root {
-    --ink: #101826; --bg: #FAFBFC; --sub: #5B6B7E; --accent: #2F5FE8;
-    --card: #FFFFFF; --line: #E4E9EE;
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#071017">
+  <meta name="description" content="McFin is an independent Finnish studio making premium iPhone and iPad apps with tactile design, thoughtful privacy and no subscriptions or ads.">
+  <meta name="keywords" content="independent iOS developer, Finnish app studio, premium iPhone apps, premium iPad apps, pay once apps, no subscription apps, privacy-first apps, tactile app design, haptic iPhone apps, Overbark, Overtiles, Overbaro, Drivescape">
+  <meta name="author" content="McFin">
+  <meta name="application-name" content="McFin">
+  <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
+  <meta name="googlebot" content="index, follow, max-image-preview:large">
+  <link rel="canonical" href="https://mcfinapps.github.io/">
+  <meta property="og:site_name" content="McFin">
+  <meta property="og:locale" content="en_US">
+  <meta property="og:title" content="McFin — Small apps. Deeply made.">
+  <meta property="og:description" content="Premium iPhone and iPad apps from an independent Finnish studio. Focused ideas, tactile design, thoughtful privacy and absolutely no subscriptions.">
+  <meta property="og:image" content="https://mcfinapps.github.io/img/portfolio/overbaro.jpg">
+  <meta property="og:image:secure_url" content="https://mcfinapps.github.io/img/portfolio/overbaro.jpg">
+  <meta property="og:image:type" content="image/jpeg">
+  <meta property="og:image:width" content="1536">
+  <meta property="og:image:height" content="1024">
+  <meta property="og:image:alt" content="McFin app collection featuring Overbaro, a beautifully crafted local weather instrument">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://mcfinapps.github.io/">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="McFin — Small apps. Deeply made.">
+  <meta name="twitter:description" content="Premium iPhone and iPad apps from Finland. Focused ideas, tactile design, thoughtful privacy and no subscriptions.">
+  <meta name="twitter:image" content="https://mcfinapps.github.io/img/portfolio/overbaro.jpg">
+  <meta name="twitter:image:alt" content="McFin app collection featuring Overbaro, a beautifully crafted local weather instrument">
+  <title>McFin — Small apps. Deeply made.</title>
+  <link rel="icon" href="mark.svg" type="image/svg+xml">
+  <link rel="manifest" href="site.webmanifest">
+  <link rel="stylesheet" href="styles.css">
+  <script src="site.js" defer></script>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "Organization",
+        "@id": "https://mcfinapps.github.io/#organization",
+        "name": "McFin",
+        "url": "https://mcfinapps.github.io/",
+        "logo": {
+          "@type": "ImageObject",
+          "url": "https://mcfinapps.github.io/mark.svg"
+        },
+        "description": "McFin is an independent Finnish studio creating focused, premium apps for iPhone and iPad.",
+        "email": "mike.mcfin@gmail.com",
+        "foundingLocation": {
+          "@type": "Country",
+          "name": "Finland"
+        },
+        "knowsAbout": [
+          "iOS app design",
+          "iPadOS app design",
+          "haptic interaction design",
+          "on-device processing",
+          "privacy-first software"
+        ]
+      },
+      {
+        "@type": "WebSite",
+        "@id": "https://mcfinapps.github.io/#website",
+        "url": "https://mcfinapps.github.io/",
+        "name": "McFin",
+        "description": "Premium iPhone and iPad apps, deeply crafted in Finland.",
+        "publisher": {
+          "@id": "https://mcfinapps.github.io/#organization"
+        },
+        "inLanguage": "en"
+      },
+      {
+        "@type": "ItemList",
+        "@id": "https://mcfinapps.github.io/#apps",
+        "name": "McFin apps",
+        "numberOfItems": 4,
+        "itemListOrder": "https://schema.org/ItemListOrderAscending",
+        "itemListElement": [
+          {
+            "@type": "ListItem",
+            "position": 1,
+            "item": {
+              "@type": "MobileApplication",
+              "name": "Overbaro",
+              "url": "https://mcfinapps.github.io/overbaro/",
+              "description": "A local weather instrument that uses barometric pressure readings and stored trends to show how the atmosphere is changing.",
+              "operatingSystem": "iOS, iPadOS",
+              "applicationCategory": "WeatherApplication",
+              "image": "https://mcfinapps.github.io/overbaro/img/app-icon.png",
+              "publisher": {
+                "@id": "https://mcfinapps.github.io/#organization"
+              }
+            }
+          },
+          {
+            "@type": "ListItem",
+            "position": 2,
+            "item": {
+              "@type": "MobileApplication",
+              "name": "Overbark",
+              "url": "https://mcfinapps.github.io/overbark/",
+              "description": "An on-device iPhone and iPad app that turns dog barks, posture and scene context into playful live speech bubbles.",
+              "operatingSystem": "iOS, iPadOS",
+              "applicationCategory": "EntertainmentApplication",
+              "image": "https://mcfinapps.github.io/overbark/img/appicon.png",
+              "publisher": {
+                "@id": "https://mcfinapps.github.io/#organization"
+              }
+            }
+          },
+          {
+            "@type": "ListItem",
+            "position": 3,
+            "item": {
+              "@type": "MobileApplication",
+              "name": "Overtiles",
+              "url": "https://mcfinapps.github.io/overtiles/",
+              "description": "Two tactile memory and focus games with seven material worlds, each combining distinct motion, sound and haptics.",
+              "operatingSystem": "iOS, iPadOS",
+              "applicationCategory": "GameApplication",
+              "image": "https://mcfinapps.github.io/overtiles/img/app-icon.png",
+              "publisher": {
+                "@id": "https://mcfinapps.github.io/#organization"
+              }
+            }
+          },
+          {
+            "@type": "ListItem",
+            "position": 4,
+            "item": {
+              "@type": "MobileApplication",
+              "name": "Drivescape",
+              "url": "https://mcfinapps.github.io/drivescape/",
+              "description": "A responsive driving-audio app that shapes a live generative score from acceleration, braking and cornering.",
+              "operatingSystem": "iOS",
+              "applicationCategory": "MusicApplication",
+              "image": "https://mcfinapps.github.io/drivescape/img/appicon.png",
+              "publisher": {
+                "@id": "https://mcfinapps.github.io/#organization"
+              }
+            }
+          }
+        ]
+      }
+    ]
   }
-  @media (prefers-color-scheme: dark) {
-    :root {
-      --ink: #F5F6F8; --bg: #0C1220; --sub: #8FA1B8; --accent: #4F7BFF;
-      --card: #131B2C; --line: #223049;
-    }
-  }
-  * { margin: 0; padding: 0; box-sizing: border-box; }
-  body {
-    font-family: -apple-system, BlinkMacSystemFont, "SF Pro Text", "Helvetica Neue", Arial, sans-serif;
-    background: var(--bg); color: var(--ink);
-    display: flex; flex-direction: column; min-height: 100vh;
-    -webkit-font-smoothing: antialiased;
-  }
-  main {
-    flex: 1; display: flex; flex-direction: column; align-items: center;
-    justify-content: center; text-align: center; padding: 12vh 24px 8vh;
-  }
-  .mark { width: 96px; height: auto; margin-bottom: 40px; }
-  .mark .m { stroke: var(--ink); }
-  .mark .dot { fill: var(--accent); }
-  h1 {
-    font-size: clamp(40px, 8vw, 64px); font-weight: 600; letter-spacing: 0.5px;
-  }
-  h1 .idot { color: var(--accent); }
-  .tagline {
-    margin-top: 14px; font-size: clamp(17px, 2.6vw, 21px); color: var(--sub);
-    font-weight: 400;
-  }
-  .promise {
-    margin-top: 44px; display: inline-block; padding: 12px 22px;
-    border: 1px solid var(--line); border-radius: 999px;
-    font-size: 15px; color: var(--sub); background: var(--card);
-  }
-  .promise strong { color: var(--ink); font-weight: 600; }
-  .apps {
-    margin-top: 64px; font-size: 14px; letter-spacing: 2.5px;
-    text-transform: uppercase; color: var(--sub);
-  }
-  .appcard {
-    margin-top: 18px; display: inline-flex; align-items: center; gap: 14px;
-    padding: 14px 22px; border: 1px solid var(--line); border-radius: 16px;
-    background: var(--card); text-decoration: none; color: var(--ink);
-  }
-  .appcard img { width: 44px; height: 44px; border-radius: 10px; }
-  .appcard .t { font-weight: 600; font-size: 16px; text-align: left; }
-  .appcard .s { font-size: 13px; color: var(--sub); text-align: left; }
-  footer {
-    padding: 28px 24px; text-align: center; font-size: 13px; color: var(--sub);
-    border-top: 1px solid var(--line);
-  }
-  footer a { color: var(--sub); }
-</style>
+  </script>
 </head>
 <body>
-<main>
-  <svg class="mark" viewBox="0 0 280 210" role="img" aria-label="McFin mark">
-    <path class="m" d="M53 183 L53 53 L118 143 L183 53 L183 183" fill="none" stroke-width="26" stroke-linecap="round" stroke-linejoin="round"/>
-    <circle class="dot" cx="241" cy="170" r="19"/>
-  </svg>
-  <h1>McF<span class="idot">i</span>n</h1>
-  <p class="tagline">Small apps. Big experience.</p>
-  <p class="promise"><strong>Pay once, own forever.</strong>&ensp;No subscriptions. No ads.</p>
-  <p class="apps">Made in Finland</p>
-  <a class="appcard" href="overbark/">
-    <img src="overbark/img/appicon.png" alt="">
-    <span><span class="t">Overbark</span><br><span class="s">Your dog, subtitled</span></span>
-  </a>
-  <a class="appcard" href="overtiles/">
-    <img src="overtiles/img/app-icon.png" alt="">
-    <span><span class="t">Overtiles</span><br><span class="s">Remember with all your senses</span></span>
-  </a>
-  <a class="appcard" href="drivescape/">
-    <img src="drivescape/img/appicon.png" alt="">
-    <span><span class="t">Drivescape</span><br><span class="s">Your drive, scored · Coming soon</span></span>
-  </a>
-</main>
-<footer>
-  © 2026 McFin · independent software from Finland · <a href="mailto:mike.mcfin@gmail.com">contact</a>
-</footer>
+  <a class="skip-link" href="#main">Skip to content</a>
+
+  <header class="site-header">
+    <a class="brand" href="#top" aria-label="McFin home">
+      <img src="mark.svg" alt="" width="39" height="30">
+      <span>McF<i>i</i>n</span>
+    </a>
+    <button class="menu-button" type="button" aria-expanded="false" aria-controls="nav">Menu</button>
+    <nav id="nav" aria-label="Main navigation">
+      <a href="#apps">Apps</a>
+      <a href="#principles">Principles</a>
+      <a href="#privacy">Privacy</a>
+      <a href="#studio">Studio</a>
+      <a class="nav-cta" href="mailto:mike.mcfin@gmail.com">Contact</a>
+    </nav>
+  </header>
+
+  <main id="main">
+    <section class="hero" id="top" aria-labelledby="hero-title">
+      <div class="portfolio-haze" aria-hidden="true">
+        <span class="haze overbaro"></span>
+        <span class="haze overbark"></span>
+        <span class="haze overtiles"></span>
+        <span class="haze drivescape"></span>
+      </div>
+      <div class="hero-copy reveal">
+        <p class="eyebrow">Independent software · Finland</p>
+        <h1 id="hero-title">Small apps.<br><em>Deeply made.</em></h1>
+        <p>McFin takes one focused idea and follows it all the way down—to the movement, sound, material and smallest moment of use. Nothing bloated. Nothing rented. Thoroughly over-engineered. Polished until the sensible stopping point is well behind us.</p>
+        <a class="text-link" href="#apps">Explore the collection <span>↓</span></a>
+      </div>
+      <div class="hero-promise reveal">
+        <span>01</span>
+        <p><strong>Pay once, own forever.</strong><br>No subscriptions. No ads.</p>
+      </div>
+      <div class="hero-count" aria-hidden="true"><strong>04</strong><span>apps<br>and growing</span></div>
+    </section>
+
+    <section class="collection" id="apps" aria-labelledby="collection-title">
+      <div class="collection-heading">
+        <div class="reveal">
+          <p class="eyebrow">The collection</p>
+          <h2 id="collection-title">Four different worlds.<br>One standard of care.</h2>
+        </div>
+        <div class="carousel-controls reveal">
+          <button class="carousel-button previous" type="button" aria-label="Previous app">←</button>
+          <p><span id="current-slide">01</span><i></i><span id="total-slides">04</span></p>
+          <button class="carousel-button next" type="button" aria-label="Next app">→</button>
+        </div>
+      </div>
+
+      <div class="app-carousel" tabindex="0" aria-label="McFin app collection">
+        <div class="app-track">
+          <article class="app-card overbaro-card" data-app="Overbaro">
+            <a href="overbaro/" aria-label="Explore Overbaro">
+              <img class="card-art" src="img/portfolio/overbaro.jpg" alt="" loading="eager">
+              <div class="card-wash"></div>
+              <div class="card-topline"><span>Local weather instrument</span><span>In development</span></div>
+              <p class="card-promo">Your iPhone’s barometer remembers the pressure behind you and projects the hours ahead. Local weather, inferred from the air around you. The atmosphere has not been asked to subscribe.</p>
+              <div class="card-copy">
+                <img class="app-icon" src="overbaro/img/app-icon.png" alt="">
+                <div>
+                  <h3>Overbaro</h3>
+                  <p>Weather, from where you stand.</p>
+                </div>
+              </div>
+              <span class="card-arrow" aria-hidden="true">↗</span>
+            </a>
+          </article>
+
+          <article class="app-card overbark-card" data-app="Overbark">
+            <a href="overbark/" aria-label="Explore Overbark">
+              <img class="card-art" src="img/portfolio/overbark.jpg" alt="" loading="lazy">
+              <div class="card-wash"></div>
+              <div class="card-topline"><span>On-device entertainment</span><span>iPhone &amp; iPad</span></div>
+              <p class="card-promo">On-device Vision, acoustics and the Neural Engine read bark tone, posture and scene—then float the result as speech bubbles. Confident guesses. Zero cloud.</p>
+              <div class="card-copy">
+                <img class="app-icon" src="overbark/img/appicon.png" alt="">
+                <div>
+                  <h3>Overbark</h3>
+                  <p>Your dog, subtitled.</p>
+                </div>
+              </div>
+              <span class="card-arrow" aria-hidden="true">↗</span>
+            </a>
+          </article>
+
+          <article class="app-card overtiles-card" data-app="Overtiles">
+            <a href="overtiles/" aria-label="Explore Overtiles">
+              <img class="card-art" src="img/portfolio/overtiles.jpg" alt="" loading="lazy">
+              <div class="card-wash"></div>
+              <div class="card-topline"><span>Tactile memory &amp; focus</span><span>iPhone &amp; iPad</span></div>
+              <p class="card-promo">Two games. Seven materials. Each has its own motion, sound and haptic signature—mute the sound and you’ll still feel every tile land. Pay once. The walnut is not leased.</p>
+              <div class="card-copy">
+                <img class="app-icon" src="overtiles/img/app-icon.png" alt="">
+                <div>
+                  <h3>Overtiles</h3>
+                  <p>Remember with all your senses.</p>
+                </div>
+              </div>
+              <span class="card-arrow" aria-hidden="true">↗</span>
+            </a>
+          </article>
+
+          <article class="app-card drivescape-card" data-app="Drivescape">
+            <a href="drivescape/" aria-label="Explore Drivescape">
+              <img class="card-art" src="img/portfolio/drivescape.jpg" alt="" loading="lazy">
+              <div class="card-wash"></div>
+              <div class="card-topline"><span>Responsive driving audio</span><span>In development</span></div>
+              <p class="card-promo">Motion sensors read acceleration, braking and cornering, then shape a live generative score around the drive. The car remains mechanically unchanged. Emotionally, less so.</p>
+              <div class="card-copy">
+                <img class="app-icon" src="drivescape/img/appicon.png" alt="">
+                <div>
+                  <h3>Drivescape</h3>
+                  <p>Every drive becomes a score.</p>
+                </div>
+              </div>
+              <span class="card-arrow" aria-hidden="true">↗</span>
+            </a>
+          </article>
+        </div>
+      </div>
+      <p class="swipe-note">Drag, swipe or use the arrows to move through the collection.</p>
+    </section>
+
+    <section class="app-index" aria-labelledby="index-title">
+      <div class="index-heading reveal">
+        <p class="eyebrow">The app shelf</p>
+        <h2 id="index-title">A collection designed<br>to keep growing.</h2>
+        <p>Explore McFin’s premium iPhone and iPad apps for local weather, playful dog interpretation, tactile memory and focus, and responsive driving audio. The visual carousel holds the current stories; this compact shelf keeps every app findable as the collection grows.</p>
+      </div>
+      <div class="index-list">
+        <a href="overbaro/" class="index-row reveal">
+          <span class="index-number">01</span><img src="overbaro/img/app-icon.png" alt="">
+          <strong>Overbaro</strong><span>Weather</span><em>In development</em><i>↗</i>
+        </a>
+        <a href="overbark/" class="index-row reveal">
+          <span class="index-number">02</span><img src="overbark/img/appicon.png" alt="">
+          <strong>Overbark</strong><span>Entertainment</span><em>iPhone &amp; iPad</em><i>↗</i>
+        </a>
+        <a href="overtiles/" class="index-row reveal">
+          <span class="index-number">03</span><img src="overtiles/img/app-icon.png" alt="">
+          <strong>Overtiles</strong><span>Games</span><em>iPhone &amp; iPad</em><i>↗</i>
+        </a>
+        <a href="drivescape/" class="index-row reveal">
+          <span class="index-number">04</span><img src="drivescape/img/appicon.png" alt="">
+          <strong>Drivescape</strong><span>Music</span><em>In development</em><i>↗</i>
+        </a>
+      </div>
+    </section>
+
+    <section class="principles" id="principles" aria-labelledby="principles-title">
+      <div class="principles-intro reveal">
+        <p class="eyebrow">The McFin standard</p>
+        <h2 id="principles-title">Built small.<br>Finished completely.</h2>
+      </div>
+      <div class="principle-grid">
+        <article class="reveal">
+          <span>01</span><h3>One clear idea.</h3>
+          <p>Every app earns its place by doing something focused, useful or delightful—without accumulating a cockpit of features around it.</p>
+        </article>
+        <article class="reveal">
+          <span>02</span><h3>Made for the senses.</h3>
+          <p>Motion, sound, haptics, typography and material are designed as one experience rather than added as decoration at the end.</p>
+        </article>
+        <article class="reveal">
+          <span>03</span><h3>Yours after one purchase.</h3>
+          <p>No subscriptions, advertising or attention traps. The business model is deliberately as quiet as the apps.</p>
+        </article>
+      </div>
+    </section>
+
+    <section class="privacy-promise" id="privacy" aria-labelledby="privacy-title">
+      <div class="privacy-zero reveal" aria-hidden="true">
+        <strong>0</strong>
+        <span>people profiled<br>for advertising</span>
+      </div>
+      <div class="privacy-copy reveal">
+        <p class="eyebrow">Privacy is a product decision</p>
+        <h2 id="privacy-title">Your data is not<br>our raw material.</h2>
+        <p>McFin apps do not build advertising profiles, run behavioral analytics or sell personal data. Core processing and personal history stay on your device whenever the product allows it.</p>
+        <p>If an app genuinely needs a connection, it serves the feature—not a server-side dossier. We make software and sell it to you. A suspiciously traditional arrangement.</p>
+        <ul aria-label="McFin privacy promises">
+          <li><span>01</span>No advertising profiles</li>
+          <li><span>02</span>No behavioral analytics</li>
+          <li><span>03</span>No selling personal data</li>
+          <li><span>04</span>Permissions explained in plain language</li>
+        </ul>
+      </div>
+    </section>
+
+    <section class="studio" id="studio" aria-labelledby="studio-title">
+      <div class="studio-orbit" aria-hidden="true">
+        <img src="overbaro/img/app-icon.png" alt="">
+        <img src="overbark/img/appicon.png" alt="">
+        <img src="overtiles/img/app-icon.png" alt="">
+        <img src="drivescape/img/appicon.png" alt="">
+      </div>
+      <div class="studio-copy reveal">
+        <p class="eyebrow">A small independent studio</p>
+        <h2 id="studio-title">Crafted in Finland.<br>Made for your pocket.</h2>
+        <p>McFin is an independent Finnish app studio creating focused software for iPhone and iPad. Motion, sound, haptics and privacy are treated as product materials—not release-day garnish. Small scope. Disproportionate attention to detail. We are comfortable with this imbalance.</p>
+        <a class="button" href="mailto:mike.mcfin@gmail.com">Say hello</a>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <a class="footer-brand" href="#top"><img src="mark.svg" alt="" width="38" height="29"><span>McF<i>i</i>n</span></a>
+    <p>Small apps. Big experience.</p>
+    <nav aria-label="Footer navigation"><a href="#apps">Apps</a><a href="mailto:mike.mcfin@gmail.com">Contact</a></nav>
+    <p class="copyright">© 2026 McFin · independent software from Finland</p>
+  </footer>
 </body>
 </html>

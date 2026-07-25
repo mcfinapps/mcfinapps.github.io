@@ -1,0 +1,90 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Overbaro — Help &amp; How-to · McFin</title>
+<meta name="description" content="How to use Overbaro: reading the gauge and trend chart, background recording, the widget and StandBy, and troubleshooting. Everything runs on your device.">
+<link rel="canonical" href="https://mcfinapps.github.io/overbaro/help.html">
+<link rel="icon" href="img/app-icon.png" type="image/png">
+<link rel="apple-touch-icon" href="img/app-icon.png">
+<style>
+:root{--ink:#1f3f38;--sub:#5b7770;--bg:#f4f1ea;--card:#fffdf8;--line:#00000014;--accent:#2f6f62}
+@media (prefers-color-scheme: dark){
+  :root{--ink:#eaf3f1;--sub:#8aa8a1;--bg:#050b0d;--card:#0c1618;--line:#ffffff14;--accent:#6fb3a2}
+}
+*{box-sizing:border-box;margin:0;padding:0}
+body{font:17px -apple-system,BlinkMacSystemFont,"SF Pro Text",sans-serif;background:var(--bg);color:var(--ink);line-height:1.6;-webkit-font-smoothing:antialiased}
+.wrap{max-width:720px;margin:0 auto;padding:0 24px}
+header.site{display:flex;align-items:center;justify-content:space-between;padding:20px 0}
+.brand{display:flex;align-items:center;gap:10px;text-decoration:none;color:var(--ink);font-weight:600;letter-spacing:.01em}
+.brand img{width:26px;height:26px;border-radius:7px}
+h1{font-family:Georgia,serif;font-size:clamp(28px,7vw,38px);letter-spacing:-.3px;margin:24px 0 20px}
+h2{font-family:Georgia,serif;font-size:19px;letter-spacing:-.2px;margin:0 0 8px;display:flex;align-items:center;gap:9px}
+h2 svg{flex-shrink:0}
+p{margin:0 0 8px;color:var(--sub)}
+p:last-child{margin-bottom:0}
+strong{color:var(--ink)}
+section{background:var(--card);border:1px solid var(--line);padding:18px 20px;border-radius:18px;margin:14px 0}
+.mode-label{font-size:12px;font-weight:600;letter-spacing:1.5px;text-transform:uppercase;color:var(--accent);margin:26px 0 -6px}
+a{color:var(--accent)}
+footer{border-top:1px solid var(--line);margin-top:36px;padding:26px 24px;text-align:center;font-size:13px;color:var(--sub)}
+footer a{color:var(--sub)}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header class="site">
+    <a class="brand" href="../"><img src="../mark.svg" alt="" width="26" height="26">McFin</a>
+    <a href="index.html" style="color:var(--sub);text-decoration:none;font-size:14px;">← Overbaro</a>
+  </header>
+
+  <h1>Overbaro Help</h1>
+
+  <p class="mode-label">Reading the gauge</p>
+  <section><h2><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M4 15a8 8 0 1 1 16 0"/><path d="M12 15 16 9"/><circle cx="12" cy="15" r="1.4" fill="var(--accent)"/></svg>The needle</h2>
+  <p>The needle always points to the same <strong>calibrated, filtered</strong> reading shown as the large number below the gauge — never a raw, jittery instant sample. That filtering is what keeps the needle calm instead of trembling.</p></section>
+  <section><h2><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M3 12h18M7 7l-5 5 5 5M17 7l5 5-5 5"/></svg>The trend phrase</h2>
+  <p>Below the reading, a plain-language line ("Falling rapidly," "Rising steadily," "Steady") describes how fast pressure has moved over the last few hours — the same categories meteorologists use for 3-hour pressure tendency, not an invented scale.</p></section>
+
+  <p class="mode-label">The trend chart</p>
+  <section><h2><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M3 17c3-1 4-6 7-6s3 4 6 4 3-5 5-5"/><circle cx="16" cy="10" r="1.6" fill="var(--accent)"/></svg>Solid line, dot, dashed line</h2>
+  <p>The solid line is your <strong>recorded</strong> pressure history. The glowing dot marks <strong>now</strong>. The dashed line is a short projection, not a recorded reading — it fades as confidence drops the further out it reaches.</p></section>
+  <section><h2><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M12 6v6l4 2"/><circle cx="12" cy="12" r="9"/></svg>Adjusting the time window</h2>
+  <p>Settings → Trend chart lets you change how many hours of history and how far ahead the chart shows, if you'd rather see a longer or shorter window than the default.</p></section>
+
+  <p class="mode-label">Recording in the background</p>
+  <section><h2><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2v10"/><path d="M6.3 6.3a9 9 0 1 0 11.4 0"/></svg>You only need to open it once</h2>
+  <p>Open Overbaro the first time and it keeps recording pressure samples in the background afterward, via iOS's own wake mechanism — you don't need to keep the app open or check it regularly for history to keep building. This is <strong>on by default</strong>.</p></section>
+  <section><h2><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M20 12a8 8 0 1 1-2.6-5.9"/><path d="M20 4v5h-5"/></svg>Turning it off</h2>
+  <p>If you'd rather iOS never wake Overbaro on its own, turn it off in Settings → Background updates. History then only updates while the app is open.</p></section>
+
+  <p class="mode-label">Widget &amp; StandBy</p>
+  <section><h2><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="3"/><path d="M12 8v8M8 12h8"/></svg>Adding the Home Screen widget</h2>
+  <p>Long-press an empty area of your Home Screen, tap the <strong>+</strong> in the top corner, search for "Overbaro," then add the small widget. It shows the current reading, trend and a simplified chart, updated whenever the app can refresh in the background.</p></section>
+  <section><h2><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="7" width="20" height="10" rx="5"/><circle cx="7" cy="12" r="3"/></svg>Using it in StandBy</h2>
+  <p>StandBy has its own, separate widget selection — adding Overbaro to your Home Screen does not automatically add it to StandBy. Place your charging iPhone on its side, wait for StandBy to appear, then long-press the StandBy screen itself and add the Overbaro widget there too.</p></section>
+  <section><h2><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/><circle cx="12" cy="12" r="4"/></svg>Freshness in the widget</h2>
+  <p>Since the widget can't run its own background sensing, it shows how old its reading is — "Updated X min ago" — and will tell you to open Overbaro if the data is too old to trust, rather than ever pretending to be live when it isn't.</p></section>
+
+  <p class="mode-label">Good to know</p>
+  <section><h2><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M3 21h18M6 21V9l6-5 6 5v12M10 21v-6h4v6"/></svg>Indoors is fine</h2>
+  <p>Air pressure equalizes with the outside atmosphere through any door, window or vent within minutes, so Overbaro works perfectly well from your pocket, indoors, all day — you don't need to go outside for it to track real weather changes.</p></section>
+  <section><h2><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="2" width="16" height="20" rx="2"/><path d="M9 22v-4h6v4"/></svg>Riding an elevator won't fool it</h2>
+  <p>Changing floors shifts the raw sensor reading (higher up reads slightly lower pressure), but Overbaro recognizes fast, elevator-speed changes and excludes them from your weather trend, so a quick trip upstairs won't fake a "storm approaching" reading.</p></section>
+  <section><h2><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2.5 L20 5.3 V11.2 C20 16.2 16.6 20 12 21.8 C7.4 20 4 16.2 4 11.2 V5.3 Z"/><path d="M8.4 12.2 l2.6 2.6 L15.8 9.3"/></svg>Does Overbaro need the internet?</h2>
+  <p>No. Every reading, the stored trend and the forecast are all calculated on your device. Overbaro has no account, advertising or analytics, and works the same in Airplane Mode.</p></section>
+  <section><h2><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M12 6v6l4 2"/><circle cx="12" cy="12" r="9"/></svg>Why is there a gap in my history?</h2>
+  <p>iOS decides when apps are allowed to wake up in the background to take a reading — Overbaro requests this regularly, but the system can space it out further if you rarely open the app. Opening the app captures a fresh reading immediately and fills the chart back in going forward.</p></section>
+  <section><h2><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M12 9v4M12 17h.01"/><path d="M10.3 3.9 1.8 18.5A2 2 0 0 0 3.5 21.5h17a2 2 0 0 0 1.7-3L13.7 3.9a2 2 0 0 0-3.4 0Z"/></svg>How accurate is the forecast?</h2>
+  <p>Overbaro's forecast is an honest, local estimate from your own pressure trend — most useful as a same-day companion to your regular weather app, not a replacement for it, and never a substitute for official severe-weather warnings.</p></section>
+
+  <p class="mode-label">Still need help?</p>
+  <section><h2><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 7 9 6 9-6"/></svg>Email us</h2>
+  <p>Email <a href="mailto:mike.mcfin@gmail.com?subject=Overbaro%20support">mike.mcfin@gmail.com</a>. Please include your iPhone model and iOS version.</p></section>
+</div>
+<footer>
+  © 2026 <a href="../">McFin</a> · independent software from Finland · <a href="index.html">Overbaro</a>
+</footer>
+</body>
+</html>
