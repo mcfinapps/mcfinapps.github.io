@@ -41,17 +41,29 @@ footer a{color:var(--sub)}
 
   <h1>Overbaro Help</h1>
 
+  <p class="mode-label">First readings</p>
+  <section><h2><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M12 6v6l4 2"/><circle cx="12" cy="12" r="9"/></svg>Give it about 20 minutes</h2>
+  <p>The gauge and number show a live reading right away, but the trend, forecast and chart need real history first — they appear once Overbaro has collected roughly <strong>20 minutes</strong> of samples (about one reading a minute), whether the app stays open or you just check back later. Until then you'll see placeholders like "Collecting more data…" and "&lt; awaiting data &gt;" instead — that's expected, not a fault.</p></section>
+
   <p class="mode-label">Reading the gauge</p>
   <section><h2><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M4 15a8 8 0 1 1 16 0"/><path d="M12 15 16 9"/><circle cx="12" cy="15" r="1.4" fill="var(--accent)"/></svg>The needle</h2>
-  <p>The needle always points to the same <strong>calibrated, filtered</strong> reading shown as the large number below the gauge — never a raw, jittery instant sample. That filtering is what keeps the needle calm instead of trembling.</p></section>
+  <p>The needle always points to the same reading shown as the large number below the gauge.</p></section>
   <section><h2><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M3 12h18M7 7l-5 5 5 5M17 7l5 5-5 5"/></svg>The trend phrase</h2>
   <p>Below the reading, a plain-language line ("Falling rapidly," "Rising steadily," "Steady") describes how fast pressure has moved over the last few hours — the same categories meteorologists use for 3-hour pressure tendency, not an invented scale.</p></section>
 
   <p class="mode-label">The trend chart</p>
   <section><h2><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M3 17c3-1 4-6 7-6s3 4 6 4 3-5 5-5"/><circle cx="16" cy="10" r="1.6" fill="var(--accent)"/></svg>Solid line, dot, dashed line</h2>
-  <p>The solid line is your <strong>recorded</strong> pressure history. The glowing dot marks <strong>now</strong>. The dashed line is a short projection, not a recorded reading — it fades as confidence drops the further out it reaches.</p></section>
+  <p>The solid line is your <strong>recorded</strong> pressure history. The glowing dot marks <strong>now</strong>. The dashed curve is a short projection, not a recorded reading — the shaded band around it widens and fades the further out it reaches, since confidence naturally drops with distance. The thin gray line is standard sea-level pressure (1013.25 hPa), the usual reference for "low" vs. "high."</p></section>
+  <section><h2><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12h16M4 12l4-4M4 12l4 4M20 12l-4-4M20 12l-4 4"/></svg>Scrolling and scrubbing</h2>
+  <p>Drag the chart itself, left or right, to scroll back through history. Press and hold anywhere on the chart, then drag, to scrub a crosshair — it reads out the exact value and time under your finger, snapping to the nearest real sample when dots are visible.</p></section>
   <section><h2><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M12 6v6l4 2"/><circle cx="12" cy="12" r="9"/></svg>Adjusting the time window</h2>
-  <p>Settings → Trend chart lets you change how many hours of history and how far ahead the chart shows, if you'd rather see a longer or shorter window than the default.</p></section>
+  <p>Press and hold the window label above the chart, then slide your finger up or down to pick how much history it shows — from 5M up through 1H/3H/12H/1D/7D/30D, default 12H — and lift to select. Settings → Trend chart separately controls how far the dashed projection reaches ahead, up to 3 hours.</p></section>
+
+  <p class="mode-label">Scenery &amp; themes</p>
+  <section><h2><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M3 17l5-6 4 4 4-7 5 9"/><circle cx="18" cy="6" r="1.6" fill="var(--accent)"/></svg>Five real places</h2>
+  <p>Settings → Scenery has five landscape themes — Quiet Horizon, Silver Skerries, Glacial Shelf, Heather Silence, Salt Meridian — each with its own photography, color palette and gauge tint, in both light and dark. Pick one in <strong>Manual</strong> mode and it stays put.</p></section>
+  <section><h2><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/><circle cx="12" cy="12" r="4"/></svg>Or let it rotate</h2>
+  <p>Switch Scenery to <strong>Auto</strong> and Overbaro moves to the next theme once a day on its own, wrapping back to the first after the last — the reading and forecast are unaffected either way, only the scenery changes.</p></section>
 
   <p class="mode-label">Recording in the background</p>
   <section><h2><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2v10"/><path d="M6.3 6.3a9 9 0 1 0 11.4 0"/></svg>You only need to open it once</h2>
@@ -67,11 +79,15 @@ footer a{color:var(--sub)}
   <section><h2><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/><circle cx="12" cy="12" r="4"/></svg>Freshness in the widget</h2>
   <p>Since the widget can't run its own background sensing, it shows how old its reading is — "Updated X min ago" — and will tell you to open Overbaro if the data is too old to trust, rather than ever pretending to be live when it isn't.</p></section>
 
+  <p class="mode-label">Feedback</p>
+  <section><h2><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M9 11V6a3 3 0 0 1 6 0v5"/><path d="M6 11v3a6 6 0 0 0 12 0v-3a2 2 0 0 0-4 0v1a2 2 0 0 0-4 0"/></svg>Haptics</h2>
+  <p>Overbaro uses subtle taps to make the gauge and chart feel physical — scrolling the chart, scrubbing to a value, dragging the needle, and its settle flourish on launch all have their own distinct feel. Turn these off in Settings → Feedback. If you don't feel any at all, check that System Haptics is on in <strong>Settings → Sounds &amp; Haptics</strong> on your iPhone.</p></section>
+
   <p class="mode-label">Good to know</p>
   <section><h2><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M3 21h18M6 21V9l6-5 6 5v12M10 21v-6h4v6"/></svg>Indoors is fine</h2>
   <p>Air pressure equalizes with the outside atmosphere through any door, window or vent within minutes, so Overbaro works perfectly well from your pocket, indoors, all day — you don't need to go outside for it to track real weather changes.</p></section>
   <section><h2><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="2" width="16" height="20" rx="2"/><path d="M9 22v-4h6v4"/></svg>Riding an elevator won't fool it</h2>
-  <p>Changing floors shifts the raw sensor reading (higher up reads slightly lower pressure), but Overbaro recognizes fast, elevator-speed changes and excludes them from your weather trend, so a quick trip upstairs won't fake a "storm approaching" reading.</p></section>
+  <p>Changing floors shifts the sensor reading (higher up reads slightly lower pressure), but Overbaro recognizes fast, elevator-speed changes and excludes them from your weather trend, so a quick trip upstairs won't fake a "storm approaching" reading.</p></section>
   <section><h2><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2.5 L20 5.3 V11.2 C20 16.2 16.6 20 12 21.8 C7.4 20 4 16.2 4 11.2 V5.3 Z"/><path d="M8.4 12.2 l2.6 2.6 L15.8 9.3"/></svg>Does Overbaro need the internet?</h2>
   <p>No. Every reading, the stored trend and the forecast are all calculated on your device. Overbaro has no account, advertising or analytics, and works the same in Airplane Mode.</p></section>
   <section><h2><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M12 6v6l4 2"/><circle cx="12" cy="12" r="9"/></svg>Why is there a gap in my history?</h2>

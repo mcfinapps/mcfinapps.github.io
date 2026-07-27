@@ -95,6 +95,85 @@ h1, h2, h3 { font-family: var(--serif); font-weight: 400; margin: 0; letter-spac
 .light-portrait img { width: 100%; height: 100%; object-fit: cover; object-position: 50% 47%; mix-blend-mode: multiply; opacity: .9; }
 .glance-note { position: absolute; right: 7vw; bottom: 7vw; color: #56777c; font-family: var(--serif); font-style: italic; text-align: right; line-height: 1.55; font-size: 1rem; }
 
+.atmospheres {
+  --atlas-gutter: clamp(24px, 7vw, 112px);
+  color: var(--ink); overflow: hidden;
+  padding: clamp(120px, 14vw, 210px) 0 clamp(110px, 12vw, 180px);
+  background:
+    radial-gradient(circle at 86% 77%, rgb(215 185 157 / .23), transparent 28%),
+    linear-gradient(180deg, #edf2f0 0%, #f3f3ef 48%, #e7eeec 100%);
+}
+.atmospheres-intro {
+  padding: 0 var(--atlas-gutter); display: grid; grid-template-columns: 1.2fr .8fr;
+  gap: clamp(40px, 9vw, 150px); align-items: end;
+}
+.atmospheres .eyebrow { color: #3d7778; }
+.atmospheres h2 { max-width: 11ch; font-size: clamp(3.4rem, 6.6vw, 7.4rem); line-height: .9; }
+.atmospheres-deck { max-width: 510px; padding-bottom: .6rem; }
+.atmospheres-deck > p:first-child { color: #587075; font-size: clamp(.96rem, 1.25vw, 1.12rem); line-height: 1.78; }
+.dry-note { margin: 1.5rem 0 0; color: #3f696d; font-family: var(--serif); font-style: italic; font-size: .94rem; }
+.atmosphere-toolbar {
+  margin: clamp(64px, 8vw, 110px) var(--atlas-gutter) 28px;
+  display: flex; align-items: center; justify-content: space-between;
+}
+.appearance-switch { display: inline-flex; padding: 4px; background: rgb(255 255 255 / .48); border: 1px solid rgb(23 73 79 / .12); border-radius: 99px; }
+.appearance-switch button {
+  min-height: 44px; padding: 0 17px; border: 0; border-radius: 99px; color: #62787b;
+  background: transparent; cursor: pointer; font-size: .69rem; letter-spacing: .04em;
+  transition: color .25s ease, background .25s ease, box-shadow .25s ease;
+}
+.appearance-switch button span { margin-right: 6px; color: #629697; }
+.appearance-switch button.active { color: #173b42; background: rgb(255 255 255 / .9); box-shadow: 0 7px 24px rgb(34 65 67 / .08); }
+.appearance-switch button:focus-visible, .atlas-arrows button:focus-visible, .atmosphere-rail:focus-visible { outline: 2px solid #2c7777; outline-offset: 3px; }
+.atlas-position { color: #6f8385; font-family: var(--serif); font-size: .88rem; font-variant-numeric: tabular-nums; letter-spacing: .08em; }
+.atlas-position span { color: #1f575c; font-size: 1.4rem; }
+.atmosphere-rail {
+  display: flex; gap: clamp(22px, 3vw, 44px); overflow-x: auto; overscroll-behavior-inline: contain;
+  scroll-snap-type: x mandatory; scroll-padding-inline: var(--atlas-gutter);
+  padding: 0 var(--atlas-gutter) 42px; scrollbar-width: thin; scrollbar-color: rgb(44 104 105 / .3) transparent;
+}
+.atmosphere-card {
+  flex: 0 0 min(76vw, 1060px); scroll-snap-align: center;
+}
+.atmosphere-scene {
+  position: relative; aspect-ratio: 4 / 2.65; overflow: hidden; border-radius: clamp(24px, 2.5vw, 38px);
+  background: #dce6e4; box-shadow: 0 28px 75px rgb(33 65 65 / .12);
+}
+.atmosphere-scene::after {
+  content: ""; position: absolute; inset: 0; pointer-events: none;
+  box-shadow: inset 0 0 0 1px rgb(255 255 255 / .4);
+  border-radius: inherit;
+}
+.atmosphere-scene img {
+  width: 100%; height: 100%; object-fit: cover; object-position: center;
+  transform: scale(1.001);
+  transition: transform 1.1s cubic-bezier(.2,.72,.2,1);
+  will-change: transform;
+}
+@media (hover: hover) and (pointer: fine) {
+  .atmosphere-card:hover .atmosphere-scene img { transform: scale(1.045); }
+}
+.atmosphere-card:focus-within .atmosphere-scene img,
+.atmosphere-card.is-current:focus-within .atmosphere-scene img { transform: scale(1.045); }
+.atmosphere-story { display: grid; grid-template-columns: minmax(250px, .72fr) 1.28fr; column-gap: clamp(28px, 5vw, 78px); padding: 27px 6px 0; }
+.atmosphere-story > p:first-child { grid-column: 1 / -1; margin: 0 0 12px; color: #638083; font-size: .61rem; text-transform: uppercase; letter-spacing: .16em; }
+.atmosphere-story > p:first-child span { margin-right: 12px; color: #286a6c; }
+.atmosphere-story h3 { font-size: clamp(2.3rem, 4vw, 4.6rem); line-height: .92; }
+.atmosphere-story > p:last-child { margin: 2px 0 0; max-width: 48ch; color: #607579; font-size: .88rem; line-height: 1.72; }
+.atlas-footer {
+  padding: clamp(60px, 8vw, 105px) var(--atlas-gutter) 0; display: flex; justify-content: space-between; align-items: end; gap: 40px;
+}
+.atlas-footer > div:first-child { max-width: 700px; }
+.atlas-footer h3 { font-size: clamp(2.6rem, 4.5vw, 5rem); }
+.atlas-footer p { max-width: 590px; color: #5b7377; line-height: 1.75; }
+.atlas-arrows { display: flex; gap: 10px; }
+.atlas-arrows button {
+  width: 52px; height: 52px; border: 1px solid rgb(30 82 86 / .18); border-radius: 50%;
+  color: #245e63; background: rgb(255 255 255 / .4); cursor: pointer; font-size: 1.1rem;
+  transition: background .2s ease, transform .2s ease;
+}
+.atlas-arrows button:hover { background: white; transform: translateY(-2px); }
+
 .principles { color: var(--pearl); background: #0a2732; padding: clamp(90px, 11vw, 160px) clamp(24px, 7vw, 112px); display: grid; grid-template-columns: repeat(3, 1fr); gap: 1px; }
 .principles article { min-height: 430px; padding: clamp(28px, 4vw, 58px); border-left: 1px solid rgb(161 213 208 / .13); display: flex; flex-direction: column; justify-content: flex-end; }
 .principles article:first-child { border-left: 0; }
@@ -147,6 +226,9 @@ footer > p { grid-column: 1 / -1; margin: 10px 0 0; }
   .principles article:first-child { border-top: 0; }
   .privacy-band { grid-template-columns: 1fr; gap: 70px; }
   .privacy-orbit { width: 240px; }
+  .atmospheres-intro { grid-template-columns: 1fr; align-items: start; }
+  .atmospheres-deck { max-width: 600px; }
+  .atmosphere-card { flex-basis: min(82vw, 860px); }
 }
 
 @media (max-width: 600px) {
@@ -166,6 +248,17 @@ footer > p { grid-column: 1 / -1; margin: 10px 0 0; }
   .line-key { gap: 13px; flex-wrap: wrap; }
   .glance-section { padding-bottom: 160px; }
   .glance-note { left: 24px; right: 24px; text-align: left; bottom: 70px; }
+  .atmospheres { --atlas-gutter: 24px; }
+  .atmospheres h2 { font-size: clamp(3.3rem, 15vw, 5rem); }
+  .atmosphere-toolbar { align-items: flex-end; }
+  .appearance-switch button { padding-inline: 13px; }
+  .atmosphere-card { flex-basis: 86vw; }
+  .atmosphere-scene { aspect-ratio: 4 / 5; }
+  .atmosphere-story { grid-template-columns: 1fr; gap: 12px; padding-top: 22px; }
+  .atmosphere-story h3 { font-size: 2.8rem; }
+  .atmosphere-story > p:last-child { margin: 0; }
+  .atlas-footer { align-items: flex-start; flex-direction: column; }
+  .atlas-arrows { align-self: flex-end; }
   .principles { padding-inline: 24px; }
   .principles article { padding-inline: 12px; }
   .privacy-band { min-height: 800px; }
@@ -178,4 +271,7 @@ footer > p { grid-column: 1 / -1; margin: 10px 0 0; }
 @media (prefers-reduced-motion: reduce) {
   html { scroll-behavior: auto; }
   .reveal { opacity: 1; transform: none; transition: none; }
+  .atmosphere-scene img, .appearance-switch button { transition: none; }
+  .atmosphere-card:hover .atmosphere-scene img,
+  .atmosphere-card:focus-within .atmosphere-scene img { transform: none; }
 }

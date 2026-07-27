@@ -4,12 +4,12 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="theme-color" content="#071b26">
-  <meta name="description" content="Overbaro is a digital barometer for iPhone. It reads the barometer already inside your phone, remembers the pressure trend, and uses its speed of change to support a short-term local weather outlook.">
+  <meta name="description" content="Overbaro is a beautiful digital barometer for iPhone. Follow live pressure, its speed of change and a short-term local outlook across five atmospheric light and dark landscapes.">
   <meta name="keywords" content="barometer, digital barometer, pressure trend, air pressure app, weather outlook, iPhone barometer, iPad barometer, offline app, no ads, no subscription, premium app">
   <link rel="canonical" href="https://mcfinapps.github.io/overbaro/">
   <meta property="og:site_name" content="Overbaro">
   <meta property="og:title" content="Overbaro — A digital barometer for iPhone">
-  <meta property="og:description" content="Live atmospheric pressure, its speed of change, and a short-term local outlook—beautifully distilled on your iPhone.">
+  <meta property="og:description" content="Live pressure, its speed of change and a short-term local outlook—beautifully distilled across five quiet atmospheric landscapes.">
   <meta property="og:image" content="https://mcfinapps.github.io/overbaro/img/hero-night.jpg">
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://mcfinapps.github.io/overbaro/">
@@ -29,7 +29,7 @@
     "@type": "MobileApplication",
     "name": "Overbaro",
     "url": "https://mcfinapps.github.io/overbaro/",
-    "description": "Overbaro is a digital barometer for iPhone. It reads the barometer already inside your phone, remembers the pressure trend, and uses its speed of change to support a short-term local weather outlook.",
+    "description": "Overbaro is a beautiful digital barometer for iPhone. It follows live atmospheric pressure, its speed of change and a short-term local outlook across five atmospheric light and dark landscapes.",
     "operatingSystem": "iOS, iPadOS",
     "applicationCategory": "UtilitiesApplication",
     "image": "https://mcfinapps.github.io/overbaro/img/hero-night.jpg",
@@ -58,6 +58,7 @@
     <nav id="nav" aria-label="Main navigation">
       <a href="#reading">The reading</a>
       <a href="#outlook">Outlook</a>
+      <a href="#atmospheres">Atmospheres</a>
       <a href="#privacy">Privacy</a>
       <a href="help.html">Help</a>
       <a class="nav-cta" href="#availability">Coming soon</a>
@@ -127,6 +128,119 @@
         <img src="img/app-light.jpg" loading="lazy" alt="Overbaro light appearance">
       </div>
       <p class="glance-note reveal">The instrument is there when you want detail.<br>The atmosphere is there when you simply want to feel what is changing.</p>
+    </section>
+
+    <section class="atmospheres" id="atmospheres" aria-labelledby="atmospheres-title">
+      <div class="atmospheres-intro reveal">
+        <div>
+          <p class="eyebrow">Five atmospheres</p>
+          <h2 id="atmospheres-title">The weather changes.<br>So can the place you meet it.</h2>
+        </div>
+        <div class="atmospheres-deck">
+          <p>Overbaro’s landscapes are not decoration added around the instrument. Each gives the same precise reading a different kind of quiet—from a familiar Finnish lake to the wide abstraction of a salt horizon.</p>
+          <p class="dry-note">The pressure reading remains stubbornly scientific.</p>
+        </div>
+      </div>
+
+      <div class="atmosphere-toolbar reveal">
+        <div class="appearance-switch" role="group" aria-label="Landscape appearance">
+          <button type="button" class="active" data-appearance="light" aria-pressed="true">
+            <span aria-hidden="true">◯</span> In daylight
+          </button>
+          <button type="button" data-appearance="dark" aria-pressed="false">
+            <span aria-hidden="true">●</span> After dark
+          </button>
+        </div>
+        <div class="atlas-position" aria-live="polite"><span>01</span> / 05</div>
+      </div>
+
+      <div class="atmosphere-rail reveal" role="region" aria-label="Overbaro scenery themes" tabindex="0">
+        <article class="atmosphere-card is-current" data-index="1">
+          <div class="atmosphere-scene">
+            <img src="img/themes/quiet-horizon-light.jpg"
+                 data-light="img/themes/quiet-horizon-light.jpg"
+                 data-dark="img/themes/quiet-horizon-dark.jpg"
+                 width="1800" height="1350"
+                 alt="A pale misty mountain lake beneath an open sky">
+          </div>
+          <div class="atmosphere-story">
+            <p><span>01</span> The original atmosphere · Still</p>
+            <h3>Quiet Horizon</h3>
+            <p>A mist-softened Finnish lake where the mountains settle into their own reflection. Familiar, balanced and deeply calm—a place for noticing change without being hurried by it.</p>
+          </div>
+        </article>
+
+        <article class="atmosphere-card" data-index="2">
+          <div class="atmosphere-scene">
+            <img src="img/themes/silver-skerries-light.jpg"
+                 data-light="img/themes/silver-skerries-light.jpg"
+                 data-dark="img/themes/silver-skerries-dark.jpg"
+                 loading="lazy" decoding="async" width="1800" height="1349"
+                 alt="Smooth pale skerries resting in still northern water">
+          </div>
+          <div class="atmosphere-story">
+            <p><span>02</span> Clear</p>
+            <h3>Silver Skerries</h3>
+            <p>Weathered stone islands resting in pale northern water. Cool light, open air and just enough distance to make every reading feel crisp.</p>
+          </div>
+        </article>
+
+        <article class="atmosphere-card" data-index="3">
+          <div class="atmosphere-scene">
+            <img src="img/themes/glacial-shelf-light.jpg"
+                 data-light="img/themes/glacial-shelf-light.jpg"
+                 data-dark="img/themes/glacial-shelf-dark.jpg"
+                 loading="lazy" decoding="async" width="1800" height="1349"
+                 alt="A luminous glacial shelf meeting quiet water">
+          </div>
+          <div class="atmosphere-story">
+            <p><span>03</span> Focused</p>
+            <h3>Glacial Shelf</h3>
+            <p>Ancient ice meeting luminous water beneath a wide sky. Clean and precise without becoming clinical; the atmosphere, pared back to its essentials.</p>
+          </div>
+        </article>
+
+        <article class="atmosphere-card" data-index="4">
+          <div class="atmosphere-scene">
+            <img src="img/themes/heather-silence-light.jpg"
+                 data-light="img/themes/heather-silence-light.jpg"
+                 data-dark="img/themes/heather-silence-dark.jpg"
+                 loading="lazy" decoding="async" width="1800" height="1349"
+                 alt="A secluded moorland pool surrounded by muted heather">
+          </div>
+          <div class="atmosphere-story">
+            <p><span>04</span> Grounded</p>
+            <h3>Heather Silence</h3>
+            <p>A secluded moorland pool held by muted heather and drifting haze. Softer, warmer and quietly reflective—for days when the weather feels better read slowly.</p>
+          </div>
+        </article>
+
+        <article class="atmosphere-card" data-index="5">
+          <div class="atmosphere-scene">
+            <img src="img/themes/salt-meridian-light.jpg"
+                 data-light="img/themes/salt-meridian-light.jpg"
+                 data-dark="img/themes/salt-meridian-dark.jpg"
+                 loading="lazy" decoding="async" width="1800" height="1349"
+                 alt="A pale salt horizon extending beneath a softly glowing sky">
+          </div>
+          <div class="atmosphere-story">
+            <p><span>05</span> Open</p>
+            <h3>Salt Meridian</h3>
+            <p>A near-endless horizon reduced to light, distance and stillness. Almost otherworldly, yet perfectly suited to one very earthly pressure reading.</p>
+          </div>
+        </article>
+      </div>
+
+      <div class="atlas-footer reveal">
+        <div>
+          <h3>Find your horizon.</h3>
+          <p>Choose the atmosphere that feels right today. The scenery can change; the instrument—and the weather outside—remain exactly themselves.</p>
+        </div>
+        <div class="atlas-arrows" aria-label="Theme gallery controls">
+          <button type="button" data-atlas-direction="-1" aria-label="Previous atmosphere">←</button>
+          <button type="button" data-atlas-direction="1" aria-label="Next atmosphere">→</button>
+        </div>
+      </div>
     </section>
 
     <section class="principles">
