@@ -1,0 +1,17 @@
+{
+  "name": "Overplan",
+  "short_name": "Overplan",
+  "description": "A floor planner anyone can use.",
+  "start_url": "./",
+  "display": "standalone",
+  "background_color": "#f3eee4",
+  "theme_color": "#f3eee4",
+  "icons": [
+    {
+      "src": "img/app-icon.png",
+      "sizes": "1254x1254",
+      "type": "image/png",
+      "purpose": "any"
+    }
+  ]
+}

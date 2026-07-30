@@ -1,0 +1,272 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#f3eee4">
+  <meta name="description" content="Overplan collects no personal data. Camera and LiDAR room scanning run on your device, and files leave only when you choose to share them.">
+  <link rel="canonical" href="https://mcfinapps.github.io/overplan/privacy.html">
+  <meta property="og:site_name" content="Overplan">
+  <meta property="og:title" content="Privacy Policy — Overplan">
+  <meta property="og:description" content="No account, no servers, no analytics, no advertising and no tracking. Your room scans stay on your device.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://mcfinapps.github.io/overplan/privacy.html">
+  <title>Privacy Policy — Overplan</title>
+  <link rel="icon" type="image/png" href="img/app-icon.png">
+  <link rel="apple-touch-icon" href="img/app-icon.png">
+  <style>
+    :root {
+      --cream: #f3eee4;
+      --cream-bright: #faf7f1;
+      --ink: #24231f;
+      --muted: #716a60;
+      --line: rgb(70 61 49 / .15);
+      --blue: #506f9e;
+      --blue-soft: #e1e5eb;
+      --dark: #292923;
+      --serif: "Iowan Old Style", "Baskerville", "Times New Roman", serif;
+      --sans: "Avenir Next", Avenir, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    }
+
+    * { box-sizing: border-box; }
+    html { background: var(--cream); }
+    body {
+      margin: 0;
+      background: var(--cream);
+      color: var(--ink);
+      font-family: var(--sans);
+      -webkit-font-smoothing: antialiased;
+    }
+    a { color: inherit; }
+    .site-header {
+      height: 82px;
+      padding: 0 clamp(24px, 6vw, 90px);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      border-bottom: 1px solid var(--line);
+    }
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 11px;
+      color: var(--ink);
+      text-decoration: none;
+      font-weight: 650;
+    }
+    .brand img {
+      width: 40px;
+      height: 40px;
+      border-radius: 10px;
+      box-shadow: 0 8px 22px rgb(78 63 43 / .13);
+    }
+    .back {
+      color: var(--muted);
+      text-decoration: none;
+      font-size: .78rem;
+    }
+    main {
+      width: min(820px, calc(100% - 48px));
+      margin: 0 auto;
+      padding: clamp(82px, 11vw, 145px) 0 clamp(90px, 11vw, 150px);
+    }
+    .eyebrow {
+      margin: 0 0 1.2rem;
+      color: var(--blue);
+      font-size: .63rem;
+      font-weight: 650;
+      letter-spacing: .22em;
+      text-transform: uppercase;
+    }
+    h1, h2 {
+      margin: 0;
+      font-family: var(--serif);
+      font-weight: 400;
+      letter-spacing: -.045em;
+      text-wrap: balance;
+    }
+    h1 {
+      max-width: 8ch;
+      font-size: clamp(4rem, 9vw, 7.4rem);
+      line-height: .88;
+    }
+    .effective {
+      margin: 2rem 0 0;
+      color: var(--muted);
+      font-size: .72rem;
+    }
+    .promise {
+      margin: clamp(48px, 7vw, 76px) 0;
+      padding: clamp(28px, 5vw, 48px);
+      display: grid;
+      grid-template-columns: 58px 1fr;
+      gap: 24px;
+      border: 1px solid rgb(80 111 158 / .25);
+      border-radius: 24px;
+      background: linear-gradient(135deg, var(--cream-bright), var(--blue-soft));
+    }
+    .shield {
+      width: 52px;
+      height: 58px;
+      position: relative;
+      border: 2px solid var(--blue);
+      border-radius: 24px 24px 30px 30px;
+      clip-path: polygon(50% 0, 94% 16%, 86% 73%, 50% 100%, 14% 73%, 6% 16%);
+    }
+    .shield::after {
+      content: "";
+      position: absolute;
+      left: 17px;
+      top: 17px;
+      width: 17px;
+      height: 9px;
+      border: solid var(--blue);
+      border-width: 0 0 2px 2px;
+      transform: rotate(-45deg);
+    }
+    .promise h2 {
+      margin-bottom: .7rem;
+      color: var(--ink);
+      font-size: clamp(1.9rem, 4vw, 3rem);
+      line-height: 1;
+    }
+    .promise p {
+      margin: 0;
+      color: #57534c;
+    }
+    .policy-section {
+      padding: 34px 0 30px;
+      border-top: 1px solid var(--line);
+    }
+    .policy-section h2 {
+      margin-bottom: .8rem;
+      font-size: clamp(1.7rem, 3.3vw, 2.5rem);
+      line-height: 1;
+    }
+    p, li {
+      color: var(--muted);
+      font-size: .96rem;
+      line-height: 1.76;
+    }
+    p { margin: 0 0 .9rem; }
+    ul { margin: .7rem 0 0; padding-left: 1.25rem; }
+    li { margin: 0 0 .85rem; padding-left: .3rem; }
+    strong { color: var(--ink); font-weight: 650; }
+    .offline {
+      margin: 14px 0 0;
+      padding-left: 17px;
+      border-left: 2px solid var(--blue);
+      color: var(--ink);
+    }
+    footer {
+      padding: 36px 24px;
+      border-top: 1px solid var(--line);
+      background: var(--dark);
+      color: rgb(243 238 228 / .5);
+      text-align: center;
+      font-size: .7rem;
+    }
+    footer a { color: rgb(243 238 228 / .75); text-decoration: none; }
+
+    @media (max-width: 560px) {
+      .site-header { height: 72px; }
+      .promise { grid-template-columns: 1fr; }
+      .shield { width: 44px; height: 49px; }
+      .shield::after { left: 14px; top: 14px; }
+    }
+  </style>
+</head>
+<body>
+  <header class="site-header">
+    <a class="brand" href="./">
+      <img src="img/app-icon.png" alt="">
+      <span>Overplan</span>
+    </a>
+    <a class="back" href="./">← Back to Overplan</a>
+  </header>
+
+  <main>
+    <p class="eyebrow">Privacy by architecture</p>
+    <h1>Privacy Policy</h1>
+    <p class="effective">Overplan · Last updated 30 July 2026</p>
+
+    <div class="promise">
+      <span class="shield" aria-hidden="true"></span>
+      <div>
+        <h2>Your rooms stay yours.</h2>
+        <p>Overplan collects no personal data. There is no account, no McFin server, no analytics,
+          no advertising and no tracking. The app makes no network requests and works offline.</p>
+      </div>
+    </div>
+
+    <section class="policy-section">
+      <h2>Camera, LiDAR and RoomPlan</h2>
+      <p>Overplan uses your device’s camera, motion sensors and LiDAR scanner through Apple’s
+        ARKit and RoomPlan frameworks to understand the room you choose to scan.</p>
+      <ul>
+        <li><strong>Camera and depth data are processed on your device.</strong> Overplan does not
+          upload the camera view, video, photographs or depth stream.</li>
+        <li><strong>The resulting room geometry is saved locally.</strong> This can include walls,
+          floors, doors, windows, dimensions, measurements and edits you make.</li>
+        <li><strong>The camera is used only while scanning.</strong> Overplan asks for camera
+          permission because RoomPlan requires it; the app has no microphone or location purpose.</li>
+      </ul>
+      <p class="offline">Scanning, editing, measuring and exporting work without an internet
+        connection.</p>
+    </section>
+
+    <section class="policy-section">
+      <h2>Saved plans</h2>
+      <p>Your Overplan projects are stored in the app’s private storage on your device. McFin
+        cannot see or retrieve them. They remain there until you delete the plan or remove the
+        app.</p>
+      <p>Your operating system may include app data in a device backup according to the backup
+        settings you control. Those backups are provided and governed by Apple, not McFin.</p>
+    </section>
+
+    <section class="policy-section">
+      <h2>PDF and 3D sharing</h2>
+      <p>Overplan can create floor-plan PDFs and 3D files such as USDZ, GLB and OBJ. These files
+        are generated on your device and can reveal the layout, dimensions and openings of the
+        space you scanned.</p>
+      <p><strong>No export happens automatically.</strong> A file leaves Overplan only when you
+        choose Share and select a person, app, device or storage service in Apple’s standard
+        sharing interface. After you share it, the recipient or selected service handles that
+        copy under its own privacy practices.</p>
+    </section>
+
+    <section class="policy-section">
+      <h2>What we collect</h2>
+      <p>Nothing. Overplan has no account system, cloud database, analytics service, advertising
+        SDK, tracking SDK or third-party crash-reporting service. Because McFin receives no app
+        data, there is no personal data held by us to access, sell or delete.</p>
+      <p>If you have separately enabled Apple’s option to share diagnostics with app developers,
+        Apple may provide limited diagnostic information under Apple’s own privacy terms. Overplan
+        does not transmit those diagnostics itself.</p>
+    </section>
+
+    <section class="policy-section">
+      <h2>Children</h2>
+      <p>Overplan does not knowingly collect information from children—or from anyone else. It
+        requires no account and gathers no personal information.</p>
+    </section>
+
+    <section class="policy-section">
+      <h2>Changes</h2>
+      <p>If this policy changes, the revised policy will be posted here with a new date. Any future
+        feature that materially changes how data is handled will be explained before it is used.</p>
+    </section>
+
+    <section class="policy-section">
+      <h2>Contact</h2>
+      <p>Questions about Overplan privacy can be sent to
+        <a href="mailto:mcfin.apps@gmail.com">mcfin.apps@gmail.com</a>.</p>
+    </section>
+  </main>
+
+  <footer>
+    © 2026 <a href="https://mcfinapps.github.io/">McFin</a> · independent software from Finland ·
+    <a href="./">Overplan</a>
+  </footer>
+</body>
+</html>
