@@ -54,6 +54,7 @@ h1, h2, h3 { margin: 0; font-family: var(--serif); font-weight: 400; letter-spac
 .haze.overbark { right: 42%; top: 27%; background-image: url("img/portfolio/overbark.jpg"); transform: rotate(-7deg); }
 .haze.overtiles { right: 1%; top: 43%; background-image: url("img/portfolio/overtiles.jpg"); transform: rotate(8deg); }
 .haze.drivescape { right: 37%; top: 64%; background-image: url("img/portfolio/drivescape.jpg"); transform: rotate(-3deg); }
+.haze.overplan { right: -8%; top: 71%; background-image: url("img/portfolio/overplan.jpg"); transform: rotate(5deg); }
 
 .collection { position: relative; overflow: hidden; padding: clamp(105px, 12vw, 190px) 0 clamp(100px, 12vw, 180px); background: #0a141a; }
 .collection::before { content: ""; position: absolute; inset: 0; background: radial-gradient(circle at 50% 0, rgb(103 151 159 / .07), transparent 33%); }
@@ -73,12 +74,14 @@ h1, h2, h3 { margin: 0; font-family: var(--serif); font-weight: 400; letter-spac
 .app-card:hover .card-art { transform: scale(1.025); }
 .card-wash { position: absolute; inset: 0; background: linear-gradient(180deg, rgb(0 0 0 / .14), transparent 40%, rgb(3 8 11 / .82) 100%), linear-gradient(90deg, rgb(3 8 11 / .38), transparent 48%); }
 .overtiles-card .card-wash { background: linear-gradient(180deg, rgb(0 0 0 / .07), transparent 38%, rgb(20 17 15 / .83) 100%), linear-gradient(90deg, rgb(15 14 13 / .28), transparent 45%); }
+.overplan-card .card-wash { background: linear-gradient(180deg, rgb(17 16 14 / .15), transparent 38%, rgb(22 20 17 / .86) 100%), linear-gradient(90deg, rgb(25 23 20 / .78), rgb(25 23 20 / .33) 47%, transparent 72%); }
 .card-topline { position: absolute; top: 34px; left: 38px; right: 38px; display: flex; justify-content: space-between; color: rgb(255 255 255 / .65); font-size: .58rem; letter-spacing: .16em; text-transform: uppercase; }
 .card-promo { position: absolute; z-index: 2; top: clamp(88px, 8vw, 122px); left: clamp(28px, 4vw, 58px); width: min(520px, 49%); margin: 0; color: var(--card-promo, rgb(210 225 226 / .72)); font-family: var(--serif); font-size: clamp(1.05rem, 1.45vw, 1.7rem); line-height: 1.22; letter-spacing: -.022em; text-wrap: balance; text-shadow: 0 2px 18px rgb(0 0 0 / .28); }
 .overbaro-card { --card-promo: rgb(157 205 205 / .76); }
 .overbark-card { --card-promo: rgb(244 205 181 / .9); }
 .overtiles-card { --card-promo: rgb(239 218 181 / .92); }
 .drivescape-card { --card-promo: rgb(157 189 216 / .76); }
+.overplan-card { --card-promo: rgb(239 229 212 / .9); }
 .card-copy { position: absolute; left: clamp(28px, 4vw, 58px); bottom: clamp(28px, 4vw, 58px); display: flex; align-items: center; gap: clamp(18px, 2vw, 28px); }
 .app-icon { width: clamp(70px, 7vw, 108px); aspect-ratio: 1; object-fit: cover; border-radius: 24%; box-shadow: 0 18px 45px rgb(0 0 0 / .37); }
 .card-copy h3 { font-size: clamp(2.7rem, 5vw, 5.8rem); line-height: .84; }
@@ -137,6 +140,7 @@ h1, h2, h3 { margin: 0; font-family: var(--serif); font-weight: 400; letter-spac
 .studio-orbit img:nth-child(2) { right: -3%; top: 50%; transform: translateY(-50%) rotate(calc(var(--orbit-turn) * -1)); }
 .studio-orbit img:nth-child(3) { left: 50%; bottom: -8%; transform: translateX(-50%) rotate(calc(var(--orbit-turn) * -1)); }
 .studio-orbit img:nth-child(4) { left: -3%; top: 50%; transform: translateY(-50%) rotate(calc(var(--orbit-turn) * -1)); }
+.studio-orbit img:nth-child(5) { left: 50%; top: 50%; transform: translate(-50%, -50%) rotate(calc(var(--orbit-turn) * -1)); }
 
 footer { padding: 46px clamp(24px, 6vw, 92px); background: #050b0f; color: rgb(207 222 224 / .44); display: grid; grid-template-columns: 1fr 1fr auto; align-items: center; gap: 24px; font-size: .67rem; }
 footer > p { margin: 0; }
@@ -182,6 +186,7 @@ footer nav a { text-decoration: none; }
   .app-card { width: 86vw; height: 128vw; min-height: 580px; max-height: 700px; }
   .card-art { object-position: 62% center; }
   .overtiles-card .card-art { object-position: 67% center; }
+  .overplan-card .card-art { object-position: 63% center; }
   .card-topline { top: 25px; left: 25px; right: 25px; }
   .card-topline span:first-child { display: none; }
   .card-topline { justify-content: flex-end; }
@@ -215,4 +220,5 @@ footer nav a { text-decoration: none; }
   .studio-orbit img { transform: none; }
   .studio-orbit img:nth-child(1), .studio-orbit img:nth-child(3) { transform: translateX(-50%); }
   .studio-orbit img:nth-child(2), .studio-orbit img:nth-child(4) { transform: translateY(-50%); }
+  .studio-orbit img:nth-child(5) { transform: translate(-50%, -50%); }
 }
