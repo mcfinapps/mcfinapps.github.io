@@ -1,0 +1,305 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#071017">
+  <meta name="description" content="The McFin studio journal: notes on making unusually polished, private and tactile apps for iPhone and iPad.">
+  <meta name="author" content="McFin">
+  <meta name="robots" content="index, follow, max-image-preview:large">
+  <link rel="canonical" href="https://mcfinapps.github.io/blog/">
+  <meta property="og:site_name" content="McFin">
+  <meta property="og:title" content="McFin Journal — Notes from the workbench">
+  <meta property="og:description" content="Small apps, deep work: design notes, technical discoveries and the details that refused to be left merely fine.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://mcfinapps.github.io/blog/">
+  <meta property="og:image" content="https://mcfinapps.github.io/img/portfolio/overplan.jpg">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="McFin Journal — Notes from the workbench">
+  <meta name="twitter:description" content="An independent app studio diary from Finland.">
+  <meta name="twitter:image" content="https://mcfinapps.github.io/img/portfolio/overplan.jpg">
+  <title>Journal — McFin</title>
+  <link rel="icon" href="../mark.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="styles.css">
+  <script src="site.js" defer></script>
+</head>
+<body>
+  <a class="skip-link" href="#journal">Skip to journal</a>
+
+  <header class="site-header">
+    <a class="brand" href="../" aria-label="McFin home">
+      <img src="../mark.svg" alt="" width="39" height="30">
+      <span>McF<i>i</i>n</span>
+    </a>
+    <button class="menu-button" type="button" aria-expanded="false" aria-controls="nav">Menu</button>
+    <nav id="nav" aria-label="Main navigation">
+      <a href="../#apps">Apps</a>
+      <a class="active" href="./" aria-current="page">Blog</a>
+      <a href="../#principles">Principles</a>
+      <a href="../#privacy">Privacy</a>
+      <a href="../#studio">Studio</a>
+      <a class="nav-cta" href="mailto:mike.mcfin@gmail.com">Contact</a>
+    </nav>
+  </header>
+
+  <main id="journal">
+    <section class="journal-hero" aria-labelledby="journal-title">
+      <div class="hero-copy reveal">
+        <p class="eyebrow">The McFin journal</p>
+        <h1 id="journal-title">Notes from<br><em>the workbench.</em></h1>
+        <p>A running account of small apps being taken rather seriously. Design decisions,
+          hardware discoveries, stubborn details and the occasional encounter with an upload
+          form.</p>
+      </div>
+      <div class="hero-object" aria-hidden="true">
+        <img src="../img/mcfin-instagram-profile.png" alt="">
+        <span class="orbit orbit-a"></span>
+        <span class="orbit orbit-b"></span>
+      </div>
+      <a class="latest-link" href="#overplan"><span>Latest</span> Overplan and the quiet 3D room ↓</a>
+    </section>
+
+    <section class="journal-intro">
+      <p class="eyebrow reveal">June—July 2026</p>
+      <p class="manifesto reveal">The sensible stopping point is useful information. We usually
+        pass it on the way to the version where the shadow, spring, sound and fingertip all agree.</p>
+    </section>
+
+    <article class="entry entry-light" id="overplan">
+      <header class="entry-header reveal">
+        <div><p class="entry-date">31 July 2026</p><p class="entry-number">06 / Overplan</p></div>
+        <h2>The room,<br><em>without the room.</em></h2>
+        <p class="dek">Turning LiDAR capture into a calm architectural object—and learning when
+          the renderer is finally finished.</p>
+      </header>
+      <figure class="hero-image reveal">
+        <img src="../overplan/img/hero-clay.jpg" alt="A warm cream architectural floor plan rendered in three dimensions">
+        <figcaption>Keep the architecture. Lose the visual noise.</figcaption>
+      </figure>
+      <div class="entry-body">
+        <div class="body-copy reveal">
+          <p class="lead">Room scanning is usually shown as technology: dots, meshes, confidence
+            colours and a great many controls. Overplan began with the opposite question. What if
+            the scan disappeared and left only the useful part behind?</p>
+          <p>Apple’s RoomPlan framework gives an iPhone with LiDAR a remarkable first
+            understanding of walls, doors and windows. But capture is only the opening act. Real
+            rooms contain awkward corners, missed openings and walls that need a human correction.
+            So the model had to remain touchable: select a wall, move it, resize a window, add the
+            doorway the scan did not quite see.</p>
+          <p>The visual target was a furniture-free clay model with soft global illumination:
+            warm, legible and almost physical. The difficult part was restraint. Too much ambient
+            occlusion made every corner dirty. Too little made the building float. Camera angle,
+            contact shadow, bevel response and the colour difference between a wall face and its
+            top edge all mattered. The renderer is now close enough to the original picture in our
+            heads that we have formally stopped touching it without a very good reason.</p>
+          <blockquote>At some point, polish becomes the product rather than preparation for it.</blockquote>
+          <p>Next comes the quieter challenge: an interface that can orbit, edit, add and measure
+            without resembling CAD. The current answer is contextual editing, plus protected
+            temporary tools only when a tap must mean something different. The model remains the
+            interface.</p>
+        </div>
+        <figure class="side-image reveal">
+          <img src="../overplan/img/measure.jpg" alt="Overplan measurement interface over a cream clay room model">
+          <figcaption>Measurements snap to architectural elements and can travel into the PDF.</figcaption>
+        </figure>
+      </div>
+      <footer class="entry-footer"><span>RoomPlan</span><span>LiDAR</span><span>Metal</span><span>PDF</span></footer>
+    </article>
+
+    <article class="entry entry-night" id="overbaro">
+      <header class="entry-header reveal">
+        <div><p class="entry-date">27 July 2026</p><p class="entry-number">05 / Overbaro</p></div>
+        <h2>A weather instrument<br><em>with a pulse.</em></h2>
+        <p class="dek">The barometer was already in the phone. The character was not.</p>
+      </header>
+      <div class="image-duo reveal">
+        <figure><img src="../overbaro/img/app-light.jpg" alt="Overbaro light interface with an atmospheric pressure dial"><figcaption>Daylight: information without glare.</figcaption></figure>
+        <figure><img src="../overbaro/img/hero-night.jpg" alt="Overbaro dark atmospheric interface"><figcaption>Night: the same instrument, a different sky.</figcaption></figure>
+      </div>
+      <div class="entry-body">
+        <div class="body-copy reveal">
+          <p class="lead">An iPhone can sense atmospheric pressure directly. Overbaro turns that
+            small hardware fact into a local weather instrument: not another remote forecast, but
+            a view of what the air around you has actually been doing.</p>
+          <p>The broad work was straightforward to describe—store readings, classify the pressure
+            tendency, draw a history and make a widget. The memorable work happened in the
+            margins. A chart that was technically readable but not quite calm enough. A light
+            theme whose cloud layer needed less contrast. A needle that indicated pressure
+            correctly but did not yet feel attached to anything.</p>
+          <p>That needle became hand-movable. Pull it away from the reading and it resists; let go
+            and it returns with a damped spring. The animation is deliberately small, because it
+            should feel like an instrument response rather than a toy. Its haptic arrival must
+            coincide with the visual settle—not one frame before, not one after.</p>
+          <p>There were five atmospheric themes, each needing its own balance in light and dark
+            mode. A colour swap was never going to be enough. Fog, typography, chart contrast and
+            instrument glow all had to belong to the same weather.</p>
+        </div>
+        <aside class="margin-note reveal"><span>Small detail</span><strong>The needle can be moved by hand.</strong><p>Useful? Marginally. Convincing? Completely.</p></aside>
+      </div>
+      <footer class="entry-footer"><span>Core Motion</span><span>Barometer</span><span>WidgetKit</span><span>Haptics</span></footer>
+    </article>
+
+    <article class="entry entry-paper" id="overtiles">
+      <header class="entry-header reveal">
+        <div><p class="entry-date">22 July 2026</p><p class="entry-number">04 / Overtiles</p></div>
+        <h2>Seven materials.<br><em>Seven behaviours.</em></h2>
+        <p class="dek">A memory game became an experiment in making glass, walnut and metal feel
+          different through a piece of glass.</p>
+      </header>
+      <figure class="hero-image reveal">
+        <img src="../overtiles/img/generated/hero-material-atelier.png" alt="Overtiles material tiles arranged as a tactile atelier">
+        <figcaption>The material is not a skin. It determines the response.</figcaption>
+      </figure>
+      <div class="entry-body">
+        <div class="body-copy reveal">
+          <p class="lead">The rules of a matching game fit in a sentence. That left room to obsess
+            over everything that happens between touching a tile and seeing what is underneath.</p>
+          <p>Walnut should lift with weight and return with a soft knock. Glass should answer
+            quickly and sharply. Aluminium should feel precise; leather should absorb more of the
+            impact; piano lacquer should carry a little theatrical confidence. Each material
+            received its own movement curve, sound body, typography and Core Haptics pattern.</p>
+          <p>The key was synchronization. If the sound announces contact before the tile appears
+            to land, the illusion breaks. If the haptic arrives after the bounce, it feels like a
+            notification rather than material. Motion, sound and touch were therefore designed on
+            one shared timeline, then replayed far more often than any reasonable person would
+            admit.</p>
+          <p>Natural materials were especially unforgiving. A perfectly repeated wood grain
+            instantly looked synthetic, so the tile set needed variation. Shadows that made a
+            small board feel dimensional became expensive or visually unstable on larger, older
+            iPads. The final answer was not one universal rendering trick, but a controlled set of
+            material-specific compromises.</p>
+        </div>
+        <figure class="side-image reveal">
+          <img src="../overtiles/img/materials-v3/walnut.jpg" alt="Close view of a warm walnut Overtiles material">
+          <figcaption>Walnut demanded variation, weight and a quieter return.</figcaption>
+        </figure>
+      </div>
+      <footer class="entry-footer"><span>Core Haptics</span><span>AVAudioEngine</span><span>Core Animation</span><span>iPadOS</span></footer>
+    </article>
+
+    <article class="entry entry-warm" id="overbark">
+      <header class="entry-header reveal">
+        <div><p class="entry-date">17 July 2026</p><p class="entry-number">03 / Overbark</p></div>
+        <h2>Your dog,<br><em>subtitled.</em></h2>
+        <p class="dek">An on-device experiment in bark, posture, scene and the comic timing of a
+          speech bubble.</p>
+      </header>
+      <div class="image-duo reveal">
+        <figure><img src="../overbark/img/generated/beige-terriers.png" alt="Two terriers in a warm editorial Overbark scene"><figcaption>Two dogs create a surprisingly complicated conversation.</figcaption></figure>
+        <figure><img src="../overbark/img/shots/web/02-bird-debate__mode-dark__theme-abyssTeal__bubble-character.jpg" alt="Overbark interface reacting to a dog watching a bird"><figcaption>Context changes the joke—and the reading.</figcaption></figure>
+      </div>
+      <div class="entry-body">
+        <div class="body-copy reveal">
+          <p class="lead">A bark alone says less than people imagine. A bark plus body posture,
+            repetition, another dog, a doorbell and one extremely visible squirrel says rather
+            more.</p>
+          <p>Overbark combines live acoustics with Apple’s on-device Vision capabilities and scene
+            context, then turns the result into playful speech bubbles. It is intentionally an
+            interpretation, not a claim of canine fluency. The fun comes from confident
+            specificity while the product remains honest about the guess.</p>
+          <p>Keeping the experience local mattered. Camera frames, sound and the evolving little
+            history belong on the device. It also made latency part of the design problem:
+            detection, visual lock and bubble arrival had to feel like one response rather than a
+            queue of technologies taking turns.</p>
+          <p>Then came the less glamorous work: permissions that explain themselves, App Store
+            screenshots that show genuine captures clearly, privacy answers, age ratings,
+            metadata, build uploads and a review path with no mysterious surprises. Making an app
+            is one discipline. Making it understandable to a store page is another.</p>
+        </div>
+        <aside class="margin-note reveal"><span>Design rule</span><strong>The bubble belongs to the moment.</strong><p>It follows the dog, not the screen.</p></aside>
+      </div>
+      <footer class="entry-footer"><span>Vision</span><span>On-device audio</span><span>Camera</span><span>Privacy</span></footer>
+    </article>
+
+    <article class="entry entry-electric" id="drivescape">
+      <header class="entry-header reveal">
+        <div><p class="entry-date">8 July 2026</p><p class="entry-number">02 / Drivescape</p></div>
+        <h2>What if the road<br><em>played back?</em></h2>
+        <p class="dek">A generative score shaped by acceleration, braking and the arc of a corner.</p>
+      </header>
+      <figure class="hero-image reveal">
+        <img src="../drivescape/img/cover-electric.jpg" alt="Electric blue Drivescape driving visual">
+        <figcaption>A drive has rhythm before it has music.</figcaption>
+      </figure>
+      <div class="entry-body">
+        <div class="body-copy reveal">
+          <p class="lead">Drivescape started with a mischievously simple idea: the car is already
+            moving through a composition. Could the phone hear that movement and score it live?</p>
+          <p>Motion sensors can reveal acceleration, braking and cornering, but raw signals are not
+            musical. Roads vibrate. Phones shift in their mounts. A gentle bend and an aggressive
+            lane change may briefly resemble one another. The development challenge became one of
+            extracting intention without making the score feel delayed or nervous.</p>
+          <p>The sound cannot merely react; it has to anticipate enough to feel attached to the
+            vehicle. Too literal, and every bump becomes percussion. Too smooth, and the road
+            disappears. Themes evolved into distinct sonic worlds, with visual surfaces that
+            suggest their energy without asking the driver to study a dashboard.</p>
+          <p>It also established an early McFin habit: build the difficult sensory loop first.
+            Marketing pages, icons and launch plans matter, but they cannot rescue an interaction
+            that does not feel inevitable in the hand—or, in this case, through the seat.</p>
+        </div>
+        <figure class="side-image reveal">
+          <img src="../drivescape/img/iphone-electric-landscape.jpg" alt="Drivescape running in landscape on iPhone">
+          <figcaption>Landscape, glanceable and deliberately low on controls.</figcaption>
+        </figure>
+      </div>
+      <footer class="entry-footer"><span>Core Motion</span><span>Generative audio</span><span>Realtime</span><span>CarPlay thinking</span></footer>
+    </article>
+
+    <article class="entry entry-origin" id="mcfin">
+      <header class="entry-header reveal">
+        <div><p class="entry-date">18 June 2026</p><p class="entry-number">01 / McFin</p></div>
+        <h2>Small apps.<br><em>Deeply made.</em></h2>
+        <p class="dek">Beginning an independent Finnish app studio with a deliberately
+          disproportionate standard of care.</p>
+      </header>
+      <div class="origin-mark reveal">
+        <img src="../img/mcfin-instagram-profile.png" alt="McFin orbital studio mark">
+        <p>Focused software.<br>No subscriptions.<br>No advertising machinery.</p>
+      </div>
+      <div class="entry-body">
+        <div class="body-copy reveal">
+          <p class="lead">McFin began with a preference: small software should be allowed to feel
+            complete.</p>
+          <p>Not every useful idea needs an account system, a social layer, a growth funnel and a
+            recurring payment. Some ideas deserve one excellent screen, a clear price and the
+            confidence to leave the user alone. Pay once. Keep the app. No ads. No behavioural
+            profile quietly becoming the real product.</p>
+          <p>The studio’s working method is equally straightforward: choose a focused idea, prove
+            the difficult interaction early, then polish the whole experience as one object.
+            Interface, motion, sound, haptics, icon, website, screenshots, privacy language and
+            App Store presentation all belong to the product.</p>
+          <p>Version control arrived as the collection became real enough to deserve better
+            discipline. So did release checklists, device testing, visual baselines and the
+            humbling knowledge that a successful build upload can still be followed by several
+            pages of questions about encryption, privacy and regional availability.</p>
+          <blockquote>“Fine already” is a milestone, not a shipping philosophy.</blockquote>
+          <p>This journal records the useful parts of that process: what the devices can do, where
+            the illusion breaks and why a tiny spring animation may occupy an unreasonable
+            afternoon. There will be no secret machinery here. Just the craft, the decisions and
+            the occasional scar tissue.</p>
+        </div>
+        <aside class="principles-card reveal">
+          <p>01 · Focus</p><strong>One clear idea.</strong>
+          <p>02 · Craft</p><strong>All the senses agree.</strong>
+          <p>03 · Privacy</p><strong>Your data is not inventory.</strong>
+          <p>04 · Ownership</p><strong>Pay once. Keep it.</strong>
+        </aside>
+      </div>
+      <footer class="entry-footer"><span>Finland</span><span>Independent</span><span>Privacy first</span><span>Over-engineered</span></footer>
+    </article>
+
+    <section class="journal-close">
+      <p class="eyebrow">More from the workbench</p>
+      <h2>The next detail is<br>already bothering us.</h2>
+      <a href="../#apps">Explore the apps <span>↗</span></a>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <a class="footer-brand" href="../"><img src="../mark.svg" alt="" width="38" height="29"><span>McF<i>i</i>n</span></a>
+    <p>Small apps. Big experience.</p>
+    <nav aria-label="Footer navigation"><a href="../#apps">Apps</a><a href="./">Blog</a><a href="mailto:mike.mcfin@gmail.com">Contact</a></nav>
+    <p class="copyright">© 2026 McFin · independent software from Finland</p>
+  </footer>
+</body>
+</html>
