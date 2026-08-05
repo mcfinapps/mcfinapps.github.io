@@ -104,12 +104,43 @@
       setTimeout(step, 450);
     }
 
-    var io = new IntersectionObserver(function (entries) {
-      entries.forEach(function (e) {
-        if (e.isIntersecting && !played) { played = true; place(); play(); io.unobserve(scene); }
-      });
-    }, { threshold: 0.3 });
-    io.observe(scene);
+    function begin() {
+      if (played) return;
+      played = true;
+      place();
+      play();
+    }
+
+    /* iOS Safari can give an iframe document an unreliable IntersectionObserver viewport.
+       Use the observer where it behaves, but keep a scroll/resize fallback and start the
+       opening scene immediately. This also supports older WebKit without the API. */
+    if (scene.classList.contains("hero")) {
+      begin();
+    } else if ("IntersectionObserver" in window) {
+      var io = new IntersectionObserver(function (entries) {
+        entries.forEach(function (e) {
+          if (e.isIntersecting) { begin(); io.unobserve(scene); }
+        });
+      }, { threshold: 0.16 });
+      io.observe(scene);
+      var check = function () {
+        if (played) return;
+        var r = scene.getBoundingClientRect();
+        if (r.top < window.innerHeight * 0.84 && r.bottom > window.innerHeight * 0.16) begin();
+      };
+      window.addEventListener("scroll", check, { passive: true });
+      window.addEventListener("resize", check);
+      setTimeout(check, 350);
+    } else {
+      var legacyCheck = function () {
+        if (played) return;
+        var r = scene.getBoundingClientRect();
+        if (r.top < window.innerHeight * 0.84 && r.bottom > 0) begin();
+      };
+      window.addEventListener("scroll", legacyCheck, { passive: true });
+      window.addEventListener("resize", legacyCheck);
+      legacyCheck();
+    }
   }
 
   [].slice.call(document.querySelectorAll("[data-storyline]")).forEach(initScene);

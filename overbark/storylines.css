@@ -15,4 +15,4 @@
 .sl-bubble.show{opacity:1}
 .sl-bubble.dim{opacity:.4}
 @media (prefers-reduced-motion:reduce){.sl-bubble{transition:none}}
-@media (max-width:850px){.sl-bubble{display:none}}
+@media (max-width:850px){.sl-bubble{display:flex;line-height:1.08}.sl-bubble>span{padding:1px}}

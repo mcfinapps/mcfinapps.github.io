@@ -4,6 +4,18 @@ let current=valid.has(requested)?requested:'simple';
 const frame=document.getElementById('experience-frame');
 const sourceFor=view=>view==='technical'?'overbark-dark.html':'overbark-beige.html';
 
+// The presentation pages live inside this full-page iframe. App Store pages refuse
+// to load in a frame, so make every store link perform a native top-level navigation.
+// Setting the anchor target preserves Safari's user-gesture handling and App Store handoff.
+frame.addEventListener('load',()=>{
+  try{
+    frame.contentDocument.querySelectorAll('a[href^="https://apps.apple.com/"]').forEach(anchor=>{
+      anchor.target='_top';
+      anchor.rel='noopener';
+    });
+  }catch(error){}
+});
+
 function render(view){
   if(!valid.has(view))view='simple';
   current=view;
