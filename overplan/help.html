@@ -1,0 +1,226 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#f3eee4">
+  <meta name="description" content="How to use Overplan: scan a room with LiDAR or sketch a floorplan by hand, correct the walls, add doors, windows and furniture, then share a to-scale PDF or a 3D model.">
+  <link rel="canonical" href="https://mcfinapps.github.io/overplan/help.html">
+  <meta property="og:site_name" content="Overplan">
+  <meta property="og:title" content="Help — Overplan">
+  <meta property="og:description" content="Getting started, editing a plan, measuring, sharing, and what to do when your device has no LiDAR.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://mcfinapps.github.io/overplan/help.html">
+  <title>Help — Overplan</title>
+  <link rel="icon" type="image/png" href="img/app-icon.png">
+  <link rel="apple-touch-icon" href="img/app-icon.png">
+  <style>
+    :root {
+      --cream: #f3eee4;
+      --cream-bright: #faf7f1;
+      --ink: #24231f;
+      --muted: #716a60;
+      --line: rgb(70 61 49 / .15);
+      --blue: #506f9e;
+      --blue-soft: #e1e5eb;
+      --dark: #292923;
+      --serif: "Iowan Old Style", "Baskerville", "Times New Roman", serif;
+      --sans: "Avenir Next", Avenir, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    }
+
+    * { box-sizing: border-box; }
+    html { background: var(--cream); }
+    body {
+      margin: 0;
+      background: var(--cream);
+      color: var(--ink);
+      font-family: var(--sans);
+      -webkit-font-smoothing: antialiased;
+    }
+    a { color: inherit; }
+    .site-header {
+      height: 82px;
+      padding: 0 clamp(24px, 6vw, 90px);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      border-bottom: 1px solid var(--line);
+    }
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 11px;
+      color: var(--ink);
+      text-decoration: none;
+      font-weight: 650;
+    }
+    .brand img {
+      width: 40px;
+      height: 40px;
+      border-radius: 10px;
+      box-shadow: 0 8px 22px rgb(78 63 43 / .13);
+    }
+    .back {
+      color: var(--muted);
+      text-decoration: none;
+      font-size: .78rem;
+    }
+    main {
+      width: min(820px, calc(100% - 48px));
+      margin: 0 auto;
+      padding: clamp(82px, 11vw, 145px) 0 clamp(90px, 11vw, 150px);
+    }
+    .eyebrow {
+      margin: 0 0 1.2rem;
+      color: var(--blue);
+      font-size: .63rem;
+      font-weight: 650;
+      letter-spacing: .22em;
+      text-transform: uppercase;
+    }
+    h1, h2 {
+      margin: 0;
+      font-family: var(--serif);
+      font-weight: 400;
+      letter-spacing: -.045em;
+      text-wrap: balance;
+    }
+    h1 {
+      max-width: 8ch;
+      font-size: clamp(4rem, 9vw, 7.4rem);
+      line-height: .88;
+    }
+    .effective {
+      margin: 2rem 0 0;
+      color: var(--muted);
+      font-size: .72rem;
+    }
+    /* The opening paragraph, in place of the privacy page's shield block --
+       that badge belongs to the privacy promise specifically and would be
+       meaningless here, so this page states its framing in plain type. */
+    .lede {
+      margin: clamp(40px, 6vw, 64px) 0 clamp(24px, 4vw, 40px);
+      color: var(--ink);
+      font-size: clamp(1.05rem, 2vw, 1.24rem);
+      line-height: 1.66;
+    }
+    .policy-section {
+      padding: 34px 0 30px;
+      border-top: 1px solid var(--line);
+    }
+    .policy-section h2 {
+      margin-bottom: .8rem;
+      font-size: clamp(1.7rem, 3.3vw, 2.5rem);
+      line-height: 1;
+    }
+    p, li {
+      color: var(--muted);
+      font-size: .96rem;
+      line-height: 1.76;
+    }
+    p { margin: 0 0 .9rem; }
+    ul { margin: .7rem 0 0; padding-left: 1.25rem; }
+    li { margin: 0 0 .85rem; padding-left: .3rem; }
+    strong { color: var(--ink); font-weight: 650; }
+    .offline {
+      margin: 14px 0 0;
+      padding-left: 17px;
+      border-left: 2px solid var(--blue);
+      color: var(--ink);
+    }
+    footer {
+      padding: 36px 24px;
+      border-top: 1px solid var(--line);
+      background: var(--dark);
+      color: rgb(243 238 228 / .5);
+      text-align: center;
+      font-size: .7rem;
+    }
+    footer a { color: rgb(243 238 228 / .75); text-decoration: none; }
+
+    @media (max-width: 560px) {
+      .site-header { height: 72px; }
+    }
+  </style>
+</head>
+<body>
+  <header class="site-header">
+    <a class="brand" href="./">
+      <img src="img/app-icon.png" alt="">
+      <span>Overplan</span>
+    </a>
+    <a class="back" href="./">← Back to Overplan</a>
+  </header>
+
+  <main>
+      <p class="eyebrow">A scan you can correct</p>
+      <h1>Help</h1>
+      <p class="effective">Overplan · Last updated 5 August 2026</p>
+
+      <p class="lede">Overplan turns a room into a plan you can correct. Scan it if your device has
+      LiDAR, or draw it by hand if it does not — then fix what the scanner got wrong, which is the part
+      most scanning apps leave you stuck with.</p>
+
+      <section class="policy-section">
+        <h2>Starting a plan</h2>
+        <p><strong>Scan a room</strong> uses your device's LiDAR camera. It needs camera access, and it
+        appears on iPhone and iPad models that have a LiDAR sensor. <strong>Sketch a floorplan</strong>
+        works on every device: tap to place corners, close the loop, and the walls stand up.</p>
+        <p>If <em>Scan a room</em> tells you the device is not supported, sketching is the way in — it is
+        the same editor and the same plan afterwards.</p>
+      </section>
+
+      <section class="policy-section">
+        <h2>Correcting the plan</h2>
+        <p>Tap a wall to select it, then drag to move it. Doors and windows are added from
+        <strong>Add</strong> — choose what you want first, set its size, then tap the wall where it goes.
+        Furniture works the same way, from the library.</p>
+        <p>A scan is a starting point, not a verdict. Walls can be moved, openings repositioned, and the
+        room's height adjusted after the fact.</p>
+      </section>
+
+      <section class="policy-section">
+        <h2>Measuring</h2>
+        <p><strong>Measure</strong> snaps to real features — a corner, an edge, a wall face — and names
+        what it snapped to, so a dimension is never taken from a point that does not exist. Wall-to-wall
+        gives the clear dimension between finished faces, which is the number you would get with a tape.</p>
+      </section>
+
+      <section class="policy-section">
+        <h2>Sharing</h2>
+        <p>Export a <strong>to-scale PDF drawing</strong> for anyone who needs to print or mark it up, or a
+        <strong>3D model</strong> (USDZ, OBJ or GLB) for anyone with 3D tools. Nothing leaves your device
+        until you choose to share it.</p>
+      </section>
+
+      <section class="policy-section">
+        <h2>Your plans</h2>
+        <p>Every plan is kept on your device, with the original scan preserved separately from your edits —
+        so <strong>Restore Original Scan</strong> can always take you back to what the scanner actually
+        measured.</p>
+      </section>
+
+      <section class="policy-section">
+        <h2>Troubleshooting</h2>
+        <p><strong>Scanning shows a black screen or nothing happens.</strong> Camera access is off. Open
+        iOS Settings → Overplan → Camera, or use the Open Settings button in the app's own alert.</p>
+        <p><strong>The room looks flat when it first opens.</strong> Shading is computed after the plan
+        appears and settles a moment later. This is normal.</p>
+        <p><strong>A measurement looks wrong.</strong> Check which feature it snapped to — the label says.
+        Dimensions are taken between wall faces, not centre lines.</p>
+      </section>
+
+      <section class="policy-section">
+        <h2>Getting in touch</h2>
+        <p>Questions, bugs and requests are welcome:
+        <a href="mailto:mcfin.apps@gmail.com">mcfin.apps@gmail.com</a>. Overplan is made by
+        <a href="https://mcfinapps.github.io/">McFin</a>, independent software from Finland.</p>
+      </section>
+    </main>
+
+  <footer>
+    © 2026 <a href="https://mcfinapps.github.io/">McFin</a> · independent software from Finland ·
+    <a href="./">Overplan</a>
+  </footer>
+</body>
+</html>
