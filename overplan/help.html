@@ -4,11 +4,11 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="theme-color" content="#f3eee4">
-  <meta name="description" content="How to use Overplan: scan a room with LiDAR or sketch a floorplan by hand, correct the walls, add doors, windows and furniture, then share a to-scale PDF or a 3D model.">
+  <meta name="description" content="How to use Overplan: scan a room with LiDAR or sketch a floorplan by hand, correct the walls, add doors and windows, measure, and share a to-scale PDF or a 3D model.">
   <link rel="canonical" href="https://mcfinapps.github.io/overplan/help.html">
   <meta property="og:site_name" content="Overplan">
   <meta property="og:title" content="Help — Overplan">
-  <meta property="og:description" content="Getting started, editing a plan, measuring, sharing, and what to do when your device has no LiDAR.">
+  <meta property="og:description" content="Every part of Overplan, in order: scanning, sketching, the 3D view, adding and editing walls, measuring, Outline and Trace, your Plans, sharing, restoring and deleting.">
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://mcfinapps.github.io/overplan/help.html">
   <title>Help — Overplan</title>
@@ -104,6 +104,55 @@
       font-size: clamp(1.05rem, 2vw, 1.24rem);
       line-height: 1.66;
     }
+
+    /* CONTENTS -- new for this larger page. A plain wrapping list of anchor links,
+       not a sidebar or a sticky nav: the page is still one linear read, this just
+       lets a reader who already knows what they want skip to it. Every href is a
+       same-page "#anchor", so it costs nothing offline and needs nothing from the
+       sync script's network check. */
+    .contents {
+      margin: 0 0 clamp(28px, 4vw, 40px);
+      padding: 18px 20px;
+      border: 1px solid var(--line);
+      border-radius: 14px;
+      background: var(--cream-bright);
+    }
+    .contents p {
+      margin: 0 0 .6rem;
+      font-size: .68rem;
+      font-weight: 650;
+      letter-spacing: .12em;
+      text-transform: uppercase;
+      color: var(--blue);
+    }
+    .contents ol {
+      margin: 0;
+      padding: 0;
+      list-style: none;
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 4px 18px;
+      counter-reset: toc;
+    }
+    .contents li { margin: 0; padding: 0; }
+    .contents a {
+      counter-increment: toc;
+      display: block;
+      padding: 3px 0;
+      font-size: .85rem;
+      color: var(--ink);
+      text-decoration: none;
+      border-bottom: 1px solid transparent;
+    }
+    .contents a::before {
+      content: counter(toc) ". ";
+      color: var(--muted);
+    }
+    .contents a:hover { border-bottom-color: var(--line); }
+    @media (max-width: 560px) {
+      .contents ol { grid-template-columns: 1fr; }
+    }
+
     .policy-section {
       padding: 34px 0 30px;
       border-top: 1px solid var(--line);
@@ -112,6 +161,9 @@
       margin-bottom: .8rem;
       font-size: clamp(1.7rem, 3.3vw, 2.5rem);
       line-height: 1;
+      display: flex;
+      align-items: center;
+      gap: 14px;
     }
     p, li {
       color: var(--muted);
@@ -128,6 +180,54 @@
       border-left: 2px solid var(--blue);
       color: var(--ink);
     }
+
+    /* GLYPHS -- small inline SVG diagrams standing in for screenshots. Screenshots
+       go stale the moment a button moves (this build alone changed the object card
+       twice, the paper picker, and added Trace); a drawn glyph of the GESTURE or
+       SHAPE never can, because it never claimed to be a pixel-for-pixel render of any
+       one build. Every glyph is a <use> against one <symbol> sheet defined once,
+       right after this style block, so the markup below stays a one-line reference
+       rather than a repeated inline path. Sized and coloured by CSS, not by anything
+       baked into the symbol, so the sheet works for a heading-sized glyph and a
+       list-row-sized one from the same definitions. */
+    .glyph {
+      width: 1.5em;
+      height: 1.5em;
+      flex-shrink: 0;
+      color: var(--blue);
+      fill: none;
+      stroke: currentColor;
+      stroke-width: 3;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+      vertical-align: middle;
+    }
+    .policy-section h2 .glyph { width: 1em; height: 1em; color: var(--blue); }
+
+    /* A GESTURE ROW -- a compact legend of "which fingers do what" for a section that
+       teaches more than one manipulation at once (the 3D view, the sketch canvas,
+       Add, Edit). Each chip is a glyph over a two/three-word caption; wraps on
+       narrow screens rather than scrolling sideways. */
+    .gesture-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin: 4px 0 18px;
+    }
+    .gesture {
+      display: flex;
+      align-items: center;
+      gap: 9px;
+      padding: 9px 14px 9px 10px;
+      border: 1px solid var(--line);
+      border-radius: 999px;
+      background: var(--cream-bright);
+      font-size: .82rem;
+      color: var(--ink);
+      white-space: nowrap;
+    }
+    .gesture .glyph { width: 1.3em; height: 1.3em; }
+
     footer {
       padding: 36px 24px;
       border-top: 1px solid var(--line);
@@ -153,73 +253,365 @@
   </header>
 
   <main>
+      <!-- THE GLYPH SHEET. Hidden (never rendered on its own), referenced by every
+           <svg class="glyph"><use href="#i-…"/></svg> below. All stroke-based line art
+           on a 0-0-48-48 grid, no fills but the odd solid dot standing for a fingertip,
+           so every glyph reads at both heading size and list-row size without a second
+           set of artwork. -->
+      <svg style="position:absolute;width:0;height:0;overflow:hidden" aria-hidden="true">
+        <defs>
+          <symbol id="i-scan" viewBox="0 0 48 48">
+            <path d="M8 16V8h8M40 16V8h-8M8 32v8h8M40 32v8h-8"/>
+            <circle cx="24" cy="24" r="3" fill="currentColor" stroke="none"/>
+          </symbol>
+          <symbol id="i-sketch" viewBox="0 0 48 48">
+            <path d="M8 34l14-20 18 8"/>
+            <circle cx="8" cy="34" r="3" fill="currentColor" stroke="none"/>
+            <circle cx="22" cy="14" r="3" fill="currentColor" stroke="none"/>
+            <circle cx="40" cy="22" r="3" fill="currentColor" stroke="none"/>
+          </symbol>
+          <symbol id="i-tap" viewBox="0 0 48 48">
+            <circle cx="24" cy="24" r="5" fill="currentColor" stroke="none"/>
+            <circle cx="24" cy="24" r="12" opacity=".5"/>
+            <circle cx="24" cy="24" r="19" opacity=".25"/>
+          </symbol>
+          <symbol id="i-pan2" viewBox="0 0 48 48">
+            <circle cx="16" cy="14" r="4" fill="currentColor" stroke="none"/>
+            <circle cx="32" cy="14" r="4" fill="currentColor" stroke="none"/>
+            <path d="M10 32h28"/>
+            <path d="M15 26l-6 6 6 6M33 26l6 6-6 6"/>
+          </symbol>
+          <symbol id="i-pinch" viewBox="0 0 48 48">
+            <circle cx="14" cy="24" r="4" fill="currentColor" stroke="none"/>
+            <circle cx="34" cy="24" r="4" fill="currentColor" stroke="none"/>
+            <path d="M14 24H6M6 20l-4 4 4 4"/>
+            <path d="M34 24h8M42 20l4 4-4 4"/>
+          </symbol>
+          <symbol id="i-orbit" viewBox="0 0 48 48">
+            <rect x="18" y="18" width="12" height="12" rx="2"/>
+            <path d="M24 6a18 18 0 0 1 15 9"/>
+            <path d="M39 15l3-1 1 4"/>
+          </symbol>
+          <symbol id="i-reset" viewBox="0 0 48 48">
+            <circle cx="17" cy="12" r="3.5" fill="currentColor" stroke="none"/>
+            <circle cx="31" cy="12" r="3.5" fill="currentColor" stroke="none"/>
+            <path d="M13 30a11 11 0 1 0 3 8"/>
+            <path d="M12 32l1 6 6-2"/>
+          </symbol>
+          <symbol id="i-select" viewBox="0 0 48 48">
+            <rect x="10" y="10" width="28" height="28" rx="2" stroke-dasharray="4 4"/>
+            <rect x="18" y="18" width="12" height="12" rx="1"/>
+          </symbol>
+          <symbol id="i-move" viewBox="0 0 48 48">
+            <rect x="10" y="20" width="28" height="8" rx="1"/>
+            <path d="M10 24H4M38 24h6M8 20l-4 4 4 4M40 20l4 4-4 4"/>
+          </symbol>
+          <symbol id="i-resize" viewBox="0 0 48 48">
+            <rect x="14" y="14" width="20" height="20" rx="1"/>
+            <rect x="9" y="20" width="7" height="8"/>
+            <rect x="32" y="20" width="7" height="8"/>
+          </symbol>
+          <symbol id="i-door" viewBox="0 0 48 48">
+            <path d="M4 34h40" stroke-width="4"/>
+            <path d="M14 34V14"/>
+            <path d="M14 14a20 20 0 0 1 20 20" stroke-dasharray="2 5"/>
+          </symbol>
+          <symbol id="i-window" viewBox="0 0 48 48">
+            <path d="M4 34h40" stroke-width="4"/>
+            <rect x="16" y="15" width="16" height="15"/>
+            <path d="M24 15v15M16 22.5h16"/>
+          </symbol>
+          <symbol id="i-dim" viewBox="0 0 48 48">
+            <path d="M8 15v6M40 15v6"/>
+            <path d="M8 21h32"/>
+            <path d="M8 21l7-3.5M8 21l7 3.5M40 21l-7-3.5M40 21l-7 3.5"/>
+          </symbol>
+          <symbol id="i-outline" viewBox="0 0 48 48">
+            <path d="M8 14h18l12 12v10H16L8 26z" stroke-dasharray="3 3"/>
+            <path d="M31 33l8-8 4 4-8 8z"/>
+          </symbol>
+          <symbol id="i-trace" viewBox="0 0 48 48">
+            <rect x="6" y="14" width="22" height="22" rx="2" stroke-dasharray="3 3" opacity=".55"/>
+            <rect x="18" y="10" width="22" height="22" rx="2"/>
+          </symbol>
+          <symbol id="i-duplicate" viewBox="0 0 48 48">
+            <rect x="6" y="6" width="22" height="22" rx="3"/>
+            <rect x="20" y="20" width="22" height="22" rx="3"/>
+          </symbol>
+          <symbol id="i-share" viewBox="0 0 48 48">
+            <path d="M24 30V8M17 15l7-7 7 7"/>
+            <path d="M10 24v14a2 2 0 0 0 2 2h24a2 2 0 0 0 2-2V24"/>
+          </symbol>
+          <symbol id="i-restore" viewBox="0 0 48 48">
+            <path d="M14 14a16 16 0 1 1-3 19"/>
+            <path d="M6 20l2-9 9 3"/>
+          </symbol>
+          <symbol id="i-delete" viewBox="0 0 48 48">
+            <path d="M10 14h28M18 14V9h12v5M14 14l2 26h16l2-26"/>
+            <path d="M20 20v14M28 20v14"/>
+          </symbol>
+          <symbol id="i-cube" viewBox="0 0 48 48">
+            <path d="M24 6l16 9v18l-16 9-16-9V15z"/>
+            <path d="M24 6v18M8 15l16 9 16-9"/>
+          </symbol>
+          <symbol id="i-pdf" viewBox="0 0 48 48">
+            <path d="M12 6h16l8 8v28H12z"/>
+            <path d="M28 6v8h8"/>
+            <path d="M17 26h14M17 32h10"/>
+          </symbol>
+          <symbol id="i-fit" viewBox="0 0 48 48">
+            <path d="M8 18V8h10M40 18V8H30M8 30v10h10M40 30v10H30"/>
+            <circle cx="24" cy="24" r="6"/>
+            <path d="M28 28l6 6"/>
+          </symbol>
+        </defs>
+      </svg>
+
       <p class="eyebrow">A scan you can correct</p>
       <h1>Help</h1>
-      <p class="effective">Overplan · Last updated 5 August 2026</p>
+      <p class="effective">Overplan · Last updated 6 August 2026</p>
 
       <p class="lede">Overplan turns a room into a plan you can correct. Scan it if your device has
-      LiDAR, or draw it by hand if it does not — then fix what the scanner got wrong, which is the part
-      most scanning apps leave you stuck with.</p>
+      LiDAR, or draw it by hand if it does not — then fix what the scanner got wrong, which is the
+      part most scanning apps leave you stuck with. Every diagram on this page is a drawn glyph, not
+      a screenshot — it describes the gesture, not one particular button's position, so it stays
+      right as the app's own layout keeps changing.</p>
 
-      <section class="policy-section">
-        <h2>Starting a plan</h2>
-        <p><strong>Scan a room</strong> uses your device's LiDAR camera. It needs camera access, and it
-        appears on iPhone and iPad models that have a LiDAR sensor. <strong>Sketch a floorplan</strong>
-        works on every device: tap to place corners, close the loop, and the walls stand up.</p>
-        <p>If <em>Scan a room</em> tells you the device is not supported, sketching is the way in — it is
-        the same editor and the same plan afterwards.</p>
+      <nav class="contents" aria-label="On this page">
+        <p>On this page</p>
+        <ol>
+          <li><a href="#scan">Scan</a></li>
+          <li><a href="#sketch">Sketch</a></li>
+          <li><a href="#view-3d">The 3D view</a></li>
+          <li><a href="#add">Adding a wall, door or window</a></li>
+          <li><a href="#edit">Editing what you've added</a></li>
+          <li><a href="#measure">Measure</a></li>
+          <li><a href="#outline">Outline mode</a></li>
+          <li><a href="#trace">Trace mode</a></li>
+          <li><a href="#plans">Plans, and duplicating one</a></li>
+          <li><a href="#share">Share</a></li>
+          <li><a href="#restore">Restoring a drawn outline</a></li>
+          <li><a href="#delete">Delete</a></li>
+          <li><a href="#troubleshooting">Troubleshooting</a></li>
+          <li><a href="#contact">Getting in touch</a></li>
+        </ol>
+      </nav>
+
+      <section class="policy-section" id="scan">
+        <h2><svg class="glyph" aria-hidden="true"><use href="#i-scan"/></svg>Scan</h2>
+        <p><strong>Scan a room</strong> uses your device's LiDAR camera to measure the walls as you
+        walk the room, and needs camera access to do it. It appears on the iPhone and iPad models
+        that have a LiDAR sensor; on a device without one, Overplan offers <strong>Sketch a
+        floorplan</strong> in its place — the same editor and the same kind of plan afterwards, just
+        starting from a drawing instead of a measurement.</p>
+        <p>A scan is a first draft, not a verdict. Every wall it measures can be moved, every opening
+        repositioned, and the room's height adjusted, once you're in the 3D view — see
+        <a href="#view-3d">The 3D view</a> and <a href="#edit">Editing what you've added</a>.</p>
       </section>
 
-      <section class="policy-section">
-        <h2>Correcting the plan</h2>
-        <p>Tap a wall to select it, then drag to move it. Doors and windows are added from
-        <strong>Add</strong> — choose what you want first, set its size, then tap the wall where it goes.
-        Furniture works the same way, from the library.</p>
-        <p>A scan is a starting point, not a verdict. Walls can be moved, openings repositioned, and the
-        room's height adjusted after the fact.</p>
+      <section class="policy-section" id="sketch">
+        <h2><svg class="glyph" aria-hidden="true"><use href="#i-sketch"/></svg>Sketch</h2>
+        <p><strong>Sketch a floorplan</strong> works on every device, LiDAR or not: tap out the
+        corners and the walls stand up on their own.</p>
+        <div class="gesture-row">
+          <span class="gesture"><svg class="glyph" aria-hidden="true"><use href="#i-tap"/></svg>Tap to place a corner</span>
+          <span class="gesture"><svg class="glyph" aria-hidden="true"><use href="#i-pan2"/></svg>Two fingers pan</span>
+          <span class="gesture"><svg class="glyph" aria-hidden="true"><use href="#i-pinch"/></svg>Pinch to zoom</span>
+          <span class="gesture"><svg class="glyph" aria-hidden="true"><use href="#i-fit"/></svg>Fit re-frames the drawing</span>
+        </div>
+        <p>Tap once to place the first corner, then tap again to set the far end — that draws your
+        first wall. Keep tapping to add the next one, and the next: each tap adds another wall to the
+        chain. Tap a corner you've already placed to close the loop and finish the room.</p>
+        <p>One finger is reserved for placing corners, so panning and zooming both use two fingers —
+        drag with two fingers to slide the page, or pinch to zoom, at any point while you're drawing.
+        If a pan or a zoom carries the drawing off-screen, the <strong>Fit</strong> button brings the
+        whole thing back into view; it always works, even on a blank canvas.</p>
       </section>
 
-      <section class="policy-section">
-        <h2>Measuring</h2>
-        <p><strong>Measure</strong> snaps to real features — a corner, an edge, a wall face — and names
-        what it snapped to, so a dimension is never taken from a point that does not exist. Wall-to-wall
-        gives the clear dimension between finished faces, which is the number you would get with a tape.</p>
+      <section class="policy-section" id="view-3d">
+        <h2><svg class="glyph" aria-hidden="true"><use href="#i-orbit"/></svg>The 3D view</h2>
+        <p>Once a room exists — scanned or sketched — it opens in the 3D view, where every edit in
+        this help file happens. Looking around it uses one finger; changing what you're looking
+        <em>at</em> uses two.</p>
+        <div class="gesture-row">
+          <span class="gesture"><svg class="glyph" aria-hidden="true"><use href="#i-orbit"/></svg>One finger orbits</span>
+          <span class="gesture"><svg class="glyph" aria-hidden="true"><use href="#i-pan2"/></svg>Two fingers pan</span>
+          <span class="gesture"><svg class="glyph" aria-hidden="true"><use href="#i-pinch"/></svg>Pinch to zoom</span>
+          <span class="gesture"><svg class="glyph" aria-hidden="true"><use href="#i-reset"/></svg>Two-finger double-tap resets</span>
+        </div>
+        <p>Drag with one finger to orbit around the room. Drag with two fingers to slide the room
+        across the screen instead — the same two fingers can pinch to zoom at the same time, so
+        panning and zooming blend into one motion, the way it works in Maps.</p>
+        <p>Lost your place after a wide orbit or an over-eager zoom? <strong>Double-tap with two
+        fingers</strong> and the view snaps back — recentred and re-fit to the room, keeping the
+        angle you were looking from.</p>
       </section>
 
-      <section class="policy-section">
-        <h2>Sharing</h2>
-        <p>Export a <strong>to-scale PDF drawing</strong> for anyone who needs to print or mark it up, or a
-        <strong>3D model</strong> (USDZ, OBJ or GLB) for anyone with 3D tools. Nothing leaves your device
-        until you choose to share it.</p>
+      <section class="policy-section" id="add">
+        <h2><svg class="glyph" aria-hidden="true"><use href="#i-door"/></svg>Adding a wall, door or window</h2>
+        <p><strong>Add</strong> opens a small palette with three choices: Wall, Door, Window.</p>
+        <div class="gesture-row">
+          <span class="gesture"><svg class="glyph" aria-hidden="true"><use href="#i-door"/></svg>Door</span>
+          <span class="gesture"><svg class="glyph" aria-hidden="true"><use href="#i-window"/></svg>Window</span>
+          <span class="gesture"><svg class="glyph" aria-hidden="true"><use href="#i-tap"/></svg>Tap the wall it goes on</span>
+        </div>
+        <p><strong>Door</strong> or <strong>Window</strong> — tap the one you want, then tap the wall
+        where it goes. It appears already placed and already selected, at whatever size you used
+        last, ready to <a href="#edit">move or resize</a> right away. Tapping a spot the opening
+        cannot fit keeps it armed and shows why, so your very next tap is the retry.</p>
+        <p><strong>Wall</strong> — a new interior wall has to start from an existing one, so tapping
+        Wall first asks you to tap the wall it should attach to. From there, drag out its length and
+        direction: it snaps to existing corners, to running perpendicular, and to 45° steps, with a
+        confirmation showing the length before it commits.</p>
       </section>
 
-      <section class="policy-section">
-        <h2>Your plans</h2>
-        <p>Every plan is kept on your device, with the original scan preserved separately from your edits —
-        so <strong>Restore Original Scan</strong> can always take you back to what the scanner actually
-        measured.</p>
+      <section class="policy-section" id="edit">
+        <h2><svg class="glyph" aria-hidden="true"><use href="#i-move"/></svg>Editing what you've added</h2>
+        <div class="gesture-row">
+          <span class="gesture"><svg class="glyph" aria-hidden="true"><use href="#i-select"/></svg>Tap to select</span>
+          <span class="gesture"><svg class="glyph" aria-hidden="true"><use href="#i-move"/></svg>Drag to move</span>
+          <span class="gesture"><svg class="glyph" aria-hidden="true"><use href="#i-resize"/></svg>Drag an edge to resize</span>
+        </div>
+        <p>Tap a wall, a door, a window, or the floor or ceiling, to select it. Tap empty space, or
+        tap the same thing again, to deselect it. Only one thing is selected at a time.</p>
+        <ul>
+          <li><strong>A selected wall</strong> moves when you drag it. It cannot be resized directly
+          — a wall's length follows from the corners at each end, which is what <a href="#outline">Outline
+          mode</a> is for.</li>
+          <li><strong>A selected door or window</strong> slides along its wall when you drag its
+          middle, and resizes when you drag one of its edges.</li>
+          <li><strong>The selected floor or ceiling</strong> changes the room's height when you drag
+          it.</li>
+        </ul>
+        <p>Whatever is selected shows its own card with the actions that apply to it — including
+        Delete; see <a href="#delete">Delete</a>.</p>
       </section>
 
-      <section class="policy-section">
+      <section class="policy-section" id="measure">
+        <h2><svg class="glyph" aria-hidden="true"><use href="#i-dim"/></svg>Measure</h2>
+        <p><strong>Measure</strong> (in the dock) turns into <strong>Done</strong> while it's running.
+        Tap two points and Overplan snaps each one to the nearest real feature — a corner, an edge, a
+        wall face — and names what it snapped to, so a dimension is never taken from a point that
+        does not actually exist on the room.</p>
+        <div class="gesture-row">
+          <span class="gesture"><svg class="glyph" aria-hidden="true"><use href="#i-tap"/></svg>Tap a point</span>
+          <span class="gesture"><svg class="glyph" aria-hidden="true"><use href="#i-dim"/></svg>Tap a second point</span>
+        </div>
+        <p><strong>Wall to wall</strong> specifically measures between the clear, finished faces of
+        two walls — the number a tape would give you, not a centre-line distance. Every measurement
+        you take is kept in <strong>Measurements</strong>, where each one can be renamed or deleted on
+        its own.</p>
+      </section>
+
+      <section class="policy-section" id="outline">
+        <h2><svg class="glyph" aria-hidden="true"><use href="#i-outline"/></svg>Outline mode</h2>
+        <p><strong>Outline</strong> (in the dock) is the fast way to fix a room's shape: it opens the
+        room's own corners on a flat 2D canvas, the same one <a href="#sketch">Sketch</a> uses.</p>
+        <ul>
+          <li>Tap a corner, then tap it again to drag it into place.</li>
+          <li>Tap a wall, then tap it again to slide it — or to delete it. A corner itself can't be
+          deleted directly; delete the walls that meet at it instead.</li>
+          <li>Draw a brand-new wall off a selected corner or wall, or straight onto empty ground, the
+          same way you would in a fresh sketch.</li>
+        </ul>
+        <p><strong>Done</strong> writes your changes back onto this same room. <strong>Cancel</strong>
+        only asks first if something has actually changed since you opened it.</p>
+      </section>
+
+      <section class="policy-section" id="trace">
+        <h2><svg class="glyph" aria-hidden="true"><use href="#i-trace"/></svg>Trace mode</h2>
+        <p><strong>Trace</strong> (in the dock, and only offered once a room has walls) opens the same
+        flat canvas as Outline, but starts a brand-new drawing with your current room shown faintly
+        underneath it as a reference. Your new corners snap onto the reference's own corners and
+        walls, so a hand-drawn trace can land exactly where the original says it should.</p>
+        <p>The difference from Outline is what each one touches: <strong>Outline edits the room you
+        already have</strong>; <strong>Trace draws a separate, brand-new one</strong> and leaves the
+        original completely untouched. Reach for Trace when you want a second version to compare,
+        rather than a correction to the one you've got.</p>
+      </section>
+
+      <section class="policy-section" id="plans">
+        <h2><svg class="glyph" aria-hidden="true"><use href="#i-duplicate"/></svg>Plans, and duplicating one</h2>
+        <p><strong>Plans</strong> is where every scan and sketch you've made lives, one card each.
+        Each card's menu offers Open, Rename, Duplicate, Share, Restore and Delete, in that order —
+        safest first, most destructive last.</p>
+        <p><strong>Duplicate</strong> copies a plan whole, including the original scan or drawing it
+        started from — so you can take a room in two different directions and still be able to
+        <a href="#restore">restore</a> either copy back to the same starting point on its own.
+        Duplicating is never confirmed, because it only ever adds a plan; the copy is one menu away
+        from being deleted again if you change your mind.</p>
+      </section>
+
+      <section class="policy-section" id="share">
+        <h2><svg class="glyph" aria-hidden="true"><use href="#i-share"/></svg>Share</h2>
+        <p><strong>Share</strong> (from a plan's menu in Plans) offers three kinds of file, and
+        nothing leaves your device until you pick one.</p>
+        <ul>
+          <li><svg class="glyph" aria-hidden="true" style="width:1.2em;height:1.2em"><use href="#i-pdf"/></svg>
+          <strong>A to-scale PDF drawing.</strong> Pick a paper size and the button shows the scale it
+          prints at; a size too small for the room stays on screen marked "won't fit" rather than
+          disappearing, because that is itself useful information about the room.</li>
+          <li><svg class="glyph" aria-hidden="true" style="width:1.2em;height:1.2em"><use href="#i-pdf"/></svg>
+          <strong>The raw 2D drawing</strong>, at true 1:1 scale with no frame, title block or
+          dimensions — just the shape, for dropping into another drawing tool.</li>
+          <li><svg class="glyph" aria-hidden="true" style="width:1.2em;height:1.2em"><use href="#i-cube"/></svg>
+          <strong>A 3D model</strong> — USDZ, OBJ or GLB. USDZ is Apple's own AR/Quick Look format;
+          OBJ opens in nearly every 3D tool, Blender included, for further editing; GLB is the format
+          most web and game tools expect.</li>
+        </ul>
+      </section>
+
+      <section class="policy-section" id="restore">
+        <h2><svg class="glyph" aria-hidden="true"><use href="#i-restore"/></svg>Restoring a drawn outline</h2>
+        <p>Every plan keeps its starting point untouched, separately from whatever you've edited
+        since — whichever way it began. The button is named for what it actually goes back to:
+        <strong>Restore Original Scan</strong> for a room that started as a scan, or <strong>Restore
+        Drawn Outline</strong> for one that started as a sketch or a <a href="#trace">Trace</a>.</p>
+        <p>Either one discards every edit made since — walls moved, openings added or removed,
+        measurements taken — keeping only what was originally measured or drawn. It asks for
+        confirmation first, because there is no further undo once you confirm. Reach it from a plan's
+        menu in <a href="#plans">Plans</a>, or from <strong>Room</strong> inside the editor itself.</p>
+        <p>A room saved by an older version of Overplan, before this kept a separate original, shows
+        why the button is unavailable rather than just greying it out with no explanation.</p>
+      </section>
+
+      <section class="policy-section" id="delete">
+        <h2><svg class="glyph" aria-hidden="true"><use href="#i-delete"/></svg>Delete</h2>
+        <p><strong>Deleting a wall or an opening:</strong> select it (see <a href="#edit">Editing
+        what you've added</a>), then use Delete on its own card. A single undo is offered
+        immediately afterwards, right on screen.</p>
+        <p><strong>Deleting a whole plan:</strong> its menu in <a href="#plans">Plans</a>, then
+        Delete. This one is confirmed before it happens, because there is no undo for an entire
+        plan the way there is for one wall.</p>
+      </section>
+
+      <section class="policy-section" id="troubleshooting">
         <h2>Troubleshooting</h2>
-        <p><strong>Scanning shows a black screen or nothing happens.</strong> Camera access is off. Open
-        iOS Settings → Overplan → Camera, or use the Open Settings button in the app's own alert.</p>
-        <p><strong>The room looks flat when it first opens.</strong> Shading is computed after the plan
-        appears and settles a moment later. This is normal.</p>
-        <p><strong>A measurement looks wrong.</strong> Check which feature it snapped to — the label says.
-        Dimensions are taken between wall faces, not centre lines.</p>
+        <p><strong>Scanning shows a black screen or nothing happens.</strong> Camera access is off.
+        Open iOS Settings → Overplan → Camera, or use the Open Settings button in the app's own
+        alert.</p>
+        <p><strong>The room looks flat when it first opens.</strong> Shading is computed after the
+        plan appears and settles a moment later. This is normal.</p>
+        <p><strong>Trace is greyed out.</strong> There's no room yet to trace over. Scan or sketch one
+        first — or draw straight into <a href="#sketch">Sketch</a> if you don't need a reference at
+        all.</p>
+        <p><strong>A measurement looks wrong.</strong> Check which feature it snapped to — the label
+        says. Dimensions are taken between wall faces, not centre lines.</p>
+        <p><strong>Restore is disabled.</strong> The room was saved by an earlier version of Overplan,
+        which didn't keep a separate original to go back to. Anything scanned or sketched from now on
+        keeps one.</p>
       </section>
 
-      <section class="policy-section">
+      <section class="policy-section" id="contact">
         <h2>Getting in touch</h2>
         <p>Questions, bugs and requests are welcome:
         <a href="mailto:mcfin.apps@gmail.com">mcfin.apps@gmail.com</a>. Overplan is made by
-        <a href="https://mcfinapps.github.io/">McFin</a>, independent software from Finland.</p>
+        <a href="https://mcfinapps.github.io/">mcfinapps</a>, independent software from Finland.</p>
       </section>
     </main>
 
   <footer>
-    © 2026 <a href="https://mcfinapps.github.io/">McFin</a> · independent software from Finland ·
+    © 2026 <a href="https://mcfinapps.github.io/">mcfinapps</a> · independent software from Finland ·
     <a href="./">Overplan</a>
   </footer>
 </body>
