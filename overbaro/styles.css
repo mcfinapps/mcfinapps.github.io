@@ -35,6 +35,10 @@ button { font: inherit; }
 .site-header nav a:hover { color: white; }
 .nav-cta { padding: 10px 16px; border: 1px solid rgb(209 232 229 / .24); border-radius: 99px; }
 .menu-button { display: none; border: 0; color: white; background: transparent; }
+.app-store-badge { display: inline-block; text-decoration: none; }
+.app-store-badge img { display: block; width: auto; height: 44px; }
+.site-header .header-store { flex: 0 0 auto; margin-left: 12px; }
+.site-header .header-store img { height: 38px; }
 
 .hero { position: relative; min-height: 760px; height: 100svh; overflow: hidden; display: flex; align-items: center; }
 .hero-art { position: absolute; inset: 0; background: url("img/hero-night.jpg") 58% center / cover no-repeat; transform: scale(1.01); }
