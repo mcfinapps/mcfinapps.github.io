@@ -4,11 +4,11 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="theme-color" content="#f3eee4">
-  <meta name="description" content="How to use Overplan: scan a room with LiDAR, sketch a floorplan by hand or trace an imported plan, correct the walls, add doors and windows, measure, view the room in AR, and share a to-scale PDF, a 3D model or the editable plan itself.">
+  <meta name="description" content="How to use Overplan: scan a room with LiDAR, sketch a floorplan by hand over an imported plan, correct the walls, add doors and windows, measure, view the room in AR, and share a to-scale PDF, a 3D model or the editable plan itself.">
   <link rel="canonical" href="https://mcfinapps.github.io/overplan/help.html">
   <meta property="og:site_name" content="Overplan">
   <meta property="og:title" content="Help — Overplan">
-  <meta property="og:description" content="Every part of Overplan, in order: starting a plan, the 3D view, walls and openings, measuring, tracing an imported plan, your plans as files, and every way to share one.">
+  <meta property="og:description" content="Every part of Overplan, in order: starting a plan, the 3D view, walls and openings, measuring, tracing a reference image, your plans as files, and every way to share one.">
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://mcfinapps.github.io/overplan/help.html">
   <title>Help — Overplan</title>
@@ -520,10 +520,11 @@
       <p class="effective">Overplan · Last updated 10 August 2026</p>
 
       <p class="lede">Overplan turns a room into a plan you can correct. Scan it if your device has
-      LiDAR, draw it by hand if it does not, or trace a plan you already have — then fix what the
-      scanner got wrong, which is the part most scanning apps leave you stuck with. Every diagram on
-      this page is a drawn glyph, not a screenshot — it describes the gesture, not one particular
-      button's position, so it stays right as the app's own layout keeps changing.</p>
+      LiDAR, or sketch it by hand if it does not — tracing a photo or a PDF of a plan you already
+      have, if you have one — then fix what the scanner got wrong, which is the part most scanning
+      apps leave you stuck with. Every diagram on this page is a drawn glyph, not a screenshot — it
+      describes the gesture, not one particular button's position, so it stays right as the app's
+      own layout keeps changing.</p>
 
       <nav class="contents" aria-label="On this page">
         <p>On this page</p>
@@ -532,7 +533,7 @@
           <li><a href="#view-3d">The 3D view</a></li>
           <li><a href="#build">Walls, doors and windows</a></li>
           <li><a href="#measuring">Measuring</a></li>
-          <li><a href="#tracing">Tracing an imported plan</a></li>
+          <li><a href="#tracing">Tracing a reference image</a></li>
           <li><a href="#plans">Your plans, and Files</a></li>
           <li><a href="#sharing">Sharing</a></li>
           <li><a href="#tips">Two tips worth knowing</a></li>
@@ -573,15 +574,12 @@
         whole thing back into view; it always works, even on a blank canvas.</p>
         <p>The <strong>Sketch Settings</strong> button on the canvas sets the snap spacing, the major
         grid band, and the thickness the walls will be given when the drawing becomes a room.</p>
-      </section>
-
-      <section id="trace-import">
-        <h2><svg class="glyph" aria-hidden="true"><use href="#i-trace"/></svg>Trace an imported plan</h2>
-        <p><strong>Trace an imported plan</strong> is the third way to start: a photo of a paper plan,
-        a floor plan PDF from an agent, a scan of a hand sketch. Pick the file and it drops straight
-        onto the sketch canvas underneath your drawing, at a rough guessed size — then you set its
-        scale and line it up while you trace. See
-        <a href="#tracing">Tracing an imported plan</a> for all of its settings.</p>
+        <p>It also holds <strong>Import a reference image…</strong> — a photo of a paper plan, a floor
+        plan PDF from an agent, a scan of a hand sketch. The picture drops in underneath your drawing
+        at a rough guessed size, and you set its scale and line it up while you trace. It is available
+        the whole time you are sketching, not only at the start, and a new file replaces the one
+        that's there. See <a href="#tracing">Tracing a reference image</a> for all of its
+        settings.</p>
       </section>
 
       <section>
@@ -649,7 +647,7 @@
         tap the same thing again, to deselect it. Only one thing is selected at a time.</p>
         <ul>
           <li><strong>A selected wall</strong> moves when you drag it. It cannot be resized directly
-          — a wall's length follows from the corners at each end, which is what <a href="#outline">Outline
+          — a wall's length follows from the corners at each end, which is what <a href="#outline">Sketch
           mode</a> is for.</li>
           <li><strong>A selected door or window</strong> slides along its wall when you drag its
           middle, and resizes when you drag one of its edges.</li>
@@ -671,9 +669,12 @@
       </section>
 
       <section id="outline">
-        <h2><svg class="glyph" aria-hidden="true"><use href="#i-outline"/></svg>Outline mode</h2>
-        <p><strong>Outline</strong> (in the dock) is the fast way to fix a room's shape: it opens the
-        room's own corners on a flat 2D canvas, the same one <a href="#sketch">Sketch</a> uses.</p>
+        <h2><svg class="glyph" aria-hidden="true"><use href="#i-outline"/></svg>Sketch mode</h2>
+        <p><strong>Sketch</strong> (in the dock) is the fast way to fix a room's shape: it opens the
+        room's own corners on a flat 2D canvas — the very same canvas
+        <a href="#sketch">Sketch a floorplan</a> draws a new plan on, with the same settings and the
+        same <strong>Import a reference image…</strong> control. There is one sketch mode; the only
+        difference is whether it starts blank or starts with your room in it.</p>
         <ul>
           <li>Tap a corner, then tap it again to drag it into place.</li>
           <li>Tap a wall, then tap it again to slide it — or to delete it. A corner itself can't be
@@ -685,6 +686,8 @@
         your room out of shape. <strong>Done</strong> writes your changes back onto this same room.
         <strong>Cancel</strong> only asks first if something has actually changed since you opened
         it.</p>
+        <p>A reference image brought in here is a reference for this sitting: it is never part of what
+        you draw, and it is not saved with the plan.</p>
       </section>
 
       <section id="delete">
@@ -751,14 +754,18 @@
         the same order, and the captions you type here are the captions that print on it.</p>
       </section>
 
-      <p class="mode-label" id="tracing">Tracing an imported plan</p>
+      <p class="mode-label" id="tracing">Tracing a reference image</p>
 
       <section>
         <h2><svg class="glyph" aria-hidden="true"><use href="#i-open"/></svg>Bringing in a photo or a PDF</h2>
-        <p><strong>Trace an imported plan</strong>, on the Plans screen, opens the file picker for a
-        <strong>PNG, JPEG or HEIC</strong> photo or a <strong>PDF</strong> — a photo of a paper plan
-        taken on your iPhone is a HEIC, and works. For a PDF, the first page is used; there is no page
-        picker.</p>
+        <p><strong>Import a reference image…</strong>, the first row in <strong>Sketch Settings</strong>
+        on the sketch canvas, opens the file picker for a <strong>PNG, JPEG or HEIC</strong> photo or a
+        <strong>PDF</strong> — a photo of a paper plan taken on your iPhone is a HEIC, and works. For a
+        PDF, the first page is used; there is no page picker. It is there in both ways into sketching —
+        a new plan, or the plan already on screen — and it is there for the whole session, so you can
+        bring a picture in at any point or swap it for a different one. There is only ever one
+        reference; a new file replaces it, and its scale, rotation and position start again from a
+        guess.</p>
         <p>There is no calibration screen in the way. The image lands on the sketch canvas straight
         away, at a guess of about 7 m along its longer side, and you correct that guess afterwards
         while you can actually see it against the grid. Everything you draw is your own drawing —
@@ -816,18 +823,15 @@
       </section>
 
       <section>
-        <h2><svg class="glyph" aria-hidden="true"><use href="#i-trace"/></svg>Trace mode, over a room you already have</h2>
-        <p><strong>Trace</strong> (in the dock, and only offered once a room has walls) is the same
-        canvas pointed at a different reference: it starts a brand-new drawing with your current room
-        shown faintly underneath it. Because the room is real geometry, your new corners snap onto its
-        own corners and walls, so a hand-drawn trace can land exactly where the original says it
-        should.</p>
-        <p>The difference from Outline is what each one touches: <strong>Outline edits the room you
-        already have</strong>; <strong>Trace draws a separate, brand-new one</strong> and leaves the
-        original completely untouched. Reach for Trace when you want a second version to compare,
-        rather than a correction to the one you've got.</p>
-        <p>The opacity slider is the same one, named <strong>Scan underlay</strong> here, with the same
-        rule: at 0% the reference is neither shown nor snapped to.</p>
+        <h2><svg class="glyph" aria-hidden="true"><use href="#i-trace"/></svg>Redrawing a plan you already have</h2>
+        <p>Sometimes a scan is too messy to be worth correcting and you would rather draw a clean plan
+        from scratch with the old one visible underneath. There is no separate mode for that: export
+        the plan you have as a <a href="#sharing">to-scale PDF</a>, start
+        <strong>Sketch a floorplan</strong>, and bring that PDF in as the reference image. The original
+        plan is left completely untouched, because you are drawing a new one.</p>
+        <p>Use <strong>Sketch</strong> in the dock instead whenever the plan is close enough to
+        correct — that edits the room you already have and keeps every opening, thickness and
+        measurement on it.</p>
       </section>
 
       <p class="mode-label" id="plans">Your plans, and Files</p>
@@ -1034,8 +1038,8 @@
         <h2><svg class="glyph" aria-hidden="true"><use href="#i-alert"/></svg>It says this device can't scan</h2>
         <p>Room scanning needs a LiDAR sensor, which only some iPhone and iPad models have, and no
         setting anywhere turns one on. <a href="#start">Sketch a floorplan</a> and
-        <a href="#tracing">Trace an imported plan</a> work on every device and reach the same editor
-        and the same kind of plan.</p>
+        <a href="#tracing">tracing a plan you already have</a> work on every device and reach the
+        same editor and the same kind of plan.</p>
       </section>
 
       <section>
@@ -1051,10 +1055,11 @@
       </section>
 
       <section>
-        <h2><svg class="glyph" aria-hidden="true"><use href="#i-trace"/></svg>Trace is greyed out</h2>
-        <p>There's no room yet to trace over. Scan or sketch one first — or use
-        <a href="#trace-import">Trace an imported plan</a> from the Plans screen, which brings its own
-        reference with it.</p>
+        <h2><svg class="glyph" aria-hidden="true"><use href="#i-trace"/></svg>I can't find Trace</h2>
+        <p>There is no Trace mode any more, and nothing was lost with it. Tracing is part of sketching:
+        start <strong>Sketch a floorplan</strong> (or <strong>Sketch</strong> in the dock, on a plan
+        you already have) and use <strong>Import a reference image…</strong> in
+        <strong>Sketch Settings</strong> — see <a href="#tracing">Tracing a reference image</a>.</p>
       </section>
 
       <section>
