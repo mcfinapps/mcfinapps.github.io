@@ -4,11 +4,11 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="theme-color" content="#f3eee4">
-  <meta name="description" content="Overplan collects no personal data. Camera and LiDAR room scanning run on your device, and files leave only when you choose to share them.">
+  <meta name="description" content="Overplan collects no personal data and makes no network requests. Camera and LiDAR scanning, editing, PDF and 3D export all run on your device, and files leave only when you share them.">
   <link rel="canonical" href="https://mcfinapps.github.io/overplan/privacy.html">
   <meta property="og:site_name" content="Overplan">
   <meta property="og:title" content="Privacy Policy — Overplan">
-  <meta property="og:description" content="No account, no servers, no analytics, no advertising and no tracking. Your room scans stay on your device.">
+  <meta property="og:description" content="No account, no servers, no analytics, no advertising and no tracking. Your plans are ordinary files on your device, and nothing leaves it unless you share it.">
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://mcfinapps.github.io/overplan/privacy.html">
   <title>Privacy Policy — Overplan</title>
@@ -60,13 +60,27 @@
       border-radius: 10px;
       box-shadow: 0 8px 22px rgb(78 63 43 / .13);
     }
+    /* THE OTHER DOCUMENT, IN THE HEADER (2026-08-17). Help and Privacy are the pair an App
+       Store visitor reads together, and each page had only a way BACK -- reaching the other
+       meant returning to the product page and finding it there. `.doc-nav` keeps the header a
+       two-child flex row so `justify-content: space-between` is unchanged. */
+    .doc-nav {
+      display: flex;
+      align-items: center;
+      gap: clamp(14px, 3vw, 26px);
+    }
+    .doc-nav a { color: var(--muted); text-decoration: none; font-size: .78rem; }
+    .doc-nav a:hover { color: var(--ink); }
+
     .back {
       color: var(--muted);
       text-decoration: none;
       font-size: .78rem;
     }
+    /* 760px, NOT the 820 this page used to run at — the same measure as
+       `help.html`, so the two in-app documents wrap identically. */
     main {
-      width: min(820px, calc(100% - 48px));
+      width: min(760px, calc(100% - 48px));
       margin: 0 auto;
       padding: clamp(82px, 11vw, 145px) 0 clamp(90px, 11vw, 150px);
     }
@@ -95,9 +109,13 @@
       color: var(--muted);
       font-size: .72rem;
     }
+
+    /* THE SHIELD BLOCK STAYS. It is the one piece of this page `help.html`
+       deliberately did not adopt ("that badge belongs to the privacy promise
+       specifically"), so it is what still tells the two pages apart at a glance. */
     .promise {
-      margin: clamp(48px, 7vw, 76px) 0;
-      padding: clamp(28px, 5vw, 48px);
+      margin: clamp(40px, 6vw, 64px) 0 clamp(28px, 4vw, 40px);
+      padding: clamp(24px, 4vw, 34px);
       display: grid;
       grid-template-columns: 58px 1fr;
       gap: 24px;
@@ -134,30 +152,175 @@
       margin: 0;
       color: #57534c;
     }
-    .policy-section {
-      padding: 34px 0 30px;
-      border-top: 1px solid var(--line);
+
+    /* CONTENTS — the same wrapping jump list `help.html` carries, pointing at the
+       group labels rather than at every card. Every href is a same-page "#anchor", so
+       it costs nothing offline and the sync script's network check never sees it. */
+    .contents {
+      margin: 0 0 clamp(28px, 4vw, 40px);
+      padding: 18px 20px;
+      border: 1px solid var(--line);
+      border-radius: 14px;
+      background: var(--cream-bright);
     }
-    .policy-section h2 {
-      margin-bottom: .8rem;
-      font-size: clamp(1.7rem, 3.3vw, 2.5rem);
-      line-height: 1;
+    .contents p {
+      margin: 0 0 .6rem;
+      font-size: .68rem;
+      font-weight: 650;
+      letter-spacing: .12em;
+      text-transform: uppercase;
+      color: var(--blue);
+    }
+    .contents ol {
+      margin: 0;
+      padding: 0;
+      list-style: none;
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 4px 18px;
+      counter-reset: toc;
+    }
+    .contents li { margin: 0; padding: 0; }
+    .contents a {
+      counter-increment: toc;
+      display: block;
+      padding: 3px 0;
+      font-size: .85rem;
+      color: var(--ink);
+      text-decoration: none;
+      border-bottom: 1px solid transparent;
+    }
+    .contents a::before {
+      content: counter(toc) ". ";
+      color: var(--muted);
+    }
+    .contents a:hover { border-bottom-color: var(--line); }
+    @media (max-width: 560px) {
+      .contents ol { grid-template-columns: 1fr; }
+    }
+
+    /* ================================================================
+       THE FRAMES — one card per claim, under a small group label. Lifted from
+       `website/overplan/help.html`, which took them from `website/overbaro/help.html`
+       (owner, 2026-08-10: "Use similar styling for help what we have on Overbaro. I
+       like those frames. But keep the symbols."). Same cream/blue mapping, so the two
+       pages the app bundles are visibly siblings.
+
+       DECLARED HERE, INLINE, NOT IN `website/styles.css`. That stylesheet is shared by
+       the landing page and by Drivescape's, Overtiles' and Overbaro's own pages — a
+       bare `section { … }` rule there would put a card frame around every section of
+       all of them. (This page has never linked `styles.css`; everything it needs is in
+       this block, which is also what makes `sync-docs.sh` able to bundle it with no
+       fetchable resource left behind.)
+
+       ONE CLAIM PER CARD, because a privacy policy is read by somebody checking one
+       specific thing — "does it touch my photos", "where are my files" — and a wall of
+       prose is where a specific answer goes to hide.
+       ================================================================ */
+    .mode-label {
+      margin: 34px 0 0;
+      color: var(--blue);
+      font-size: .68rem;
+      font-weight: 650;
+      letter-spacing: .16em;
+      text-transform: uppercase;
+      scroll-margin-top: 22px;
+    }
+    .mode-label:first-of-type { margin-top: 8px; }
+    section {
+      margin: 14px 0;
+      padding: 18px 20px;
+      border: 1px solid var(--line);
+      border-radius: 18px;
+      background: var(--cream-bright);
+    }
+    section h2 {
+      margin: 0 0 .55rem;
+      font-size: 1.19rem;
+      line-height: 1.25;
+      letter-spacing: -.02em;
+      display: flex;
+      align-items: center;
+      gap: 11px;
     }
     p, li {
       color: var(--muted);
-      font-size: .96rem;
-      line-height: 1.76;
+      font-size: .94rem;
+      line-height: 1.72;
     }
-    p { margin: 0 0 .9rem; }
-    ul { margin: .7rem 0 0; padding-left: 1.25rem; }
-    li { margin: 0 0 .85rem; padding-left: .3rem; }
+    p { margin: 0 0 .8rem; }
+    section p:last-child { margin-bottom: 0; }
+    ul { margin: .7rem 0 0; padding-left: 1.2rem; }
+    li { margin: 0 0 .7rem; padding-left: .3rem; }
+    ul:last-child li:last-child { margin-bottom: 0; }
     strong { color: var(--ink); font-weight: 650; }
+    code {
+      font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+      font-size: .88em;
+    }
+    /* PLATFORM BADGES (2026-08-17) — the same convention, and deliberately the same
+       styling, as `help.html`'s. One policy now covers iPhone, iPad and Mac, at the
+       owner's instruction: *"I don't want separate help/privacy for mac/ios. It needs to
+       be combined but it can have sections/mentions that this is only for certain
+       platform."*
+
+       WHY THAT IS THE RIGHT SHAPE FOR A PRIVACY POLICY and not just tidier: the promises
+       here are about the SAME code. Two policies would be two places to keep a promise
+       accurate, and the one that fell behind would be a false statement about data
+       handling rather than a stale help page. So the differences are marked, sentence by
+       sentence, in the one document — and a paragraph with no badge is a promise that
+       holds on all three.
+
+       READS AS TEXT, NOT AS COLOUR, because this page is also rendered inside both apps,
+       where a legend would be off-screen. `:first-child` drops the left margin for a
+       badge that OPENS a paragraph, standing in for the words "on a Mac". */
+    .only {
+      display: inline-block;
+      margin-right: .42em;
+      margin-left: .5em;
+      padding: 1px 7px;
+      border: 1px solid var(--line);
+      border-radius: 99px;
+      color: var(--blue);
+      background: var(--cream);
+      font-size: .62rem;
+      font-weight: 650;
+      letter-spacing: .09em;
+      text-transform: uppercase;
+      vertical-align: .18em;
+      white-space: nowrap;
+    }
+    h2 .only { vertical-align: .3em; }
+    .only:first-child { margin-left: 0; }
+
+    /* A quiet aside inside a card — the blue rule marks the one sentence of that card
+       a reader skimming for the answer should not miss. */
     .offline {
-      margin: 14px 0 0;
+      margin: 14px 0 16px;
       padding-left: 17px;
       border-left: 2px solid var(--blue);
       color: var(--ink);
     }
+    section .offline:last-child { margin-bottom: 0; }
+
+    /* GLYPHS — small inline SVG marks, one per card, matching `help.html`'s treatment
+       and (where the two pages cover the same feature) its exact symbol. All stroke
+       line art on a 0-0-48-48 grid, defined once in the sheet below and referenced by
+       <use>, sized and coloured by CSS. */
+    .glyph {
+      width: 1.5em;
+      height: 1.5em;
+      flex-shrink: 0;
+      color: var(--blue);
+      fill: none;
+      stroke: currentColor;
+      stroke-width: 3;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+      vertical-align: middle;
+    }
+    section h2 .glyph { width: 1.05em; height: 1.05em; }
+
     footer {
       padding: 36px 24px;
       border-top: 1px solid var(--line);
@@ -173,6 +336,8 @@
       .promise { grid-template-columns: 1fr; }
       .shield { width: 44px; height: 49px; }
       .shield::after { left: 14px; top: 14px; }
+      section { padding: 16px 17px; }
+      section h2 { font-size: 1.1rem; }
     }
   </style>
 </head>
@@ -182,85 +347,462 @@
       <img src="img/app-icon.png" alt="">
       <span>Overplan</span>
     </a>
-    <a class="back" href="./">← Back to Overplan</a>
+    <nav class="doc-nav" aria-label="Documents">
+      <a href="help.html">Help</a>
+      <a class="back" href="./">← Back to Overplan</a>
+    </nav>
   </header>
 
   <main>
+    <!-- THE GLYPH SHEET. Hidden, referenced by every <svg class="glyph"><use …/></svg>
+         below. Where a card covers a feature `help.html` also documents, the symbol is
+         that page's own, so the two describe the same thing with the same mark. -->
+    <svg style="position:absolute;width:0;height:0;overflow:hidden" aria-hidden="true">
+      <defs>
+        <symbol id="i-scan" viewBox="0 0 48 48">
+          <path d="M8 16V8h8M40 16V8h-8M8 32v8h8M40 32v8h-8"/>
+          <circle cx="24" cy="24" r="3" fill="currentColor" stroke="none"/>
+        </symbol>
+        <symbol id="i-open" viewBox="0 0 48 48">
+          <path d="M11 7h14l8 8v26H11z"/>
+          <path d="M25 7v8h8"/>
+          <path d="M17 28h13M26 23l5 5-5 5"/>
+        </symbol>
+        <!-- NOT ASKED FOR: a permission dialog with a line through it. -->
+        <symbol id="i-nothing" viewBox="0 0 48 48">
+          <circle cx="24" cy="24" r="17"/>
+          <path d="M12 12l24 24"/>
+        </symbol>
+        <symbol id="i-folder" viewBox="0 0 48 48">
+          <path d="M6 13h13l4 5h19v20a2 2 0 0 1-2 2H8a2 2 0 0 1-2-2z"/>
+        </symbol>
+        <symbol id="i-package" viewBox="0 0 48 48">
+          <rect x="7" y="11" width="34" height="28" rx="3"/>
+          <path d="M7 20h34M20 11v9"/>
+          <path d="M14 28h9v7h-9z"/>
+        </symbol>
+        <symbol id="i-trace" viewBox="0 0 48 48">
+          <rect x="6" y="14" width="22" height="22" rx="2" stroke-dasharray="3 3" opacity=".55"/>
+          <rect x="18" y="10" width="22" height="22" rx="2"/>
+        </symbol>
+        <symbol id="i-dials" viewBox="0 0 48 48">
+          <path d="M7 14h34M7 24h34M7 34h34"/>
+          <circle cx="17" cy="14" r="4" fill="#faf7f1"/>
+          <circle cx="31" cy="24" r="4" fill="#faf7f1"/>
+          <circle cx="20" cy="34" r="4" fill="#faf7f1"/>
+        </symbol>
+        <symbol id="i-backup" viewBox="0 0 48 48">
+          <path d="M14 14a16 16 0 1 1-3 19"/>
+          <path d="M6 20l2-9 9 3"/>
+        </symbol>
+        <symbol id="i-share" viewBox="0 0 48 48">
+          <path d="M24 30V8M17 15l7-7 7 7"/>
+          <path d="M10 24v14a2 2 0 0 0 2 2h24a2 2 0 0 0 2-2V24"/>
+        </symbol>
+        <symbol id="i-ar" viewBox="0 0 48 48">
+          <path d="M6 16V8h8M42 16V8h-8M6 32v8h8M42 32v8h-8"/>
+          <path d="M24 15l8 4.5v9L24 33l-8-4.5v-9z"/>
+          <path d="M24 15v9M16 19.5l8 4.5 8-4.5"/>
+        </symbol>
+        <!-- NO NETWORK: a globe, struck through. -->
+        <symbol id="i-offline" viewBox="0 0 48 48">
+          <circle cx="24" cy="24" r="17"/>
+          <path d="M7 24h34M24 7c5 5 5 29 0 34M24 7c-5 5-5 29 0 34"/>
+          <path d="M10 38L38 10"/>
+        </symbol>
+        <symbol id="i-mail" viewBox="0 0 48 48">
+          <rect x="6" y="12" width="36" height="24" rx="3"/>
+          <path d="M6 16l18 12 18-12"/>
+        </symbol>
+        <!-- NOTHING COLLECTED: an eye, closed. -->
+        <symbol id="i-noeye" viewBox="0 0 48 48">
+          <path d="M5 22c6 8 12 12 19 12s13-4 19-12"/>
+          <path d="M10 30l-4 6M24 34v7M38 30l4 6"/>
+        </symbol>
+        <symbol id="i-alert" viewBox="0 0 48 48">
+          <path d="M24 7L4 41h40z"/>
+          <path d="M24 19v10M24 35h.01"/>
+        </symbol>
+        <symbol id="i-label" viewBox="0 0 48 48">
+          <path d="M24 6l15 6v13c0 9-6 15-15 17-9-2-15-8-15-17V12z"/>
+          <path d="M17 24l5 5 10-11"/>
+        </symbol>
+        <symbol id="i-child" viewBox="0 0 48 48">
+          <circle cx="24" cy="13" r="7"/>
+          <path d="M11 41v-4a13 13 0 0 1 26 0v4"/>
+        </symbol>
+        <symbol id="i-changes" viewBox="0 0 48 48">
+          <circle cx="24" cy="24" r="17"/>
+          <path d="M24 13v11l8 5"/>
+        </symbol>
+      </defs>
+    </svg>
+
     <p class="eyebrow">Privacy by architecture</p>
     <h1>Privacy Policy</h1>
-    <p class="effective">Overplan · Last updated 30 July 2026</p>
+    <p class="effective">Overplan for iPhone, iPad and Mac · Last updated 17 August 2026</p>
 
     <div class="promise">
       <span class="shield" aria-hidden="true"></span>
       <div>
         <h2>Your rooms stay yours.</h2>
-        <p>Overplan collects no personal data. There is no account, no mcfinapps server, no analytics,
-          no advertising and no tracking. The app makes no network requests and works offline.</p>
+        <p>Overplan collects no personal data. There is no account, no mcfinapps server, no
+          analytics, no advertising and no tracking. The app makes no network requests of its own
+          and works with the device offline, start to finish.</p>
       </div>
     </div>
 
-    <section class="policy-section">
-      <h2>Camera, LiDAR and RoomPlan</h2>
-      <p>Overplan uses your device’s camera, motion sensors and LiDAR scanner through Apple’s
-        ARKit and RoomPlan frameworks to understand the room you choose to scan.</p>
+    <p><strong>This policy covers Overplan on iPhone, iPad and Mac.</strong> It is one app, one
+      document format and one set of promises, so almost everything below is true on all three.
+      Where a platform differs — a Mac has no LiDAR sensor, and it keeps its files somewhere
+      else — the paragraph says so with a badge like this one<span class="only">Mac</span>and a
+      paragraph with no badge holds everywhere.</p>
+
+    <nav class="contents" aria-label="On this page">
+      <p>On this page</p>
+      <ol>
+        <li><a href="#reach">What Overplan can reach</a></li>
+        <li><a href="#plans">Where your plans live</a></li>
+        <li><a href="#leaves">What leaves the device</a></li>
+        <li><a href="#collect">What we collect (nothing)</a></li>
+        <li><a href="#limits">What this policy cannot promise</a></li>
+        <li><a href="#contact">Children, changes and contact</a></li>
+      </ol>
+    </nav>
+
+    <p class="mode-label" id="reach">What Overplan can reach</p>
+
+    <section>
+      <h2><svg class="glyph" aria-hidden="true"><use href="#i-scan"/></svg>Camera and LiDAR<span class="only">iPhone · iPad</span></h2>
+      <p>Scanning a room uses your device's camera and LiDAR sensor through Apple's ARKit and
+        RoomPlan frameworks, which measure the walls as you walk around. <strong>Camera access is
+        the only permission Overplan ever asks for</strong>, and it is asked for at the moment you
+        first start a scan, not at launch.</p>
       <ul>
-        <li><strong>Camera and depth data are processed on your device.</strong> Overplan does not
-          upload the camera view, video, photographs or depth stream.</li>
-        <li><strong>The resulting room geometry is saved locally.</strong> This can include walls,
-          floors, doors, windows, dimensions, measurements and edits you make.</li>
-        <li><strong>The camera is used only while scanning.</strong> Overplan asks for camera
-          permission because RoomPlan requires it; the app has no microphone or location purpose.</li>
+        <li><strong>The camera view and the depth stream are processed on your device and are
+          never stored or uploaded.</strong> What RoomPlan hands back is geometry — walls, floors,
+          doors, windows and their dimensions — and that geometry is what Overplan saves.</li>
+        <li><strong>The camera runs only while the scanner is on screen.</strong> Leaving the
+          scanner ends the session.</li>
+        <li><strong>No photographs or video are recorded.</strong> Overplan has no way to take a
+          picture, and nothing in the app writes an image of what the camera saw.</li>
       </ul>
-      <p class="offline">Scanning, editing, measuring and exporting work without an internet
-        connection.</p>
+      <p class="offline">Everything else in the app — sketching, tracing, editing, measuring,
+        viewing in AR, PDF and 3D export — needs no camera at all, and works on a device with no
+        LiDAR sensor.</p>
+      <p><span class="only">Mac</span><strong>The Mac app asks for no permissions whatsoever, and
+        cannot ask.</strong> A Mac has no LiDAR sensor, so there is no scanner in it: ARKit,
+        RoomPlan and the scanning code are not built into that app at all. It declares no camera
+        purpose and holds no camera entitlement, which is what makes this a fact about the binary
+        rather than a promise about our intentions — the system would refuse it a camera even if a
+        future bug asked. Scan on an iPhone or iPad, then open the plan on the Mac to do the
+        editing and exporting.</p>
     </section>
 
-    <section class="policy-section">
-      <h2>Saved plans</h2>
-      <p>Your Overplan projects are stored in the app’s private storage on your device. mcfinapps
-        cannot see or retrieve them. They remain there until you delete the plan or remove the
-        app.</p>
-      <p>Your operating system may include app data in a device backup according to the backup
-        settings you control. Those backups are provided and governed by Apple, not mcfinapps.</p>
+    <section>
+      <h2><svg class="glyph" aria-hidden="true"><use href="#i-open"/></svg>Files you pick, and nothing else</h2>
+      <p>Overplan can open three kinds of file, and each one arrives the same way: <strong>you pick
+        it in the system document picker</strong>, and the app is given that one file. It cannot
+        browse your storage, list your documents, or open anything you did not choose.</p>
+      <ul>
+        <li><strong>An image or PDF to trace over</strong> — a photo of a paper plan, a floor plan
+          from an agent, a scan of a sketch. PNG, JPEG, HEIC or the first page of a PDF.</li>
+        <li><strong>A 3D model to place in a room</strong> — USDZ, USD, GLB, glTF or OBJ.</li>
+        <li><strong>An <code>.overplan</code> plan</strong> sent from another device, downloaded, or
+          sitting in Files or in a folder of your own.</li>
+      </ul>
+      <p class="offline"><strong>The photo library is not involved.</strong> Even "a photo of a
+        paper plan" is chosen through the document picker, not through Photos — so Overplan never
+        requests photo library access and has no view of your photos, their contents or their
+        location data.</p>
+      <p>A file you pick is copied into Overplan's own storage so the plan keeps working after the
+        original moves or is deleted. Your original is not modified.</p>
+      <p><span class="only">Mac</span>The Mac app runs in Apple's <strong>App Sandbox</strong>, which
+        is the same arrangement described in stronger terms: the only files it can read or write are
+        the ones you name in an Open or Save panel, or drag onto its window, and it holds no
+        entitlement for your Documents folder, your Desktop, your Downloads or anything else. It also
+        cannot browse or list your disk. Choosing a file is the grant, and the grant is that one
+        file.</p>
+      <p class="offline"><strong>One thing the Mac app does store about your files, and it is worth
+        being exact about:</strong> when you open a plan it saves a small system-issued token for
+        that file — a security-scoped bookmark — so it can reopen the same document after you quit
+        and relaunch, and so Open Recent leads somewhere rather than to a permission error. A
+        bookmark identifies where one file you chose lives. It is kept in the app's own container on
+        your Mac, it is the mechanism the sandbox provides for exactly this purpose, and nothing
+        transmits it anywhere.</p>
     </section>
 
-    <section class="policy-section">
-      <h2>PDF and 3D sharing</h2>
-      <p>Overplan can create floor-plan PDFs and 3D files such as USDZ, GLB and OBJ. These files
-        are generated on your device and can reveal the layout, dimensions and openings of the
-        space you scanned.</p>
-      <p><strong>No export happens automatically.</strong> A file leaves Overplan only when you
-        choose Share and select a person, app, device or storage service in Apple’s standard
-        sharing interface. After you share it, the recipient or selected service handles that
-        copy under its own privacy practices.</p>
+    <section>
+      <h2><svg class="glyph" aria-hidden="true"><use href="#i-nothing"/></svg>What it never asks for</h2>
+      <p><span class="only">iPhone · iPad</span>Overplan declares exactly one permission purpose in
+        its app bundle — the camera one above. There is no code path, and no declared purpose, that
+        would let it request or receive:</p>
+      <ul>
+        <li>your photo library, microphone, location, contacts, calendar, reminders, health data,
+          motion &amp; fitness activity, Bluetooth, local network, or notifications;</li>
+        <li>your Apple Account, or any account of any kind — Overplan has no sign-in;</li>
+        <li>an advertising identifier. Overplan does not ask for tracking permission because it
+          has nothing to track you with.</li>
+      </ul>
+      <p>If iOS ever shows you a permission prompt from Overplan that is not the camera one, that
+        is a bug worth reporting, not a feature.</p>
+      <p><span class="only">Mac</span>The Mac version's equivalent list is its sandbox entitlements,
+        and it is short enough to print in full. It holds exactly four, and you can check them
+        yourself on the app in your Applications folder:</p>
+      <ul>
+        <li><strong>The sandbox itself</strong> — the thing that enforces everything else here.</li>
+        <li><strong>Read and write the files you select</strong> — an Open or Save panel's own
+          grant.</li>
+        <li><strong>App-scope bookmarks</strong> — the tokens described above, so a document you
+          opened yesterday still opens today.</li>
+        <li><strong>Outgoing network connections</strong> — which sounds like the opposite of every
+          promise on this page, and is not. It is explained in
+          <a href="#no-network">The app makes no network requests</a> below, because it deserves a
+          straight answer rather than a footnote.</li>
+      </ul>
+      <p>There is no camera, microphone, location, address book, calendar, printing, Apple Events,
+        USB, Bluetooth, incoming-network or arbitrary-file entitlement — and no entitlement for your
+        Documents, Desktop, Downloads or Pictures folders.</p>
     </section>
 
-    <section class="policy-section">
-      <h2>What we collect</h2>
-      <p>Nothing. Overplan has no account system, cloud database, analytics service, advertising
-        SDK, tracking SDK or third-party crash-reporting service. Because mcfinapps receives no app
-        data, there is no personal data held by us to access, sell or delete.</p>
-      <p>If you have separately enabled Apple’s option to share diagnostics with app developers,
-        Apple may provide limited diagnostic information under Apple’s own privacy terms. Overplan
-        does not transmit those diagnostics itself.</p>
+    <p class="mode-label" id="plans">Where your plans live</p>
+
+    <section>
+      <h2><svg class="glyph" aria-hidden="true"><use href="#i-folder"/></svg>Your plans are ordinary files, and they are yours</h2>
+      <p><span class="only">iPhone · iPad</span>Every plan is one <code>.overplan</code> file in
+        Overplan's Documents folder on your device, and that folder is <strong>deliberately visible
+        to you</strong>: open the <strong>Files</strong> app and look under <strong>On My
+        iPhone</strong> (or On My iPad) → <strong>Overplan</strong>.</p>
+      <p>From there you can copy, move, rename, organise, AirDrop, back up or delete your plans
+        like any other document — including copying one into iCloud Drive or onto a computer.
+        <strong>That is your decision to make, and Overplan never makes it for you:</strong> the
+        app has no iCloud container, does not sync, and puts nothing anywhere except its own
+        folder on this device.</p>
+      <p class="offline">The flip side of a visible folder is worth saying plainly: anything with
+        access to your device's files — another app you grant access to, a computer you connect to,
+        a backup service you have set up — can reach your plans there, exactly as it can reach any
+        other document. mcfinapps cannot.</p>
+      <p><span class="only">Mac</span><strong>The Mac keeps plans in two kinds of place, and you
+        choose which.</strong> A plan you open by double-clicking it, or through File ▸ Open Plan…,
+        stays exactly where you keep it — your own folder, an external disk, iCloud Drive — and is
+        edited there. Nothing is copied. The app's own <em>library</em> holds its copies inside its
+        sandbox container, at
+        <code>~/Library/Containers/com.mcmike.overplan.mac/Data/Library/Application
+        Support/Overplan/Plans</code>.</p>
+      <p><span class="only">Mac</span>That is a less convenient location than iOS's, and it is a
+        deliberate choice rather than an oversight: <strong>your Documents folder is yours</strong>,
+        and an app that plants a folder in it uninvited is not the kind of app this is. To have a
+        plan somewhere you picked, use <strong>Export</strong> and choose <strong>Project package
+        (.overplan)</strong> — which is the same one-file-per-plan document iOS keeps, openable on any
+        of the three platforms.</p>
     </section>
 
-    <section class="policy-section">
-      <h2>Children</h2>
-      <p>Overplan does not knowingly collect information from children—or from anyone else. It
-        requires no account and gathers no personal information.</p>
+    <section>
+      <h2><svg class="glyph" aria-hidden="true"><use href="#i-package"/></svg>What a plan contains</h2>
+      <p>An <code>.overplan</code> file carries the room itself: walls, openings, ceiling height,
+        room names and areas, the furniture you have placed, your measurements and their captions,
+        and the original scan or drawing the plan started from, kept separately so it can be
+        restored.</p>
+      <p>It describes the layout and dimensions of a real place, which for most people is a home.
+        Treat sharing one the way you would treat sharing a floor plan of where you live.</p>
     </section>
 
-    <section class="policy-section">
-      <h2>Changes</h2>
-      <p>If this policy changes, the revised policy will be posted here with a new date. Any future
-        feature that materially changes how data is handled will be explained before it is used.</p>
+    <section>
+      <h2><svg class="glyph" aria-hidden="true"><use href="#i-trace"/></svg>Imported images and models</h2>
+      <p>A photo or PDF you trace over is stored with the plan that used it, so the plan can show
+        you later what it was traced from. A 3D model you import is copied once into an
+        <strong>ImportedModels</strong> folder in the app's own storage — <strong>Overplan →
+        ImportedModels</strong> in Files on an iPhone or iPad — and shared by every plan that places
+        it.</p>
+      <p><span class="only">iPhone · iPad</span>Both are in Files alongside your plans, for the same
+        reason your plans are: you gave the app those files, so you are entitled to see them, back
+        them up and take them away again. Deleting them there is enough; nothing keeps a second copy
+        elsewhere.</p>
+      <p><span class="only">Mac</span>The same two copies are made, in the same shape, inside the
+        app's sandbox container rather than in a folder of yours. Your originals are read once and
+        never written to, and removing the app removes its container and everything in it.</p>
     </section>
 
-    <section class="policy-section">
-      <h2>Contact</h2>
-      <p>Questions about Overplan privacy can be sent to
-        <a href="mailto:mcfin.apps@gmail.com">mcfin.apps@gmail.com</a>.</p>
+    <section>
+      <h2><svg class="glyph" aria-hidden="true"><use href="#i-dials"/></svg>Settings, and the sample room</h2>
+      <p>Your unit choice, haptics switch and every Advanced dial are stored in the app's own
+        preferences on this device — inside its sandbox container on a Mac. They are settings, not
+        personal data, they are not shared between your devices, and they go nowhere.</p>
+      <p>The <strong>sample room</strong> Overplan copies into your library on first launch ships
+        inside the app. It is a made-up room, not anyone's home, and it becomes an ordinary plan of
+        yours the moment it is copied — rename it, edit it or delete it freely.</p>
+    </section>
+
+    <section>
+      <h2><svg class="glyph" aria-hidden="true"><use href="#i-backup"/></svg>Device backups</h2>
+      <p>Because your plans are in the app's own storage, your operating system may include them in
+        a device backup — an iPhone or iPad backup, or a Mac's Time Machine — according to the backup
+        settings you control. Those backups are provided and governed by Apple, not by mcfinapps, and
+        we have no access to them.</p>
+    </section>
+
+    <p class="mode-label" id="leaves">What leaves the device</p>
+
+    <section>
+      <h2><svg class="glyph" aria-hidden="true"><use href="#i-share"/></svg>Sharing, which is always your action</h2>
+      <p>Overplan can hand out seven things, all generated on your device, all from the Share
+        screen:</p>
+      <ul>
+        <li><strong>The plan itself</strong> — the editable <code>.overplan</code> project.</li>
+        <li><strong>Three PDFs</strong> — a to-scale Drawing with dimensions, a True scale (1:1)
+          drawing for CAD, and a rendered Presentation view.</li>
+        <li><strong>Three 3D models</strong> — USDZ, GLB and OBJ (with its <code>.mtl</code>
+          companion).</li>
+      </ul>
+      <p>Every one of them can reveal the layout, dimensions and openings of the space you scanned.
+        <strong>None of them is created or sent automatically.</strong> A file leaves Overplan only
+        when you choose it, and then choose a person, app, device or storage service in Apple's
+        standard share sheet.</p>
+      <p><span class="only">Mac</span>The Mac offers the same seven, in two commands rather than one:
+        <strong>Share</strong> hands the file to the system share sheet, and <strong>Export</strong>
+        writes it to a location you name in a Save panel. Both are your action, both produce the file
+        on your own machine, and the Save panel is also what grants the app permission to write
+        there.</p>
+      <p class="offline">Once you have shared a file, that copy is out of Overplan's hands and out
+        of ours. The recipient, and any service you sent it through, handles it under their own
+        terms.</p>
+    </section>
+
+    <section>
+      <h2><svg class="glyph" aria-hidden="true"><use href="#i-ar"/></svg>Viewing your room in AR<span class="only">iPhone · iPad</span></h2>
+      <p><strong>View in AR</strong> builds a 3D model of your room on your device and opens it in
+        Apple's Quick Look viewer, which uses the camera to place it in the space around you.
+        Nothing is uploaded, nothing is recorded, and no file is handed to anyone — the model is
+        prepared on your device and shown to you. It becomes a shared file only if you then choose
+        to share it.</p>
+      <p>Quick Look is Apple's, and while it is open the camera is in its hands rather than
+        Overplan's. It uses the live view to find a surface and draws your model onto it;
+        <strong>nothing about that view is recorded, and Overplan is handed nothing back</strong> —
+        no photograph, no video, no measurement of the room you are standing in.</p>
+      <p><span class="only">Mac</span>There is no AR on the Mac and no button for it: no pass-through
+        camera, so nothing to place a model in. It is not a disabled feature — the AR code is not in
+        that app at all.</p>
+    </section>
+
+    <section id="no-network">
+      <h2><svg class="glyph" aria-hidden="true"><use href="#i-offline"/></svg>The app makes no network requests</h2>
+      <p>This is a statement about the code, not an intention. Overplan contains no networking of
+        any kind: no server calls, no cloud storage, no sync, no remote configuration, no
+        third-party libraries of any sort, and no analytics, advertising or crash-reporting
+        service. Everything it draws, renders, bakes and exports it does with what is already on
+        the device.</p>
+      <p>One channel is worth naming because it is not ours: <strong>Overplan never sends a crash
+        report, but Apple's own system can.</strong> If you are testing a beta through TestFlight,
+        Apple collects crashes and passes them on as part of how TestFlight works. On a copy from
+        the App Store it does the same only if you have switched on Apple's own analytics sharing
+        in Settings. Those reports come from Apple rather than from this app, they describe where
+        the code stopped, and they contain no part of your plans.</p>
+      <p>The Help and Privacy pages you are reading in the app are bundled copies rendered from
+        local files, so even they fetch nothing. Put the device in Airplane Mode and every part of
+        Overplan still works.</p>
+
+      <p><span class="only">Mac</span><strong>And now the awkward part, stated plainly rather than
+        left for you to find: the Mac app declares the "outgoing network connections"
+        entitlement.</strong> Everything above is still true — it makes no network request of any
+        kind — and this is why the entitlement is nevertheless there.</p>
+      <p><span class="only">Mac</span>These two pages are shown inside the app by the system's own web
+        view, loading the HTML file bundled in the app. A sandboxed Mac app cannot start that web
+        view's helper process <em>at all</em> without the network entitlement — even for a local file
+        with nowhere to go. Without it the Help window opens, draws its title bar, and shows an empty
+        white rectangle for ever, with no error anywhere. That is not a theory; it is the bug that put
+        the entitlement in the app, and it is a documented WebKit requirement rather than anything
+        Overplan wanted.</p>
+      <p><span class="only">Mac</span>So the entitlement grants a capability the app
+        never uses. If you would rather verify that than take our word for it, the app is on your own
+        machine: a network monitor, or Little Snitch, or macOS's own firewall will show you Overplan
+        making no connections, because there is no server to connect to and no code that would
+        connect to one. <strong>If that ever changes, this page changes first</strong> — see
+        <a href="#contact">Changes to this policy</a>.</p>
+      <p class="offline">Two taps hand off to another app, and they are the only two: the email
+        address below opens Mail, and the mcfinapps credit link at the end of the Help page opens
+        your browser. Both need a deliberate tap or click, both are visible before you use them, and
+        neither sends anything about you. Handing a link to the system is not the app connecting to
+        anything.</p>
+    </section>
+
+    <p class="mode-label" id="collect">What we collect</p>
+
+    <section>
+      <h2><svg class="glyph" aria-hidden="true"><use href="#i-noeye"/></svg>Nothing</h2>
+      <p>Overplan has no account system, no cloud database, no analytics service, no advertising
+        SDK, no tracking SDK and no third-party crash reporting. Because mcfinapps receives no data
+        from the app at all, there is no personal data held by us to access, correct, export, sell
+        or delete — and no request you could make to us would produce any, because none exists.</p>
+      <p>We also cannot identify you, count you, or tell whether you use the app. That is the
+        intended outcome, and it is why there is no usage-based feature in Overplan of any kind.</p>
+    </section>
+
+    <section>
+      <h2><svg class="glyph" aria-hidden="true"><use href="#i-label"/></svg>What the App Store shows</h2>
+      <p>Overplan's privacy manifest declares no tracking, no tracking domains and no collected
+        data types. The one required-reason API it declares is the system preferences store, used
+        only to remember your own settings inside the app. Apple requires that manifest of the iPhone
+        and iPad app; the Mac app collects and tracks exactly as much, which is nothing, and the App
+        Store's privacy label is the same label for all three.</p>
+      <p>Apple's own App Store record — purchases, downloads and receipts — is between you and
+        Apple, under Apple's privacy policy. Overplan is a pay-once app with no subscriptions, no
+        in-app purchases and no advertising, so there is nothing further to report there either.</p>
+    </section>
+
+    <section>
+      <h2><svg class="glyph" aria-hidden="true"><use href="#i-alert"/></svg>Apple's own diagnostics</h2>
+      <p>If you have separately enabled Apple's option to share diagnostics and usage data with
+        app developers, Apple may provide us with limited crash and performance information under
+        Apple's own privacy terms. That comes from the operating system, not from Overplan — the app
+        transmits nothing itself — and it is a setting you control, under Privacy &amp; Security →
+        Analytics &amp; Improvements in Settings on an iPhone or iPad, and in System Settings on a
+        Mac.</p>
+    </section>
+
+    <p class="mode-label" id="limits">What this policy cannot promise</p>
+
+    <section>
+      <h2><svg class="glyph" aria-hidden="true"><use href="#i-alert"/></svg>The honest limits</h2>
+      <p>An app that keeps everything on your device also cannot do some things for you, and it is
+        better to say so than to imply otherwise:</p>
+      <ul>
+        <li><strong>We cannot recover a plan you delete.</strong> There is no copy on a server,
+          because there is no server. Your backups are the only way back.</li>
+        <li><strong>We cannot unshare a file.</strong> Once a PDF, a 3D model or an
+          <code>.overplan</code> has left your device, retrieving it is between you and whoever
+          received it.</li>
+        <li><strong>We cannot protect a plan from your device.</strong> Overplan's storage is
+          protected by the operating system's own file protection — your passcode on an iPhone or
+          iPad, your account and FileVault on a Mac — like any app's; it is not separately encrypted
+          by us, and it does not have its own password.</li>
+        <li><strong>We cannot see anything to help you with.</strong> A support conversation
+          depends entirely on what you tell us, because we have nothing else.</li>
+      </ul>
+    </section>
+
+    <p class="mode-label" id="contact">Children, changes and contact</p>
+
+    <section>
+      <h2><svg class="glyph" aria-hidden="true"><use href="#i-child"/></svg>Children</h2>
+      <p>Overplan does not knowingly collect information from children — or from anyone else. It
+        requires no account, gathers no personal information, and contains no advertising, no
+        social features and no links to user-generated content.</p>
+    </section>
+
+    <section>
+      <h2><svg class="glyph" aria-hidden="true"><use href="#i-changes"/></svg>Changes to this policy</h2>
+      <p>If this policy changes, the revised version is posted here with a new date, and the copy
+        inside the app is updated with the next release. Any future feature that would materially
+        change how data is handled will be described here before it is used — and if Overplan ever
+        gained a feature that needed the network, this page would say so plainly rather than
+        quietly dropping the claim above.</p>
+    </section>
+
+    <section>
+      <h2><svg class="glyph" aria-hidden="true"><use href="#i-mail"/></svg>Contact</h2>
+      <p>Questions about Overplan and privacy can be sent to
+        <a href="mailto:mike.mcfin@gmail.com">mike.mcfin@gmail.com</a>. Overplan is made by
+        mcfinapps, independent software from Finland.</p>
     </section>
   </main>
 

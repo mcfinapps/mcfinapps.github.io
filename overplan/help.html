@@ -60,6 +60,18 @@
       border-radius: 10px;
       box-shadow: 0 8px 22px rgb(78 63 43 / .13);
     }
+    /* THE OTHER DOCUMENT, IN THE HEADER (2026-08-17). Help and Privacy are the pair an App
+       Store visitor reads together, and each page had only a way BACK -- reaching the other
+       meant returning to the product page and finding it there. `.doc-nav` keeps the header a
+       two-child flex row so `justify-content: space-between` is unchanged. */
+    .doc-nav {
+      display: flex;
+      align-items: center;
+      gap: clamp(14px, 3vw, 26px);
+    }
+    .doc-nav a { color: var(--muted); text-decoration: none; font-size: .78rem; }
+    .doc-nav a:hover { color: var(--ink); }
+
     .back {
       color: var(--muted);
       text-decoration: none;
@@ -210,6 +222,75 @@
     strong { color: var(--ink); font-weight: 650; }
     /* A quiet aside inside a card -- the blue rule marks it as a note about the card's
        topic rather than another paragraph of it. */
+    /* PLATFORM BADGES (2026-08-17). One help page now serves iPhone, iPad and Mac --
+       the owner: *"I don't want separate help/privacy for mac/ios. It needs to be
+       combined but it can have sections/mentions that this is only for certain
+       platform."* So a paragraph or a heading that is true on only some of them says so
+       inline, and the rest of the page is understood to be true everywhere. Reading as
+       text rather than as colour, because these pages are also rendered inside the app
+       where a legend would be off-screen. */
+    .only {
+      display: inline-block;
+      /* A RIGHT MARGIN AS WELL AS A LEFT ONE, because a badge is as often mid-sentence as
+         it is at the end of a heading: with `margin-left` alone the words after it butted
+         straight against the pill. `:first-child` drops the left margin for the common
+         case below -- a badge that OPENS a paragraph, standing in for the words "on a
+         Mac" rather than repeating them. */
+      margin-right: .42em;
+      margin-left: .5em;
+      padding: 1px 7px;
+      border: 1px solid var(--line);
+      border-radius: 99px;
+      color: var(--blue);
+      background: var(--cream);
+      font-family: var(--sans);
+      font-size: .62rem;
+      font-weight: 650;
+      letter-spacing: .09em;
+      text-transform: uppercase;
+      vertical-align: .18em;
+      white-space: nowrap;
+    }
+    h2 .only { vertical-align: .3em; }
+    .only:first-child { margin-left: 0; }
+
+    /* KEYBOARD KEYS -- carried over from the Mac-only page this one absorbs. */
+    kbd {
+      display: inline-block;
+      padding: 1px 6px;
+      border: 1px solid var(--line);
+      border-bottom-width: 2px;
+      border-radius: 6px;
+      background: var(--cream);
+      color: var(--ink);
+      font-family: var(--sans);
+      font-size: .82em;
+      font-weight: 650;
+      line-height: 1.5;
+      white-space: nowrap;
+    }
+    .shortcuts {
+      margin: .7rem 0 0;
+      display: grid;
+      grid-template-columns: max-content 1fr;
+      gap: 7px 16px;
+      align-items: baseline;
+    }
+
+    /* A RECIPE, not a reference entry: the tips section is the one place this page tells
+       you what to DO rather than what a control is. */
+    .tip {
+      margin: 1.15rem 0 0;
+      padding: 1rem 1.1rem;
+      border-left: 2px solid var(--blue);
+      border-radius: 0 10px 10px 0;
+      background: var(--cream);
+    }
+    .tip > p:first-child { margin-top: 0; font-weight: 650; }
+    .tip > p:last-child { margin-bottom: 0; }
+    .tip ol, .tip ul { margin: .5rem 0 0; padding-left: 1.15rem; }
+    .tip li { margin: .3rem 0; }
+
     .offline {
       /* Bottom margin as well as top: this block is followed by more paragraphs inside
          the same card, and with `margin: 14px 0 0` the next one butted straight up
@@ -296,12 +377,26 @@
       <img src="img/app-icon.png" alt="">
       <span>Overplan</span>
     </a>
-    <a class="back" href="./">← Back to Overplan</a>
+    <nav class="doc-nav" aria-label="Documents">
+      <a href="privacy.html">Privacy</a>
+      <a class="back" href="./">← Back to Overplan</a>
+    </nav>
   </header>
 
   <main>
       <!-- THE GLYPH SHEET. Hidden (never rendered on its own), referenced by every
-           <svg class="glyph"><use href="#i-…"/></svg> below. All stroke-based line art
+           glyph `use` element below, each naming one of the `i-` symbols defined here.
+
+           NO EXAMPLE MARKUP ANYWHERE IN THIS FILE'S COMMENTS, and that is a rule rather
+           than a style preference. Two separate checks read the RAW BYTES of this page and
+           cannot tell a commented-out element from a live one, deliberately, because that
+           is the stricter direction: sync-docs.sh refuses the page if a fetchable
+           reference survives, and MacHelpPageTests requires every same-page anchor to
+           resolve. An illustrative href or src in a comment fails both. This very comment
+           did, twice, on 2026-08-17 -- once when one page began serving the Mac as well,
+           and once more when the first rewrite of it quoted an image element.
+
+           All stroke-based line art
            on a 0-0-48-48 grid, no fills but the odd solid dot standing for a fingertip,
            so every glyph reads at both heading size and list-row size without a second
            set of artwork. -->
@@ -517,26 +612,34 @@
 
       <p class="eyebrow">A scan you can correct</p>
       <h1>Help</h1>
-      <p class="effective">Overplan · Last updated 10 August 2026</p>
+      <p class="effective">Overplan · Last updated 17 August 2026</p>
 
-      <p class="lede">Overplan turns a room into a plan you can correct. Scan it if your device has
-      LiDAR, or sketch it by hand if it does not — tracing a photo or a PDF of a plan you already
-      have, if you have one — then fix what the scanner got wrong, which is the part most scanning
-      apps leave you stuck with. Every diagram on this page is a drawn glyph, not a screenshot — it
-      describes the gesture, not one particular button's position, so it stays right as the app's
-      own layout keeps changing.</p>
+      <p class="lede">Overplan turns a room into a plan you can correct, and then into something you
+      can hand to someone else. Scan it if your device has LiDAR, or sketch it by hand if it does
+      not — tracing a photo or a PDF of a plan you already have, if you have one — then fix what the
+      scanner got wrong, which is the part most scanning apps leave you stuck with.</p>
+
+      <p><strong>This page covers iPhone, iPad and Mac.</strong> It is one app and one document
+      format, so almost everything here is true everywhere. Where it is not, the heading or the
+      sentence says so with a badge like this one<span class="only">Mac</span>— and anything without
+      a badge applies to all three. Every diagram is a drawn glyph, not a screenshot: it describes
+      the gesture, not one particular button's position, so it stays right as the app's layout keeps
+      changing.</p>
 
       <nav class="contents" aria-label="On this page">
         <p>On this page</p>
         <ol>
           <li><a href="#start">Starting a plan</a></li>
-          <li><a href="#view-3d">The 3D view</a></li>
+          <li><a href="#view-3d">Moving the view</a></li>
           <li><a href="#build">Walls, doors and windows</a></li>
+          <li><a href="#furniture">Furniture</a></li>
           <li><a href="#measuring">Measuring</a></li>
           <li><a href="#tracing">Tracing a reference image</a></li>
           <li><a href="#plans">Your plans, and Files</a></li>
-          <li><a href="#sharing">Sharing</a></li>
-          <li><a href="#tips">Two tips worth knowing</a></li>
+          <li><a href="#sharing">Sharing and exporting</a></li>
+          <li><a href="#ar">Augmented reality</a></li>
+          <li><a href="#tips">Tips and best practice</a></li>
+          <li><a href="#keys">Keyboard and pointer<span class="only">Mac</span></a></li>
           <li><a href="#trouble">If something looks wrong</a></li>
           <li><a href="#contact">Getting in touch</a></li>
         </ol>
@@ -544,12 +647,16 @@
 
       <p class="mode-label" id="start">Starting a plan</p>
 
-      <section>
-        <h2><svg class="glyph" aria-hidden="true"><use href="#i-scan"/></svg>Scan a room</h2>
+      <section id="scan-room">
+        <h2><svg class="glyph" aria-hidden="true"><use href="#i-scan"/></svg>Scan a room<span class="only">iPhone · iPad</span></h2>
         <p><strong>Scan a room</strong> uses your device's LiDAR camera to measure the walls as you
         walk the room, and needs camera access to do it. It needs a device with a LiDAR sensor: on a
         device without one, tapping it says so rather than opening a scanner that cannot work, and
         the two rows below it work on every device.</p>
+        <p><span class="only">Mac</span>A Mac has no LiDAR sensor, so there is no scanner in the Mac
+        app at all — everything else on this page is there. Scan on the phone or iPad, then open the
+        plan on the Mac (see <a href="#open-elsewhere">Opening a plan from somewhere else</a>) and do
+        the editing, measuring and exporting on the bigger screen.</p>
         <p>A scan is a first draft, not a verdict. Every wall it measures can be moved, every opening
         repositioned, and the room's height adjusted, once you're in the 3D view — see
         <a href="#view-3d">The 3D view</a> and <a href="#edit">Editing what you've added</a>.</p>
@@ -594,10 +701,13 @@
         changes to it, <strong>Keep Both</strong> adds a fresh copy alongside what you have.</p>
       </section>
 
-      <p class="mode-label" id="view-3d">The 3D view</p>
+      <p class="mode-label" id="view-3d">Moving the view</p>
 
       <section>
         <h2><svg class="glyph" aria-hidden="true"><use href="#i-orbit"/></svg>Getting around</h2>
+        <p><span class="only">Mac</span>The gestures below are pointer moves instead: drag to
+        orbit, scroll to zoom, and middle-drag or hold <kbd>space</kbd> and drag to pan. The full list
+        is in <a href="#keys">Keyboard and pointer</a>.</p>
         <p>Once a room exists — scanned, sketched or traced — it opens in the 3D view, where every
         edit in this help file happens. Looking around it uses one finger; changing what you're
         looking <em>at</em> uses two.</p>
@@ -697,6 +807,51 @@
         <p><strong>A whole plan:</strong> its menu in <a href="#plans">Plans</a>, then Delete. This
         one is confirmed before it happens, because there is no undo for an entire plan the way there
         is for one wall.</p>
+      </section>
+
+      <p class="mode-label" id="furniture">Furniture</p>
+
+      <section id="furniture-add">
+        <h2><svg class="glyph" aria-hidden="true"><use href="#i-cube"/></svg>From the library</h2>
+        <p><strong>Add</strong> offers furniture alongside Wall, Door and Window. The library is
+        grouped the way a home is rather than the way a catalogue is — seating, beds, worktops,
+        storage, gym equipment — so you look where the thing lives.</p>
+        <p>Pick a piece and it drops into the room. Drag it to position it; the room's snap grid
+        applies, so it lines up with walls and with other furniture without fighting you.</p>
+        <p><span class="only">Mac</span>The library lives in the sidebar as a grid, and Add
+        in the menu bar reaches the same catalogue.</p>
+      </section>
+
+      <section id="furniture-edit">
+        <h2><svg class="glyph" aria-hidden="true"><use href="#i-move"/></svg>Sizing, turning and colouring</h2>
+        <p>Select a piece and its card offers everything about it in one place:</p>
+        <ul>
+          <li><strong>Width, depth and height</strong> as tiles you can nudge or type into.</li>
+          <li><strong>Turn</strong> rotates it; <strong>Flip</strong> mirrors it, for a chair or a
+          sofa that is handed.</li>
+          <li><strong>Height offset</strong> lifts it off the floor — a wall cupboard, a shelf, a
+          television on a bracket.</li>
+          <li><strong>Colour</strong>, from the same row of accents the rooms use, with
+          <em>no colour</em> first so a piece can stay plain clay.</li>
+          <li><strong>Select All</strong> takes every piece in the plan, for recolouring in one go.</li>
+        </ul>
+        <p><span class="only">Mac</span>While you drag a piece, hold <kbd>⇧</kbd> to move it
+        vertically instead of along the floor, and <kbd>⌥</kbd> to leave a duplicate behind.</p>
+      </section>
+
+      <section id="furniture-import">
+        <h2><svg class="glyph" aria-hidden="true"><use href="#i-package"/></svg>Bringing your own model</h2>
+        <p>You are not limited to the library. Overplan imports <strong>USDZ</strong>,
+        <strong>GLB</strong> and <strong>OBJ</strong>, so a model you bought, downloaded or made
+        yourself can go straight into the room.</p>
+        <p><span class="only">Mac</span>Drop the file onto the 3D view. An import panel opens
+        and tells you what it found — the model's real size, whether it carries a baked shading
+        texture, and anything it had to correct. <strong>Sit on floor</strong> drops it onto the floor
+        plane; otherwise its own coordinates are kept.</p>
+        <p>The commonest surprise is a model that arrives a hundred times too big or too small,
+        because 3D files disagree about what one unit means. The panel shows the size it measured, so
+        you can see that before you place it. If your own models look flat next to the library's, see
+        <a href="#tip-models">Your own models look flat next to ours</a>.</p>
       </section>
 
       <p class="mode-label" id="measuring">Measuring</p>
@@ -860,18 +1015,25 @@
         <p>One plan is one file. Nothing about it needs an account, a login or a server.</p>
       </section>
 
-      <section>
-        <h2><svg class="glyph" aria-hidden="true"><use href="#i-folder"/></svg>Your plans are in Files</h2>
-        <p>Overplan keeps its plans where you can see them: open the <strong>Files</strong> app and
-        look under <strong>On My iPhone</strong> (or On My iPad) → <strong>Overplan</strong>. Every
-        plan is one <code>.overplan</code> file with its own icon, and you can copy, move, rename,
-        organise into folders, AirDrop or back them up from there like any other document.</p>
+      <section id="where-plans-live">
+        <h2><svg class="glyph" aria-hidden="true"><use href="#i-folder"/></svg>Where your plans are kept</h2>
+        <p><span class="only">iPhone · iPad</span>Overplan keeps its plans where you can see them:
+        open the <strong>Files</strong> app and look under <strong>On My iPhone</strong> (or On My
+        iPad) → <strong>Overplan</strong>. Every plan is one <code>.overplan</code> file with its own
+        icon, and you can copy, move, rename, organise into folders, AirDrop or back them up from
+        there like any other document.</p>
+        <p><span class="only">Mac</span>The Mac app does not plant a folder in your Documents — that
+        folder is yours. Its library keeps its own copies out of the way in Application Support, and
+        the way to have a plan somewhere you choose is to use <strong>Export</strong> and pick
+        <strong>Project package (.overplan)</strong>. A plan saved anywhere on your disk or in iCloud
+        Drive opens straight into its own window, so a folder of your own works exactly as well as
+        the library does.</p>
         <p>Plans stay on your device. Overplan has no account, no cloud and no analytics; nothing
         leaves the device unless you share it. If you want a plan in iCloud Drive or on a computer,
         copy it there yourself — that is a decision you make, not a default.</p>
       </section>
 
-      <section>
+      <section id="open-elsewhere">
         <h2><svg class="glyph" aria-hidden="true"><use href="#i-open"/></svg>Opening a plan from somewhere else</h2>
         <p>A <code>.overplan</code> from another device — AirDropped, downloaded, sitting in iCloud
         Drive or on a shared drive — opens in two ways:</p>
@@ -883,6 +1045,13 @@
           straight off an AirDrop — and choose Overplan. It is imported as a plan of your own and
           appears as a new card.</li>
         </ul>
+        <p><span class="only">Mac</span>Use <strong>File ▸ Open Plan…</strong>, double-click a
+        <code>.overplan</code> in the Finder, drop it on the Dock icon, or pick it from <strong>File ▸
+        Open Recent</strong> — all four do the same thing, and none of them copies anything.
+        <strong>The file you opened is the file you are editing</strong>, wherever you keep it, so
+        there is never a second stale twin of a plan you thought you had changed. If the same plan
+        arrives a second time from a different file, Overplan says so and offers to
+        <strong>Open as a Copy</strong> rather than quietly picking one.</p>
         <p>If a file turns out not to be a readable plan, Overplan says which of the three things went
         wrong — not a plan at all, written by a newer version of Overplan than this one, or
         incomplete — because the three need different actions from you.</p>
@@ -902,7 +1071,7 @@
         why the button is unavailable rather than just greying it out with no explanation.</p>
       </section>
 
-      <p class="mode-label" id="sharing">Sharing</p>
+      <p class="mode-label" id="sharing">Sharing and exporting</p>
 
       <section>
         <h2><svg class="glyph" aria-hidden="true"><use href="#i-share"/></svg>The Share screen</h2>
@@ -911,6 +1080,13 @@
         every way out of Overplan on it, in four groups: <strong>View in AR</strong>, then
         <strong>Overplan</strong>, <strong>2D PDF</strong> and <strong>3D model</strong>.</p>
         <p>Nothing leaves your device until you pick one and choose a destination.</p>
+        <p><span class="only">Mac</span>The same list is in two places: <strong>Share</strong>
+        in the toolbar hands the file to the system share sheet, and <strong>Export</strong> beside it
+        saves it where you choose. Both offer the identical set of formats, and the library screen's
+        <strong>•••</strong> menu has them too.</p>
+        <p><strong>View in AR</strong> has a section of its own — see
+        <a href="#ar">Augmented reality</a>, including what to send someone who has never heard of
+        Overplan.</p>
       </section>
 
       <section id="view-ar">
@@ -998,7 +1174,120 @@
         Overplan.</p>
       </section>
 
-      <p class="mode-label" id="tips">Two tips worth knowing</p>
+      <p class="mode-label" id="ar">Augmented reality</p>
+
+      <section id="ar-view">
+        <h2><svg class="glyph" aria-hidden="true"><use href="#i-ar"/></svg>Seeing the room at any size<span class="only">iPhone · iPad</span></h2>
+        <p><strong>View in AR</strong> sits beside Share. It hands the finished room to the system's
+        own AR viewer — Quick Look — which puts it on a real surface through the camera. Point at a
+        desk or the floor, and the room is there: walls, doors, furniture and the shading baked into
+        them.</p>
+        <p>A whole flat sitting on a kitchen table is the usual way people look at it; scaled up on
+        the floor is the other. <strong>It opens at real size</strong>, so the shrinking is the first
+        thing to do — the gestures for it, and why the first view is often a wall in your face, are in
+        <a href="#view-ar">View in AR — pinch to shrink it</a>.</p>
+        <p><strong>It needs camera access</strong>, and the first time you open it the system asks.
+        AR is Quick Look's, not Overplan's, so the controls are Apple's and behave the same way they
+        do everywhere else on the device.</p>
+        <p><span class="only">Mac</span>There is no <strong>View in AR</strong> button here, and no
+        greyed-out one pretending there could be: a Mac has no pass-through camera, so there is no
+        room in front of you to stand the model in. Export <strong>USDZ</strong> instead —
+        double-clicking that file opens the room in Quick Look as a 3D object you can spin, which is
+        the right way to check an export — and send the same file to an iPhone or iPad for the
+        room-on-your-table version.</p>
+      </section>
+
+      <section id="ar-sharing">
+        <h2><svg class="glyph" aria-hidden="true"><use href="#i-share"/></svg>Sending AR to someone else</h2>
+        <p><strong>Whoever you send it to does not need Overplan, or any app at all.</strong> Export
+        <strong>USDZ</strong> and send the file however you like — Messages, Mail, AirDrop, a link.
+        On any current iPhone or iPad, tapping it opens the room in AR straight from the message. On
+        a Mac it opens in Quick Look. Nothing to install, no account, no sign-up.</p>
+        <p>That makes USDZ the format to reach for when the point is <em>showing</em> — a client, a
+        landlord, a partner who cannot read a floor plan. Send a PDF when the point is
+        <em>building</em>.</p>
+        <p>The file carries its own shading, so it looks the same on their device as it does on
+        yours.</p>
+      </section>
+
+      <p class="mode-label" id="tips">Tips and best practice</p>
+
+      <section id="tip-rescue">
+        <h2><svg class="glyph" aria-hidden="true"><use href="#i-trace"/></svg>Rescuing a bad scan by tracing it</h2>
+        <p>Some rooms scan badly — mirrors, glass, dark walls, deep alcoves, clutter against the
+        walls. When a scan comes out so tangled that fixing it wall by wall would take longer than
+        starting again, do not start again. <strong>Trace it.</strong></p>
+        <div class="tip">
+          <p>Turn a messy scan into a clean plan</p>
+          <ol>
+            <li>Export the messy scan as <strong>True scale (1:1)</strong>.</li>
+            <li>Start a new plan and choose <strong>Sketch a floorplan</strong>.</li>
+            <li>In Sketch Settings, use <strong>Import a reference image…</strong> and pick that
+            export.</li>
+            <li>Because it is 1:1, set the trace scale from any wall whose length you actually
+            measured — then draw the clean room straight over the top of the mess.</li>
+          </ol>
+        </div>
+        <p>You keep everything the scan got right — the overall shape, where the openings roughly
+        are — and none of what it got wrong. It is usually faster than correcting a bad scan, and the
+        result is a plan drawn on straight lines and right angles rather than one apologising for a
+        sensor.</p>
+      </section>
+
+      <section id="tip-big">
+        <h2><svg class="glyph" aria-hidden="true"><use href="#i-outline"/></svg>Draw a big plan in sections</h2>
+        <p>A whole apartment in one sketch session is harder than it needs to be: more walls on
+        screen than you can aim at, and one mistake to undo through.</p>
+        <div class="tip">
+          <p>Work in small parts</p>
+          <ol>
+            <li>Sketch one room, or one wing, and nothing else.</li>
+            <li><strong>Done</strong> — that writes it back and returns you to 3D.</li>
+            <li>Look at it in 3D, fix anything obvious, then go back into <strong>Sketch</strong> for
+            the next part.</li>
+            <li>Repeat. Each pass starts from a drawing that is already correct.</li>
+          </ol>
+        </div>
+        <p>Done and back in costs a couple of seconds and gives you a checkpoint every time. It also
+        keeps each session's snapping easy, because there is less on screen competing for the same
+        fingertip.</p>
+      </section>
+
+      <section id="tip-models">
+        <h2><svg class="glyph" aria-hidden="true"><use href="#i-cube"/></svg>Your own models look flat next to ours</h2>
+        <p>The furniture in Overplan's library carries a <strong>baked ambient-occlusion map</strong>
+        — a texture holding the soft darkening where surfaces meet, under a seat, inside a shelf.
+        That is most of why it sits in the room rather than floating in it.</p>
+        <p>A model you downloaded or exported yourself usually has no such map, so it renders evenly
+        lit and reads as flat. Nothing is broken; there is simply no contact shading to draw.</p>
+        <div class="tip">
+          <p>Give an imported model its shading</p>
+          <ul>
+            <li>Bake an <strong>ambient occlusion</strong> map in Blender (or whatever you model in)
+            and connect it to the material's <strong>occlusion</strong> input, then export
+            <strong>USDZ</strong>.</li>
+            <li>Overplan reads the standard <code>UsdPreviewSurface</code> occlusion input. The
+            import panel tells you what it found: it says so explicitly when a model
+            <em>carries a baked ambient-occlusion texture</em>, and says so too when it refers to one
+            it could not use — so you can tell whether the bake actually travelled with the file.</li>
+            <li>One UV set, one occlusion texture. A model with several sets may sample the wrong
+            one.</li>
+          </ul>
+        </div>
+        <p>It is worth doing for anything you will export or show in AR, because the AR viewer does no
+        ambient occlusion of its own — whatever shading the file carries is all the shading there
+        will be.</p>
+      </section>
+
+      <section id="tip-scale">
+        <h2><svg class="glyph" aria-hidden="true"><use href="#i-scale"/></svg>Measure one wall by hand</h2>
+        <p>Whether you scanned or traced, one real measurement anchors everything. Tape-measure a
+        single long wall, then check it in Overplan and correct it if it disagrees. Every other
+        dimension is relative to the same geometry, so fixing the longest wall fixes the worst of the
+        error everywhere.</p>
+        <p>Do it before you place furniture, not after.</p>
+      </section>
+
 
       <section id="tip-zoom">
         <h2><svg class="glyph" aria-hidden="true"><use href="#i-zoom"/></svg>If snapping is fiddly, zoom in</h2>
@@ -1023,6 +1312,51 @@
         somebody who was only looking at their plan would be worse than not offering the shortcut.
         The proper buttons are always there too, for when you are zoomed in far enough that no ground
         is on screen.</p>
+      </section>
+
+      <p class="mode-label" id="keys">Keyboard and pointer<span class="only">Mac</span></p>
+
+      <section id="keys-pointer">
+        <h2><svg class="glyph" aria-hidden="true"><use href="#i-desktop"/></svg>Mouse and trackpad</h2>
+        <p>Everything the touch version does with fingers, the Mac does with a pointer. The
+        vocabulary is the same across the 3D view and the sketch canvas:</p>
+        <div class="shortcuts">
+          <span><kbd>drag</kbd></span><span>Orbit the model, or draw in sketch</span>
+          <span><kbd>scroll</kbd></span><span>Zoom, in both views</span>
+          <span><kbd>middle-drag</kbd></span><span>Pan</span>
+          <span><kbd>space</kbd> <kbd>drag</kbd></span><span>Pan — the cursor turns into a hand while space is held</span>
+          <span><kbd>pinch</kbd></span><span>Zoom, on a trackpad</span>
+          <span><kbd>double-click</kbd></span><span>Split a wall, or resume a run from a loose end</span>
+        </div>
+      </section>
+
+      <section id="keys-list">
+        <h2><svg class="glyph" aria-hidden="true"><use href="#i-list"/></svg>Keys</h2>
+        <div class="shortcuts">
+          <span><kbd>esc</kbd></span><span>Back out one level — the same ladder the ground tap climbs on touch. Press it again to go one further</span>
+          <span><kbd>⌫</kbd></span><span>Delete what is selected</span>
+          <span><kbd>⇧</kbd> <kbd>drag</kbd></span><span>Move furniture vertically instead of along the floor</span>
+          <span><kbd>⌥</kbd> <kbd>drag</kbd></span><span>Duplicate the piece you are dragging</span>
+          <span><kbd>⌘</kbd> <kbd>drag</kbd></span><span>Ignore the snap grid for this drag</span>
+          <span><kbd>⌘F</kbd></span><span>Search your plans</span>
+          <span><kbd>⌘O</kbd></span><span>Open a plan file</span>
+          <span><kbd>⌘,</kbd></span><span>Settings</span>
+        </div>
+        <p>There is <strong>no Print</strong>. A floor plan has to come out at a stated scale to be
+        worth anything, and the way to get that is <strong>Drawing</strong> or
+        <strong>True scale (1:1)</strong> from the export menu, then print the PDF from Preview where
+        you can see and control the scale. See <a href="#sharing">Sharing and exporting</a>.</p>
+      </section>
+
+      <section id="keys-sidebar">
+        <h2><svg class="glyph" aria-hidden="true"><use href="#i-grip"/></svg>The sidebar</h2>
+        <p>Where the phone puts a card over the model, the Mac has room to leave things standing. The
+        sidebar holds the reference panels — the plan's own counts and area, the rooms with their
+        names, the measurement register, the snap setting, the furniture library and the Look
+        controls — and each one collapses.</p>
+        <p>Cards that only exist while something is selected still appear over the model, as they do
+        on touch, and go when the selection does. The rule is that the sidebar holds facts you want
+        to keep looking at, and cards hold controls for the thing in your hand.</p>
       </section>
 
       <p class="mode-label" id="trouble">If something looks wrong</p>
@@ -1081,8 +1415,8 @@
       <section>
         <h2><svg class="glyph" aria-hidden="true"><use href="#i-mail"/></svg>Email us</h2>
         <p>Questions, bugs and requests are welcome:
-        <a href="mailto:mcfin.apps@gmail.com">mcfin.apps@gmail.com</a>. Please include your device
-        model and iOS version. Overplan is made by
+        <a href="mailto:mike.mcfin@gmail.com">mike.mcfin@gmail.com</a>. Please include your device
+        or Mac model and its system version. Overplan is made by
         <a href="https://mcfinapps.github.io/">mcfinapps</a>, independent software from Finland.</p>
       </section>
     </main>
