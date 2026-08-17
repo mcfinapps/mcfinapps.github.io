@@ -3,143 +3,278 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="theme-color" content="#f4efe6">
-  <meta name="description" content="Scan or sketch a room, refine it as a clean architectural plan, measure what matters and share to-scale 2D or flexible 3D files with Overplan.">
+  <title>Overplan — Draw a room once. Show it anywhere.</title>
+  <meta name="description" content="Scan or sketch a room, refine it, then share it as a to-scale drawing, a presentation sheet, a 3D model — or set it on your table in AR. One purchase, iPhone, iPad and Mac. No CAD. No subscription.">
   <link rel="canonical" href="https://mcfinapps.github.io/overplan/">
-  <meta property="og:site_name" content="Overplan">
-  <meta property="og:title" content="Overplan — Keep the architecture. Lose the clutter.">
-  <meta property="og:description" content="Scan or sketch. Refine a clean 3D plan. Share a to-scale PDF, true-scale 2D drawing or flexible 3D model.">
-  <meta property="og:image" content="https://mcfinapps.github.io/overplan/img/device/clean-plan.webp">
+  <meta property="og:title" content="Overplan — Draw a room once. Show it anywhere.">
+  <meta property="og:description" content="Scan or sketch a room, refine it, then share it as a drawing, a presentation, a 3D model or life-size AR. iPhone, iPad and Mac. One purchase.">
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://mcfinapps.github.io/overplan/">
-  <meta name="twitter:card" content="summary_large_image">
-  <title>Overplan — A Floor Planner Anyone Can Use</title>
-  <link rel="icon" type="image/png" href="img/app-icon.png">
+  <meta property="og:image" content="https://mcfinapps.github.io/overplan/img/shots/macos-main.webp">
+  <meta name="theme-color" content="#f4efe6">
+  <link rel="icon" href="../mark.svg" type="image/svg+xml">
   <link rel="apple-touch-icon" href="img/app-icon.png">
   <link rel="manifest" href="site.webmanifest">
   <link rel="stylesheet" href="styles.css">
-  <script src="site.js" defer></script>
 </head>
 <body>
   <a class="skip-link" href="#main">Skip to content</a>
 
   <header class="site-header">
-    <a class="brand" href="#top" aria-label="Overplan home">
-      <img src="img/app-icon.png" alt="" width="44" height="44">
-      <span>Overplan</span>
-    </a>
-    <button class="menu-button" type="button" aria-expanded="false" aria-controls="nav">Menu</button>
-    <nav id="nav" aria-label="Main navigation">
-      <a href="#acquire">Start</a>
-      <a href="#refine">Refine</a>
-      <a href="#measure">Measure</a>
+    <a class="brand" href="../"><img src="img/app-icon.png" alt="">Overplan</a>
+    <button class="menu-button" type="button" aria-expanded="false" aria-controls="nav" aria-label="Menu">☰</button>
+    <nav id="nav" aria-label="Sections">
+      <a href="#devices">Devices</a>
+      <a href="#create">Create</a>
+      <a href="#edit">Edit</a>
       <a href="#share">Share</a>
-      <a href="help.html">Help</a>
-      <a class="nav-cta" href="#availability">App Store</a>
+      <a href="#ar">AR</a>
+      <a class="nav-cta" href="#availability">Get Overplan</a>
     </nav>
   </header>
 
   <main id="main">
+
+    <!-- ─────────────────────────────  1 · HERO  ───────────────────────────── -->
     <section class="hero" id="top" aria-labelledby="hero-title">
       <div class="hero-copy reveal">
-        <p class="eyebrow">The room, beautifully simplified</p>
-        <h1 id="hero-title">Keep the architecture.<br>Lose the clutter.</h1>
-        <p class="lead">Turn a room into a clean plan you can understand, correct, measure and share—without learning CAD.</p>
+        <p class="eyebrow">Floor plans, for the rest of us</p>
+        <h1 id="hero-title">Draw a room once.<br>Show it anywhere.</h1>
+        <p class="lead">Scan a room or sketch it by hand. Refine the walls, hang the doors, place the furniture. Then send it as a to-scale drawing, a presentation sheet, a 3D model — or stand it on your kitchen table in AR.</p>
+        <p class="promise">No CAD. No subscription. One purchase, every device.</p>
         <div class="hero-actions">
-          <a class="button primary" href="#acquire">See how it works</a>
-          <a class="quiet-link" href="help.html">Read the guide <span>→</span></a>
+          <a class="button primary" href="#create">See how it works</a>
+          <a class="quiet-link" href="#ar">Try it in AR, right now <span>→</span></a>
         </div>
       </div>
       <figure class="device device-hero reveal">
-        <img src="img/device/clean-plan.webp" alt="Overplan showing a clean cream-clay architectural model in its real 3D workspace">
+        <img src="img/shots/phone-3d.webp" alt="Overplan on iPhone showing a cream clay-rendered room in 3D with furniture">
       </figure>
       <p class="hero-note">Real Overplan interface · no generated UI</p>
     </section>
 
-    <section class="acquire chapter" id="acquire" aria-labelledby="acquire-title">
+    <!-- ──────────────────────  2 · ONE APP, EVERY DEVICE  ────────────────── -->
+    <section class="devices chapter" id="devices" aria-labelledby="devices-title">
+      <div class="centered reveal">
+        <p class="eyebrow">01 · One app</p>
+        <h2 id="devices-title">Same plan.<br>Every screen you own.</h2>
+        <p>Not a phone app with a companion. One app, built once, native on each: the pocket where you scan, the tablet where you draw, the desk where you finish. Same tools, same file, same clay. Buy it once.</p>
+      </div>
+
+      <figure class="showcase reveal">
+        <img src="img/shots/web-app3.webp" loading="lazy" alt="Overplan on Mac: a large clay room with a sidebar counting 14 walls, 6 openings, 2 rooms, 23 pieces of furniture and a 98.9 m² floor area">
+        <figcaption>14 walls · 6 openings · 2 rooms · 23 objects · 98.9 m² — one document, on every device</figcaption>
+      </figure>
+
+      <div class="platform reveal" data-carousel>
+        <div class="platform-tabs" role="tablist" aria-label="Choose a device">
+          <button role="tab" aria-selected="true"  aria-controls="pane-iphone" id="tab-iphone">iPhone</button>
+          <button role="tab" aria-selected="false" aria-controls="pane-ipad"   id="tab-ipad">iPad</button>
+          <button role="tab" aria-selected="false" aria-controls="pane-mac"    id="tab-mac">Mac</button>
+        </div>
+
+        <!-- iPhone -->
+        <div class="platform-pane is-active" id="pane-iphone" role="tabpanel" aria-labelledby="tab-iphone">
+          <button class="rail-nav prev" type="button" aria-label="Previous">‹</button>
+          <div class="rail" tabindex="0">
+            <figure class="shot phone"><img src="img/shots/phone-3d.webp" loading="lazy" alt="A finished clay room in Overplan on iPhone, with the Add, Measure and Sketch dock"><figcaption>The finished room</figcaption></figure>
+            <figure class="shot phone"><img src="img/shots/phone-main.webp" loading="lazy" alt="The Overplan library on iPhone, offering Scan a room or Sketch a floorplan"><figcaption>Scan, or sketch</figcaption></figure>
+            <figure class="shot phone"><img src="img/shots/phone-sketch.webp" loading="lazy" alt="Sketching a floor plan by hand on iPhone"><figcaption>Sketch by hand</figcaption></figure>
+            <figure class="shot phone"><img src="img/shots/phone-edit_wall.webp" loading="lazy" alt="Editing a wall's thickness and length on iPhone"><figcaption>Move a wall</figcaption></figure>
+            <figure class="shot phone"><img src="img/shots/phone-edit_window.webp" loading="lazy" alt="Sizing a window with live dimension lines on iPhone"><figcaption>Size a window</figcaption></figure>
+            <figure class="shot phone"><img src="img/shots/phone-library.webp" loading="lazy" alt="The furniture library on iPhone"><figcaption>Furniture library</figcaption></figure>
+            <figure class="shot phone"><img src="img/shots/phone-edit_object.webp" loading="lazy" alt="Placing and colouring a piece of furniture on iPhone"><figcaption>Place and colour</figcaption></figure>
+            <figure class="shot phone"><img src="img/shots/phone-measure.webp" loading="lazy" alt="Measuring between two points on iPhone"><figcaption>Measure anything</figcaption></figure>
+            <figure class="shot phone"><img src="img/shots/phone-room.webp" loading="lazy" alt="Naming a room and choosing its floor colour on iPhone"><figcaption>Name the rooms</figcaption></figure>
+            <figure class="shot phone"><img src="img/shots/phone-share_ar.webp" loading="lazy" alt="The finished room standing on a real desk in augmented reality, seen on iPhone"><figcaption>See it in AR</figcaption></figure>
+          </div>
+          <button class="rail-nav next" type="button" aria-label="Next">›</button>
+        </div>
+
+        <!-- iPad -->
+        <div class="platform-pane" id="pane-ipad" role="tabpanel" aria-labelledby="tab-ipad" hidden>
+          <button class="rail-nav prev" type="button" aria-label="Previous">‹</button>
+          <div class="rail" tabindex="0">
+            <figure class="shot pad"><img src="img/shots/ipad-main.webp" loading="lazy" alt="The Overplan library on iPad"><figcaption>Your plans</figcaption></figure>
+            <figure class="shot pad"><img src="img/shots/ipad-room.webp" loading="lazy" alt="Naming a room and choosing its floor colour on iPad"><figcaption>Name the rooms</figcaption></figure>
+            <figure class="shot pad"><img src="img/shots/ipad-sketch.webp" loading="lazy" alt="Sketching a plan on iPad, with room to draw"><figcaption>Room to draw</figcaption></figure>
+            <figure class="shot pad"><img src="img/shots/ipad-edit_wall.webp" loading="lazy" alt="Editing a wall on iPad"><figcaption>Walls, exactly</figcaption></figure>
+            <figure class="shot pad"><img src="img/shots/ipad-edit_window.webp" loading="lazy" alt="Sizing a window on iPad with dimension lines"><figcaption>Doors and windows</figcaption></figure>
+            <figure class="shot pad"><img src="img/shots/ipad-library.webp" loading="lazy" alt="The furniture library on iPad"><figcaption>Furnish it</figcaption></figure>
+            <figure class="shot pad"><img src="img/shots/ipad-measure.webp" loading="lazy" alt="Measuring on iPad"><figcaption>Measure</figcaption></figure>
+            <figure class="shot pad"><img src="img/shots/ipad-share_presentation.webp" loading="lazy" alt="A presentation sheet previewed on iPad"><figcaption>Present it</figcaption></figure>
+            <figure class="shot pad"><img src="img/shots/ipad-share_ar.webp" loading="lazy" alt="The finished room placed in a real space in augmented reality, seen on iPad"><figcaption>See it in AR</figcaption></figure>
+          </div>
+          <button class="rail-nav next" type="button" aria-label="Next">›</button>
+        </div>
+
+        <!-- Mac -->
+        <div class="platform-pane" id="pane-mac" role="tabpanel" aria-labelledby="tab-mac" hidden>
+          <button class="rail-nav prev" type="button" aria-label="Previous">‹</button>
+          <div class="rail" tabindex="0">
+            <figure class="shot mac"><img src="img/shots/macos-main.webp" loading="lazy" alt="The Overplan library on Mac with the export menu open"><figcaption>Your plans, on the desk</figcaption></figure>
+            <figure class="shot mac"><img src="img/shots/macos-sketch.webp" loading="lazy" alt="Drawing a plan on Mac with a mouse"><figcaption>Draw with a mouse</figcaption></figure>
+            <figure class="shot mac"><img src="img/shots/macos-edit_door.webp" loading="lazy" alt="Editing a door on Mac"><figcaption>Doors</figcaption></figure>
+            <figure class="shot mac"><img src="img/shots/macos-edit_window.webp" loading="lazy" alt="Editing a window on Mac"><figcaption>Windows</figcaption></figure>
+            <figure class="shot mac"><img src="img/shots/macos-edit_furniture.webp" loading="lazy" alt="Editing furniture on Mac"><figcaption>Furniture</figcaption></figure>
+            <figure class="shot mac"><img src="img/shots/macos-measure.webp" loading="lazy" alt="Measuring on Mac"><figcaption>Measure</figcaption></figure>
+            <figure class="shot mac"><img src="img/shots/macos-library.webp" loading="lazy" alt="The furniture library in the Mac sidebar"><figcaption>Library in the sidebar</figcaption></figure>
+          </div>
+          <button class="rail-nav next" type="button" aria-label="Next">›</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- ─────────────────────────────  3 · CREATE  ─────────────────────────── -->
+    <section class="acquire chapter" id="create" aria-labelledby="create-title">
       <div class="chapter-copy reveal">
-        <p class="eyebrow">01 · Acquire</p>
-        <h2 id="acquire-title">Scan it.<br>Sketch it or trace it.</h2>
-        <p>Use LiDAR for a fast measured starting point, draw freely, or trace over an existing image or PDF plan. Every route leads to the same clean, editable model.</p>
-        <div class="fact-line"><span>Scan</span> with LiDAR <i></i><span>Sketch</span> from scratch <i></i><span>Trace</span> an existing plan</div>
+        <p class="eyebrow">02 · Create</p>
+        <h2 id="create-title">Scan it.<br>Or draw it.</h2>
+        <p>Point an iPhone or iPad with LiDAR at the room and walk it — Overplan keeps the walls and throws away the mess. No LiDAR, or a room that no longer exists? Draw it instead, on a snapping grid, with a photo or PDF of the old floor plan underneath to trace.</p>
+        <div class="fact-line">
+          <span>LiDAR scan</span><i></i><span>Hand sketch</span><i></i><span>Trace an image or PDF</span>
+        </div>
       </div>
-      <div class="device-pair device-trio reveal" aria-label="Real Overplan Scan, Sketch and Trace screens">
-        <figure class="device tilted-left"><img src="img/device/scan.webp" alt="Overplan scanning a real room with detected wall and window outlines"><figcaption>Scan</figcaption></figure>
-        <figure class="device centered-device"><img src="img/device/sketch.webp" alt="Overplan manual Sketch screen showing a dimensioned floor-plan outline"><figcaption>Sketch</figcaption></figure>
-        <figure class="device tilted-right"><img src="img/device/trace.webp" alt="Overplan tracing walls over an imported existing floor plan"><figcaption>Trace</figcaption></figure>
+      <div class="device-pair reveal">
+        <figure class="device tilted-left"><img src="img/device/scan.webp" loading="lazy" alt="A live LiDAR scan in progress: the room through the camera with the detected walls, floor and ceiling traced in white, and the captured model building up below"><figcaption>Scan</figcaption></figure>
+        <figure class="device centered-device"><img src="img/shots/phone-sketch.webp" loading="lazy" alt="Sketching walls by hand on a snapping grid"><figcaption>Or sketch</figcaption></figure>
+        <figure class="device tilted-right"><img src="img/shots/phone-3d.webp" loading="lazy" alt="The finished room as a clean clay model"><figcaption>Result</figcaption></figure>
       </div>
     </section>
 
-    <section class="result chapter" aria-labelledby="result-title">
+    <!-- ─────────────────────────  4 · THE LOOK (clay)  ────────────────────── -->
+    <section class="result chapter" aria-labelledby="look-title">
       <div class="result-copy reveal">
-        <p class="eyebrow">02 · Clean result</p>
-        <h2 id="result-title">The room as space.<br>Not as stuff.</h2>
-        <p>Overplan keeps the architecture in focus. The uncluttered cream-clay view makes rooms, walls and openings immediately legible—without recreating everything that happened to be in the room.</p>
+        <p class="eyebrow">03 · The look</p>
+        <h2 id="look-title">The room as space.<br>Not as stuff.</h2>
+        <p>Everything is one material — a warm, unglazed clay, lit from a single soft source, with ambient occlusion baked in where surfaces meet. No photo textures, no fake sunlight, no visual noise competing with the thing you are trying to read. It looks like a model an architect would put on a table, because that is what it is for.</p>
       </div>
-      <figure class="device device-result reveal"><img src="img/device/clean-plan.webp" loading="lazy" alt="A clean multi-room Overplan model with cream walls and subtle room colours"></figure>
-      <p class="material-note reveal">Clean by default · editable throughout · architecture in focus</p>
+      <figure class="device device-result reveal"><img src="img/shots/phone-room.webp" loading="lazy" alt="An empty clay-rendered room in three-quarter view with its overall dimensions, one material and one soft light"></figure>
+      <p class="material-note">One material. One light. Nothing shouting.</p>
     </section>
 
-    <section class="refine chapter" id="refine" aria-labelledby="refine-title">
-      <div class="chapter-copy centered reveal">
-        <p class="eyebrow">03 · Refine</p>
-        <h2 id="refine-title">Shape it until it’s right.</h2>
-        <p>Add new walls, doors and windows whenever the plan needs them. Tap any element to move it, resize it or reveal the dimensions and actions that belong to it. Nothing more.</p>
+    <!-- ──────────────────────────────  5 · EDIT  ──────────────────────────── -->
+    <section class="refine chapter" id="edit" aria-labelledby="edit-title">
+      <div class="centered reveal">
+        <p class="eyebrow">04 · Edit</p>
+        <h2 id="edit-title">Shape it until it’s right.</h2>
+        <p>A scan is a starting point, never an answer. Drag a wall and the rooms follow. Slide a window and two dimension lines tell you the gap either side, so centring it needs no arithmetic. Tap a number to type an exact one.</p>
       </div>
       <div class="edit-grid">
-        <figure class="proof-card reveal"><div class="device"><img src="img/device/edit-wall.webp" loading="lazy" alt="Overplan wall selected with live dimensions and thickness control"></div><figcaption><strong>Move walls</strong><span>Position and thickness, directly on the plan.</span></figcaption></figure>
-        <figure class="proof-card reveal"><div class="device"><img src="img/device/edit-door.webp" loading="lazy" alt="Overplan door selected with width and height controls"></div><figcaption><strong>Shape doors</strong><span>Keep the opening where it belongs.</span></figcaption></figure>
-        <figure class="proof-card reveal"><div class="device"><img src="img/device/edit-window.webp" loading="lazy" alt="Overplan window selected with width, height and sill controls"></div><figcaption><strong>Fine-tune windows</strong><span>Width, height and sill in one quiet card.</span></figcaption></figure>
+        <figure class="proof-card reveal">
+          <div class="device"><img src="img/shots/phone-edit_wall.webp" loading="lazy" alt="Dragging a wall, with its length and thickness on the card"></div>
+          <figcaption><strong>Walls</strong><span>Drag to move, type to be exact. Thickness per wall, and every room it touches keeps up.</span></figcaption>
+        </figure>
+        <figure class="proof-card reveal">
+          <div class="device"><img src="img/shots/phone-edit_window.webp" loading="lazy" alt="Sliding a window with live corner-gap dimensions"></div>
+          <figcaption><strong>Doors &amp; windows</strong><span>Slide along the wall with the gap either side shown live. Width, height and sill on the card.</span></figcaption>
+        </figure>
+        <figure class="proof-card reveal">
+          <div class="device"><img src="img/shots/phone-edit_object.webp" loading="lazy" alt="A placed sofa with size, turn, flip and colour controls"></div>
+          <figcaption><strong>Furniture</strong><span>From the library, or bring your own USDZ. Size it, turn it, flip it, colour it, lift it off the floor.</span></figcaption>
+        </figure>
       </div>
       <div class="workflow-grid">
-        <figure class="workflow-card reveal"><div class="device"><img src="img/device/room-define.webp" loading="lazy" alt="Overplan defining rooms, naming them and assigning floor colours in the 3D view"></div><figcaption><strong>Define each room</strong><span>Name spaces, set their height and give floors a quiet colour identity.</span></figcaption></figure>
-        <figure class="workflow-card reveal"><div class="device"><img src="img/device/sketch-main.webp" loading="lazy" alt="Overplan returning from the 3D workspace to the editable 2D sketch"></div><figcaption><strong>Return to the drawing</strong><span>Move naturally between the clean 3D view and precise sketch editing whenever the plan needs another pass.</span></figcaption></figure>
+        <figure class="workflow-card reveal">
+          <div class="device"><img src="img/shots/phone-library.webp" loading="lazy" alt="The furniture library, grouped by room"></div>
+          <figcaption><strong>A library that knows rooms</strong><span>Sofas, beds, worktops, gym kit — grouped the way a home is, not the way a catalogue is.</span></figcaption>
+        </figure>
+        <figure class="workflow-card reveal">
+          <div class="device"><img src="img/shots/phone-measure.webp" loading="lazy" alt="A measurement between two snapped points"></div>
+          <figcaption><strong>Measure what matters</strong><span>Snap to a wall, an edge or a corner. Pull the dimension line clear of the building so the drawing stays readable.</span></figcaption>
+        </figure>
       </div>
     </section>
 
-    <section class="measure chapter" id="measure" aria-labelledby="measure-title">
-      <figure class="device device-measure reveal"><img src="img/device/measure.webp" loading="lazy" alt="Overplan showing a saved 4.95 metre wall-to-wall measurement"></figure>
-      <div class="chapter-copy reveal">
-        <p class="eyebrow">04 · Measure</p>
-        <h2 id="measure-title">Measure what matters.</h2>
-        <p>Snap dimensions to corners, edges, faces or finished wall surfaces. Saved measurements stay with the plan and follow the architecture as it changes.</p>
-        <dl class="micro-facts"><div><dt>Wall to wall</dt><dd>Finished-face distance</dd></div><div><dt>Element-aware</dt><dd>Attached, not painted on</dd></div><div><dt>Room areas</dt><dd>Kept current automatically</dd></div></dl>
-      </div>
-    </section>
-
-    <section class="share chapter" id="share" aria-labelledby="share-title">
-      <div class="chapter-copy reveal">
+    <!-- ──────────────────────────────  6 · SHARE  ─────────────────────────── -->
+    <section class="share-hub chapter" id="share" aria-labelledby="share-title">
+      <div class="centered reveal">
         <p class="eyebrow">05 · Share</p>
-        <h2 id="share-title">A plan you can actually use.</h2>
-        <p>Keep or share the complete <code>.overplan</code> document as a fully editable backup, or move it to another iPhone or iPad and continue working. For finished output, choose an honest PDF print scale or send a USDZ that opens directly in Apple’s AR viewer—even without Overplan installed.</p>
-        <ul class="formats"><li><b>.overplan</b><span>Editable backup · move between devices</span></li><li><b>PDF</b><span>To-scale drawing on A4–A0</span></li><li><b>2D 1:1</b><span>Raw, true-scale plan</span></li><li><b>USDZ</b><span>Quick Look · AR · Vision Pro</span></li><li><b>OBJ · GLB</b><span>Flexible 3D geometry</span></li></ul>
+        <h2 id="share-title">Four ways out.</h2>
+        <p>The plan is not the point. What you can hand someone is the point — a builder, a client, a landlord, a 3D artist, or your partner who cannot picture it.</p>
       </div>
-      <div class="share-visual reveal">
-        <figure class="paper"><img src="img/device/shared-plan.webp" loading="lazy" alt="A real A4 dimensioned floor plan exported by Overplan"></figure>
-        <figure class="device device-share"><img src="img/device/share-main.webp" loading="lazy" alt="Overplan sharing options for its editable native plan, PDF, USDZ, OBJ and GLB"></figure>
+      <div class="out-grid">
+        <figure class="out reveal">
+          <div class="frame"><img src="img/shots/web-share_drawing.webp" loading="lazy" alt="A to-scale dimensioned floor plan PDF exported by Overplan"></div>
+          <figcaption><strong>Drawing</strong><span>A dimensioned PDF at an honest print scale, A4 to A0 — or a raw 1:1 plan for CAD.</span></figcaption>
+        </figure>
+        <figure class="out reveal">
+          <div class="frame"><img src="img/shots/web-share_presentation.webp" loading="lazy" alt="A presentation sheet with an orthographic top view of the room"></div>
+          <figcaption><strong>Presentation</strong><span>A composed sheet with the room rendered from above. For showing, not for building.</span></figcaption>
+        </figure>
+        <figure class="out reveal">
+          <div class="frame"><img src="img/shots/web-share_blender.webp" loading="lazy" alt="The exported room open in Blender with clean geometry"></div>
+          <figcaption><strong>3D model</strong><span>USDZ, GLB or OBJ. Clean, un-subdivided geometry with the AO baked in — opens straight into Blender.</span></figcaption>
+        </figure>
+        <figure class="out reveal">
+          <div class="frame"><img src="img/shots/ipad-share_ar.webp" loading="lazy" alt="The whole floorplan standing on a real wooden table in augmented reality, walls and furniture casting shadows on the wood"></div>
+          <figcaption><strong>Augmented reality</strong><span>Set the room on a real table and walk around it. The receiver needs no app at all.</span></figcaption>
+        </figure>
       </div>
+      <figure class="wide-shot reveal">
+        <img src="img/shots/macos-main.webp" loading="lazy" alt="The Mac export menu listing project package, drawing, true scale, presentation, USDZ, GLB and OBJ">
+        <figcaption>Every format, one menu · Overplan for Mac</figcaption>
+      </figure>
     </section>
 
-    <section class="principles" aria-label="Overplan principles">
-      <article class="reveal"><p class="eyebrow">Calm by design</p><h3>The plan is the interface.</h3><p>Controls appear in context, then give the room its space back.</p></article>
-      <article class="reveal"><p class="eyebrow">Honest output</p><h3>Scale before decoration.</h3><p>Review critical dimensions before construction, ordering or professional use.</p></article>
-      <article class="reveal"><p class="eyebrow">Private by architecture</p><h3>Your rooms stay yours.</h3><p>No account, advertising or behavioral tracking. Geometry is processed on device.</p></article>
+    <!-- ────────────────────────────────  7 · AR  ──────────────────────────── -->
+    <section class="ar" id="ar" aria-labelledby="ar-title">
+      <div class="ar-copy reveal">
+        <p class="eyebrow">06 · The one to show people</p>
+        <h2 id="ar-title">Put the room<br>on your table.</h2>
+        <p>Overplan writes a USDZ, and every iPhone and iPad made in the last several years already knows how to open one. Tap the link, point the camera at a desk, and the room is sitting there — walls, doors, furniture, shadows, at whatever size you like.</p>
+        <p class="ar-kicker">Nobody has to install Overplan to see it. That is the whole trick.</p>
+
+        <a class="ar-launch" rel="ar" href="img/Mancave.usdz">
+          <img src="img/shots/web-usdz_finder.webp" alt="Open the Mancave room in augmented reality">
+        </a>
+        <p class="ar-hint">Tap the card on <b>iPhone</b> or <b>iPad</b> to drop this real Overplan room into the room you are in. On a Mac it opens in Quick Look. <span>2.7 MB · no app required</span></p>
+      </div>
+      <figure class="device device-ar reveal">
+        <img src="img/shots/phone-share_ar.webp" loading="lazy" alt="An Overplan room standing on a wooden desk beside a coffee cup, in AR">
+      </figure>
     </section>
 
+    <!-- ───────────────────────  8 · PAY ONCE · PRIVATE  ───────────────────── -->
+    <section class="principles" aria-label="How Overplan is built">
+      <article class="reveal">
+        <p class="eyebrow">Pay once</p>
+        <h3>Buy it. Own it.</h3>
+        <p>One purchase covers iPhone, iPad and Mac. No subscription, no tiers, no credits, nothing to cancel. Updates are just updates.</p>
+      </article>
+      <article class="reveal">
+        <p class="eyebrow">Private by architecture</p>
+        <h3>Your rooms stay yours.</h3>
+        <p>No account, no advertising, no behavioural tracking. Scanning and geometry happen on the device, and plans are ordinary files you keep.</p>
+      </article>
+      <article class="reveal">
+        <p class="eyebrow">Honest output</p>
+        <h3>Scale before decoration.</h3>
+        <p>Every export states its scale. Check critical dimensions yourself before construction, ordering or professional use.</p>
+      </article>
+    </section>
+
+    <!-- ─────────────────────────  9 · GET OVERPLAN  ───────────────────────── -->
     <section class="final-cta" id="availability" aria-labelledby="availability-title">
-      <img src="img/app-icon.png" alt="Overplan app icon" width="120" height="120" class="reveal">
-      <p class="eyebrow reveal">Overplan for iPhone and iPad</p>
+      <img src="img/app-icon.png" width="108" height="108" alt="">
+      <p class="eyebrow reveal">Availability</p>
       <h2 id="availability-title" class="reveal">From room<br>to useful plan.</h2>
-      <p class="reveal">Scan or sketch. Correct, measure and share. One thoughtful purchase, with no subscriptions or advertising.</p>
-      <span class="coming-soon reveal">Coming soon on the App Store</span>
-      <div class="final-links reveal"><a href="help.html">Help</a><a href="privacy.html">Privacy</a></div>
+      <p class="reveal">Overplan for iPhone, iPad and Mac. One app, one purchase, no subscription. More platforms are on the way.</p>
+      <p class="coming-soon reveal">Coming to the App Store</p>
+      <p class="reveal" style="margin-top:34px"><a class="quiet-link" href="help.html">Read the guide <span>→</span></a></p>
     </section>
   </main>
 
   <footer>
-    <div class="footer-brand"><a href="#top">Overplan</a><span>by mcfinapps</span></div>
-    <nav aria-label="Footer navigation"><a href="help.html">Help</a><a href="privacy.html">Privacy</a><a href="mailto:mcfin.apps@gmail.com">Support</a><a href="https://mcfinapps.github.io/">mcfinapps</a></nav>
-    <p>© 2026 mcfinapps. Crafted in Finland.</p>
+    <div class="footer-brand"><a href="../">McFin Apps</a><span>Overplan</span></div>
+    <nav aria-label="Footer">
+      <a href="../">All apps</a>
+      <a href="help.html">Guide</a>
+      <a href="privacy.html">Privacy</a>
+    </nav>
+    <p>© 2026 McFin Apps. Overplan is a measuring aid, not a survey. Check critical dimensions before construction or ordering.</p>
   </footer>
+
+  <script src="site.js"></script>
 </body>
 </html>

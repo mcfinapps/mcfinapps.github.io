@@ -50,8 +50,23 @@ h2 { font-size: clamp(3.5rem, 6.7vw, 7.5rem); line-height: .9; }
 .hero-note { position: absolute; z-index: 3; right: 5vw; bottom: 35px; margin: 0; color: rgb(32 40 51 / .43); font-size: .58rem; letter-spacing: .13em; text-transform: uppercase; }
 
 .device { position: relative; overflow: hidden; border: 1px solid rgb(29 31 32 / .62); border-radius: 48px; background: #111; box-shadow: 0 35px 85px rgb(69 52 32 / .2), 0 2px 0 rgb(255 255 255 / .55) inset; }
-.device { aspect-ratio: 1179 / 2556; }
-.device img { width: 100%; height: 100%; object-fit: contain; }
+/* TIGHTER THAN THE SCREENSHOT, ON PURPOSE (2026-08-17). The owner: *"the cropping of
+   (each) screenshots has some extra on top/bottom. I think it needs further zoom to get
+   rid of those areas."* A 2556-tall frame with `contain` shows the whole capture -- status
+   bar, and the dead cream the app leaves above and below the model. Shortening the FRAME
+   and switching to `cover` crops that away symmetrically, with no image files touched and
+   nothing to re-export when a screenshot is retaken. 2330 is ~9% off, half at each end:
+   enough to lose the status bar and the worst of the padding, not enough to clip the
+   toolbar the shot is there to show. */
+/* BIASED TOWARDS THE TOP, not centred (2026-08-17, second pass). A symmetric crop left a
+   sliver of the status bar above the title bar -- the owner: *"there are still some
+   'cluttering' on iPhone top-edge cropping. needs few px more."* With `cover`, the Y in
+   `object-position` decides how the overflow is SPLIT: 50% takes equal bites off both ends,
+   65% takes about two thirds off the top. At 2280 the overflow is 276 px, so this removes
+   ~180 px from the top -- past the status bar, stopping just above the title -- and ~96 px
+   from the bottom, which the dock can spare. */
+.device { aspect-ratio: 1179 / 2280; }
+.device img { width: 100%; height: 100%; object-fit: cover; object-position: center 65%; }
 .device-hero { z-index: 2; justify-self: center; width: min(430px, 33vw); transform: rotate(1.3deg); }
 
 .acquire { display: grid; grid-template-columns: .78fr 1.22fr; align-items: center; gap: clamp(50px, 8vw, 130px); background: linear-gradient(180deg, var(--cream), #e9dfd1); }
@@ -67,7 +82,14 @@ h2 { font-size: clamp(3.5rem, 6.7vw, 7.5rem); line-height: .9; }
 
 .result { position: relative; min-height: 1100px; overflow: hidden; background: #e5dacb; }
 .result::before { content: ""; position: absolute; width: 75vw; height: 75vw; left: 38%; top: 12%; border-radius: 50%; background: radial-gradient(circle, rgb(255 252 246 / .95), transparent 66%); }
-.result-copy { position: relative; z-index: 2; max-width: 780px; }
+/* WIDTH TIED TO THE DEVICE THAT SHARES THIS SECTION (2026-08-17). The owner: *"03: the
+   text flows over image."* It did: the copy was a flat 780 px while `.device-result` is
+   absolutely positioned at `right: 7vw` with a `min(500px, 39vw)` width, so between roughly
+   900 and 1400 px the paragraph ran under the phone. A viewport-relative cap makes the two
+   move together -- 44vw leaves a ~20 px gutter at every width from the 900 px breakpoint
+   upwards, checked at 901, 1000, 1100, 1300 and 1600. The 700 px ceiling keeps the measure
+   readable on a wide display rather than letting the line length grow with the window. */
+.result-copy { position: relative; z-index: 2; max-width: min(700px, 44vw); }
 .device-result { position: absolute; right: 7vw; bottom: -90px; width: min(500px, 39vw); }
 .material-note { position: absolute; z-index: 2; left: 8vw; bottom: 8vw; color: #817462; font-family: var(--serif); font-style: italic; }
 
@@ -76,8 +98,10 @@ h2 { font-size: clamp(3.5rem, 6.7vw, 7.5rem); line-height: .9; }
 .centered .eyebrow { text-align: center; }
 .edit-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: clamp(20px, 3vw, 48px); max-width: 1500px; margin: 0 auto; }
 .proof-card { margin: 0; }
-.proof-card .device { width: 100%; aspect-ratio: 1179 / 2556; border-radius: 36px; }
-.proof-card .device img { object-position: center top; }
+.proof-card .device { width: 100%; aspect-ratio: 1179 / 2280; border-radius: 36px; }
+/* THE CARD IS THE SUBJECT on these three, so the crop is taken off the TOP. `center top`
+   used to keep the status bar and cut the card -- exactly backwards. */
+.proof-card .device img { object-position: center bottom; }
 .proof-card figcaption { padding: 26px 10px; display: grid; gap: 7px; }
 .proof-card strong { font-family: var(--serif); font-size: clamp(1.6rem, 2.3vw, 2.7rem); font-weight: 400; letter-spacing: -.035em; }
 .proof-card span { color: var(--muted); font-size: .78rem; line-height: 1.55; }
@@ -130,6 +154,87 @@ footer > p { grid-column: 1 / -1; margin: 10px 0 0; }
 .reveal { opacity: 0; transform: translateY(22px); transition: opacity .85s ease, transform .85s cubic-bezier(.2,.7,.2,1); }
 .reveal.visible { opacity: 1; transform: none; }
 
+
+/* ============================================================================
+   NEW 2026-08-17 — the unified-platform story, the share hub and the AR block.
+   Everything below reuses the existing tokens; no new colours were invented.
+   ========================================================================= */
+
+.promise { max-width: 34ch; margin: -.4rem 0 2.1rem; color: var(--graphite); font-size: .82rem; font-weight: 650; letter-spacing: .01em; }
+
+/* ── 01 · One app, every device ─────────────────────────────────────────── */
+.devices { background: linear-gradient(180deg, #ece4d8, var(--paper)); }
+.showcase { max-width: 1500px; margin: 0 auto clamp(60px, 7vw, 100px); }
+.showcase img { width: 100%; border-radius: clamp(10px, 1.1vw, 18px); box-shadow: 0 40px 100px rgb(69 52 32 / .22); }
+.showcase figcaption { padding-top: 18px; color: var(--muted); font-size: .69rem; letter-spacing: .09em; text-transform: uppercase; text-align: center; }
+
+.platform { max-width: 1560px; margin: 0 auto; }
+.platform-tabs { display: flex; justify-content: center; gap: 8px; margin-bottom: clamp(38px, 5vw, 62px); }
+.platform-tabs button { padding: 11px 26px; border: 1px solid var(--line); border-radius: 99px; color: var(--muted); background: transparent; cursor: pointer; font-size: .76rem; letter-spacing: .02em; transition: color .25s, background .25s, border-color .25s; }
+.platform-tabs button:hover { color: var(--graphite); }
+.platform-tabs button[aria-selected="true"] { color: var(--paper); background: var(--graphite); border-color: var(--graphite); }
+.platform-pane { position: relative; }
+.platform-pane[hidden] { display: none; }
+
+.rail { display: flex; gap: clamp(16px, 2vw, 30px); overflow-x: auto; scroll-snap-type: x mandatory; scroll-behavior: smooth; padding: 6px 4px 30px; scrollbar-width: none; }
+.rail::-webkit-scrollbar { display: none; }
+.rail:focus-visible { outline: 2px solid var(--cobalt); outline-offset: 6px; border-radius: 20px; }
+.shot { flex: 0 0 auto; margin: 0; scroll-snap-align: center; }
+.shot img { border: 1px solid rgb(29 31 32 / .5); background: #111; box-shadow: 0 26px 60px rgb(69 52 32 / .18); }
+.shot figcaption { padding-top: 14px; color: var(--muted); font-size: .68rem; letter-spacing: .1em; text-transform: uppercase; text-align: center; }
+/* Each cropped by roughly the same fraction as `.device` above, per native ratio, so a
+   phone, a tablet and a Mac window all read as equally tightly framed rather than three
+   different amounts of margin. `object-fit: cover` does the cropping; `object-position`
+   keeps it centred except where a bottom-edge control is the point. */
+.shot img { object-fit: cover; object-position: center; }
+.shot.phone img { width: min(258px, 62vw); aspect-ratio: 1179 / 2280; object-position: center 65%; border-radius: 30px; }
+.shot.pad   img { width: min(430px, 76vw); aspect-ratio: 2048 / 2500; border-radius: 22px; }
+.shot.mac   img { width: min(760px, 88vw); aspect-ratio: 3058 / 1800; border-radius: 14px; }
+/* The edit shots are all about the card along the bottom edge. */
+.rail .shot:nth-child(n) img[src*="edit_"] { object-position: center bottom; }
+
+.rail-nav { position: absolute; z-index: 4; top: 42%; width: 46px; height: 46px; display: grid; place-items: center; border: 1px solid var(--line); border-radius: 50%; color: var(--graphite); background: rgb(252 249 243 / .9); backdrop-filter: blur(10px); cursor: pointer; font-size: 1.4rem; line-height: 1; box-shadow: 0 8px 24px rgb(69 52 32 / .12); }
+.rail-nav.prev { left: -4px; }
+.rail-nav.next { right: -4px; }
+.rail-nav:hover { background: var(--paper); }
+.rail-nav[disabled] { opacity: 0; pointer-events: none; }
+
+/* ── 05 · Share hub ────────────────────────────────────────────────────── */
+.share-hub { background: var(--paper); }
+.out-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: clamp(26px, 3.4vw, 54px); max-width: 1380px; margin: 0 auto; }
+.out { margin: 0; }
+.out .frame { overflow: hidden; border: 1px solid rgb(55 49 42 / .12); border-radius: 16px; background: white; box-shadow: 0 24px 62px rgb(62 48 31 / .13); }
+.out .frame img { width: 100%; height: clamp(240px, 27vw, 430px); object-fit: cover; object-position: center top; }
+/* THE AR TILE IS THE ONE THAT HAS TO SELL ITSELF, so it gets its own framing (2026-08-17,
+   the owner: *"use iPad AR-image to better highlight AR on lower-right"*). The iPad capture is
+   a tall 2048x2732 with the model sitting just below the middle, so a landscape tile cropping
+   from `top` would show mostly empty table. 48% centres the crop on the room itself. */
+.out:last-child .frame img { object-position: center 48%; }
+.out figcaption { padding: 24px 4px 0; display: grid; gap: 9px; }
+.out strong { font-family: var(--serif); font-size: clamp(1.6rem, 2.2vw, 2.5rem); font-weight: 400; letter-spacing: -.035em; }
+.out span { max-width: 42ch; color: var(--muted); font-size: .8rem; line-height: 1.65; }
+
+.wide-shot { max-width: 1380px; margin: clamp(60px, 7vw, 110px) auto 0; }
+.wide-shot img { width: 100%; border: 1px solid rgb(29 31 32 / .45); border-radius: 14px; box-shadow: 0 34px 84px rgb(69 52 32 / .2); }
+.wide-shot figcaption { padding-top: 16px; color: var(--muted); font-size: .68rem; letter-spacing: .1em; text-transform: uppercase; text-align: center; }
+
+/* ── 06 · AR — the finale, and the only section on the dark ground ─────── */
+.ar { position: relative; overflow: hidden; display: grid; grid-template-columns: 1.04fr .96fr; align-items: center; gap: clamp(40px, 6vw, 110px); padding: clamp(110px, 13vw, 190px) clamp(24px, 8vw, 130px); color: var(--cream); background: radial-gradient(circle at 78% 42%, #34372f 0, var(--dark) 58%, #191b17 100%); }
+.ar::after { content: ""; position: absolute; width: 46vw; aspect-ratio: 1; left: -14vw; bottom: -22vw; border-radius: 50%; background: rgb(255 250 240 / .05); }
+.ar-copy { position: relative; z-index: 3; max-width: 640px; }
+.ar .eyebrow { color: #c2cddd; }
+.ar h2 { font-size: clamp(3.4rem, 6.2vw, 6.8rem); }
+.ar-copy > p { max-width: 46ch; color: rgb(240 232 218 / .68); font-size: clamp(1rem, 1.15vw, 1.12rem); line-height: 1.75; }
+.ar-kicker { color: var(--cream) !important; font-family: var(--serif); font-size: clamp(1.15rem, 1.7vw, 1.5rem) !important; font-style: italic; line-height: 1.5 !important; }
+
+.ar-launch { display: inline-block; margin-top: 34px; padding: 14px; border: 1px solid rgb(234 224 209 / .22); border-radius: 22px; background: rgb(252 249 243 / .07); text-decoration: none; transition: transform .35s cubic-bezier(.2,.7,.2,1), background .35s, border-color .35s; }
+.ar-launch:hover { transform: translateY(-4px); border-color: rgb(234 224 209 / .45); background: rgb(252 249 243 / .12); }
+.ar-launch img { width: min(240px, 56vw); border-radius: 12px; }
+.ar-hint { margin-top: 20px; max-width: 44ch; color: rgb(240 232 218 / .5); font-size: .74rem; line-height: 1.65; }
+.ar-hint b { color: var(--cream); font-weight: 650; }
+.ar-hint span { display: block; margin-top: 7px; color: rgb(240 232 218 / .33); font-size: .64rem; letter-spacing: .11em; text-transform: uppercase; }
+.device-ar { justify-self: center; width: min(400px, 32vw); transform: rotate(-1.6deg); }
+
 @media (max-width: 900px) {
   .site-header nav { display: none; position: absolute; top: 72px; left: 18px; right: 18px; padding: 20px; flex-direction: column; align-items: stretch; border: 1px solid var(--line); border-radius: 18px; background: rgb(248 244 236 / .96); backdrop-filter: blur(18px); }
   .site-header nav.open { display: flex; }
@@ -144,6 +249,9 @@ footer > p { grid-column: 1 / -1; margin: 10px 0 0; }
   .edit-grid { gap: 16px; }
   .device-measure { width: min(460px, 66vw); }
   .share-visual { width: min(820px, 92vw); margin: 20px auto 0; }
+  .ar { grid-template-columns: minmax(0, 1fr); }
+  .device-ar { width: min(430px, 66vw); margin-top: 46px; }
+  .out-grid { grid-template-columns: minmax(0, 1fr); }
   .principles { grid-template-columns: 1fr; }
   .principles article { min-height: 300px; border-left: 0; border-top: 1px solid rgb(234 224 209 / .12); }
 }
@@ -176,6 +284,12 @@ footer > p { grid-column: 1 / -1; margin: 10px 0 0; }
   .share-visual { min-height: 500px; width: 100%; }
   .paper { width: 128%; left: -56%; top: 32px; }
   .device-share { width: 44%; max-width: 220px; }
+  .platform-tabs { gap: 6px; }
+  .platform-tabs button { padding: 10px 18px; font-size: .72rem; }
+  .rail-nav { display: none; }
+  .shot.mac img { width: 86vw; }
+  .ar h2 { font-size: clamp(3rem, 14vw, 4.6rem); }
+  .out .frame img { height: 240px; }
   footer { grid-template-columns: 1fr; }
   footer nav { flex-wrap: wrap; }
   footer > p { grid-column: auto; }

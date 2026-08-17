@@ -5,3 +5,8 @@
 .env
 .env.*
 secrets*
+
+# Screenshot MASTERS stay local (2026-08-17). 108 MB of retina PNGs that the site does
+# not serve -- `overplan/img/shots/*.webp` are the built, display-sized copies it does.
+# Regenerate those from these; do not commit these.
+overplan/screenshots/
